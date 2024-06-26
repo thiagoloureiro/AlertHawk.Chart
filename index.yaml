@@ -2,11 +2,19 @@ apiVersion: v1
 entries:
   alerthawk:
   - apiVersion: v2
-    created: "2024-06-26T17:54:27.446244+02:00"
+    created: "2024-06-26T17:59:46.84429+02:00"
+    description: A Helm chart for AlertHawk components
+    digest: 15c16110fe17a3aadaf581fc36dd2bbb0acbe57fa495c506a5478c9624847e7f
+    name: alerthawk
+    urls:
+    - https://thiagoloureiro.com.br/AlertHawk.Chart/alerthawk-0.9.0.tgz
+    version: 0.9.0
+  - apiVersion: v2
+    created: "2024-06-26T17:59:46.84391+02:00"
     description: A Helm chart for AlertHawk components
     digest: 3aaced085d85e4b12da8c335f76c8013df57a34cc857dea8348a0ddffb734ec8
     name: alerthawk
     urls:
     - https://thiagoloureiro.com.br/AlertHawk.Chart/alerthawk-0.8.0.tgz
     version: 0.8.0
-generated: "2024-06-26T17:54:27.443443+02:00"
+generated: "2024-06-26T17:59:46.84336+02:00"
