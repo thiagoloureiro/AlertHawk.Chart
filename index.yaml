@@ -1,0 +1,14 @@
+apiVersion: v1
+entries:
+  alerthawk:
+  - apiVersion: v2
+    appVersion: "1.0"
+    created: "2024-06-26T16:52:23.420322+02:00"
+    description: A Helm chart for AlertHawk components
+    digest: f562c8fae829f14cb91e989f2d2b5dc3cfd7fb7e46ce8d6bdc5e599224ab256c
+    name: alerthawk
+    type: application
+    urls:
+    - https://thiagoloureiro.com.br/AlertHawk.Chart/alerthawk-0.1.0.tgz
+    version: 0.1.0
+generated: "2024-06-26T16:52:23.419164+02:00"
