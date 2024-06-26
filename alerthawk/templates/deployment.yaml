@@ -3,7 +3,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ $component }}
+  name: {{ include "name" $ }}-{{ $component }}
   labels:
     app: {{ include "name" $ }}
     component: {{ $component }}
