@@ -3,7 +3,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "alerthawk.fullname" $ }}-{{ $component }}
+  name: {{ include "fullname" $ }}-{{ $component }}
   labels:
     app: {{ include "name" $ }}
     component: {{ $component }}
