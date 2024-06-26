@@ -5,18 +5,18 @@ kind: Deployment
 metadata:
   name: {{ include "alerthawk.fullname" $ }}-{{ $component }}
   labels:
-    app: {{ include "alerthawk.name" $ }}
+    app: {{ include "name" $ }}
     component: {{ $component }}
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: {{ include "alerthawk.name" $ }}
+      app: {{ include "name" $ }}
       component: {{ $component }}
   template:
     metadata:
       labels:
-        app: {{ include "alerthawk.name" $ }}
+        app: {{ include "name" $ }}
         component: {{ $component }}
     spec:
       containers:

@@ -4,7 +4,7 @@ kind: Service
 metadata:
   name: {{ include "alerthawk.fullname" $ }}-{{ $component }}
   labels:
-    app: {{ include "alerthawk.name" $ }}
+    app: {{ include "name" $ }}
     component: {{ $component }}
 spec:
   type: ClusterIP
@@ -12,7 +12,7 @@ spec:
     - port: {{ $.Values.service.port }}
       targetPort: {{ $.Values.service.port }}
   selector:
-    app: {{ include "alerthawk.name" $ }}
+    app: {{ include "name" $ }}
     component: {{ $component }}
 ---
 {{- end }}

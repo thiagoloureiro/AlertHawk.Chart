@@ -1,6 +1,6 @@
 image:
   monitoring: thiagoguaru/alerthawk.monitoring
-  auth: thiagoguaru/alerthawk.auth
+  auth: thiagoguaru/alerthawk.authentication
   notification: thiagoguaru/alerthawk.notification
   ui: thiagoguaru/alerthawk.ui
 
