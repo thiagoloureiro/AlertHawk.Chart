@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}.{{ .Values.appName }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}.{{ .Values.appName }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Release.Name }}.{{ .Values.appName }}
+    spec:
+      containers:
+      - name: {{ .Values.appName }}
+        image: "thiagoguaru/{{ .Values.appName }}:latest"
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        env:
+          {{- if ne .Values.appName "ui" }}
+          - name: ASPNETCORE_ENVIRONMENT
+            value: {{ .Values.env.ASPNETCORE_ENVIRONMENT }}
+          - name: ConnectionStrings__SqlConnectionString
+            value: {{ .Values.env.ConnectionStrings__SqlConnectionString }}
+          {{- end }}
+        ports:
+        - containerPort: {{ .Values.service.port }}
+          {{- if eq .Values.appName "ui" }}
+          containerPort: {{ .Values.service.uiPort }}
+          {{- end }}
+        resources:
+          {{- toYaml .Values.resources | nindent 12 }}

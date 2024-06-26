@@ -1,0 +1,13 @@
+alerthawk.monitoring:
+  appName: alerthawk.monitoring
+
+alerthawk.notification:
+  appName: alerthawk.notification
+
+alerthawk.auth:
+  appName: alerthawk.auth
+
+alerthawk.ui:
+  appName: alerthawk.ui
+  service:
+    port: 8888

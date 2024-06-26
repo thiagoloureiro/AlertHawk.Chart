@@ -1,0 +1,15 @@
+replicaCount: 1
+
+image:
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 8080
+  uiPort: 8888
+
+env:
+  ASPNETCORE_ENVIRONMENT: Development
+  ConnectionStrings__SqlConnectionString: "your-connection-string-here"
+
+resources: {}
