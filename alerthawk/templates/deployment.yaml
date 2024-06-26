@@ -3,17 +3,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "alerhawk.fullname" $ }}-{{ $component }}
+  name: {{ include "alerthawk.fullname" $ }}-{{ $component }}
+  labels:
+    app: {{ include "alerthawk.name" $ }}
+    component: {{ $component }}
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: {{ include "alerhawk.name" $ }}
+      app: {{ include "alerthawk.name" $ }}
       component: {{ $component }}
   template:
     metadata:
       labels:
-        app: {{ include "alerhawk.name" $ }}
+        app: {{ include "alerthawk.name" $ }}
         component: {{ $component }}
     spec:
       containers:
@@ -28,4 +31,5 @@ spec:
             - name: ConnectionStrings__SqlConnectionString
               value: {{ $env.ConnectionStrings__SqlConnectionString }}
             {{- end }}
+---
 {{- end }}
