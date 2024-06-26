@@ -1,32 +1,31 @@
+{{- $env := .Values.env -}}
+{{- range $component, $image := .Values.image }}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Release.Name }}.{{ .Values.appName }}
+  name: {{ include "alerhawk.fullname" $ }}-{{ $component }}
 spec:
-  replicas: {{ .Values.replicaCount }}
+  replicas: 1
   selector:
     matchLabels:
-      app: {{ .Release.Name }}.{{ .Values.appName }}
+      app: {{ include "alerhawk.name" $ }}
+      component: {{ $component }}
   template:
     metadata:
       labels:
-        app: {{ .Release.Name }}.{{ .Values.appName }}
+        app: {{ include "alerhawk.name" $ }}
+        component: {{ $component }}
     spec:
       containers:
-      - name: {{ .Values.appName }}
-        image: "thiagoguaru/{{ .Values.appName }}:latest"
-        imagePullPolicy: {{ .Values.image.pullPolicy }}
-        env:
-          {{- if ne .Values.appName "ui" }}
-          - name: ASPNETCORE_ENVIRONMENT
-            value: {{ .Values.env.ASPNETCORE_ENVIRONMENT }}
-          - name: ConnectionStrings__SqlConnectionString
-            value: {{ .Values.env.ConnectionStrings__SqlConnectionString }}
-          {{- end }}
-        ports:
-        - containerPort: {{ .Values.service.port }}
-          {{- if eq .Values.appName "ui" }}
-          containerPort: {{ .Values.service.uiPort }}
-          {{- end }}
-        resources:
-          {{- toYaml .Values.resources | nindent 12 }}
+        - name: {{ $component }}
+          image: {{ $image }}
+          ports:
+            - containerPort: {{ $.Values.service.port }}
+          env:
+            {{- if ne $component "ui" }}
+            - name: ASPNETCORE_ENVIRONMENT
+              value: {{ $env.ASPNETCORE_ENVIRONMENT }}
+            - name: ConnectionStrings__SqlConnectionString
+              value: {{ $env.ConnectionStrings__SqlConnectionString }}
+            {{- end }}
+{{- end }}

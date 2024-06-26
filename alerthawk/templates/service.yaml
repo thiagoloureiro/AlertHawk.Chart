@@ -1,13 +1,14 @@
+{{- range $component, $image := .Values.image }}
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ .Release.Name }}.{{ .Values.appName }}
+  name: {{ include "alerhawk.fullname" $ }}-{{ $component }}
 spec:
-  type: {{ .Values.service.type }}
+  type: ClusterIP
   ports:
-    - port: {{ .Values.service.port }}
-      {{- if eq .Values.appName "ui" }}
-      port: {{ .Values.service.uiPort }}
-      {{- end }}
+    - port: {{ $.Values.service.port }}
+      targetPort: {{ $.Values.service.port }}
   selector:
-    app: {{ .Release.Name }}.{{ .Values.appName }}
+    app: {{ include "alerhawk.name" $ }}
+    component: {{ $component }}
+{{- end }}

@@ -1,15 +1,12 @@
-replicaCount: 1
-
 image:
-  pullPolicy: IfNotPresent
+  monitoring: thiagoguaru/alerthawk.monitoring
+  auth: thiagoguaru/alerthawk.auth
+  notification: thiagoguaru/alerthawk.notification
+  ui: thiagoguaru/alerthawk.ui
 
 service:
-  type: ClusterIP
   port: 8080
-  uiPort: 8888
 
 env:
   ASPNETCORE_ENVIRONMENT: Development
-  ConnectionStrings__SqlConnectionString: "your-connection-string-here"
-
-resources: {}
+  ConnectionStrings__SqlConnectionString: "your-connection-string"
