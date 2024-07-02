@@ -30,6 +30,49 @@ spec:
               value: {{ $env.ASPNETCORE_ENVIRONMENT }}
             - name: ConnectionStrings__SqlConnectionString
               value: {{ $env.ConnectionStrings__SqlConnectionString }}
+            - name: RabbitMq__Host
+              value: {{ $env.RabbitMq__Host }}
+            - name: RabbitMq__User
+              value: {{ $env.RabbitMq__User }}
+            - name: RabbitMq__Pass
+              value: {{ $env.RabbitMq__Pass }}
+            - name: Sentry__Dsn
+              value: {{ $env.Sentry__Dsn }}
+            - name: Sentry__Environment
+              value: {{ $env.Sentry__Environment }}
+            - name: SwaggerUICredentials__username
+              value: {{ $env.SwaggerUICredentials__username }}
+            - name: SwaggerUICredentials__password
+              value: {{ $env.SwaggerUICredentials__password }}
+            - name: CacheSettings__CacheProvider
+              value: {{ $env.CacheSettings__CacheProvider }}
+            - name: CacheSettings__RedisConnectionString
+              value: {{ $env.CacheSettings__RedisConnectionString }}
+            - name: enable_screenshot
+              value: {{ $env.enable_screenshot }}
+            - name: AzureAd__ClientId
+              value: {{ $env.AzureAd__ClientId }}
+            - name: AzureAd__TenantId
+              value: {{ $env.AzureAd__TenantId }}
+            - name: AzureAd__ClientSecret
+              value: {{ $env.AzureAd__ClientSecret }}
+            - name: AzureAd__Instance
+              value: {{ $env.AzureAd__Instance }}
+            - name: AzureAd__Domain
+              value: {{ $env.AzureAd__Domain }}
+            - name: azure_blob_storage_connection_string
+              value: {{ $env.azure_blob_storage_connection_string }}
+            - name: azure_blob_storage_container_name
+              value: {{ $env.azure_blob_storage_container_name }}
+            - name: Jwt__Key 
+              value: {{ $env.Jwt__Key }}  
+            - name: Jwt__Issuers
+              value: {{ $env.Jwt__Issuers }}
+            - name: Jwt__Audiences
+              value: {{ $env.Jwt__Audiences }}
+            {{- end }}
+            {{- if eq $component "ui" }}
+            
             {{- end }}
 ---
 {{- end }}
