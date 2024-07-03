@@ -7,6 +7,9 @@ image:
 service:
   port: 8080
 
+ui:
+  replicas: 1
+
 monitoring:
   replicas: 1
   env:
