@@ -1,5 +1,5 @@
 image:
-  monitoring: thiagoguaru/alerthawk.monitoring:1.3.26
+  monitoring: thiagoguaru/alerthawk.monitoring:1.3.27
   auth: thiagoguaru/alerthawk.authentication:1.0.70
   notification: thiagoguaru/alerthawk.notification:1.0.130
   ui: thiagoguaru/alerthawk.ui:1.0.170
