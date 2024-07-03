@@ -19,7 +19,6 @@ env:
   SwaggerUICredentials__password: 
   CacheSettings__CacheProvider: Redis
   CacheSettings__RedisConnectionString: 
-  enable_screenshot: true
   AzureAd__ClientId: 
   AzureAd__TenantId: 
   AzureAd__ClientSecret: 
