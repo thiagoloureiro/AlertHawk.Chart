@@ -14,6 +14,7 @@ monitoring:
     RabbitMq__Host: rabbitmq-host
     RabbitMq__User: rabbitmq-user
     RabbitMq__Pass: rabbitmq-pass
+    Sentry__Enabled: null
     Sentry__Dsn: sentry-dsn-url
     Sentry__Environment: Local
     SwaggerUICredentials__username: admin 
@@ -35,6 +36,7 @@ auth:
   env:
     ASPNETCORE_ENVIRONMENT: Development
     ConnectionStrings__SqlConnectionString: your-connection-string
+    Sentry__Enabled: null
     Sentry__Dsn: sentry-dsn-url
     Sentry__Environment: Local
     SwaggerUICredentials__username: admin 
@@ -56,6 +58,7 @@ notification:
     RabbitMq__Host: rabbitmq-host
     RabbitMq__User: rabbitmq-user
     RabbitMq__Pass: rabbitmq-pass
+    Sentry__Enabled: null
     Sentry__Dsn: sentry-dsn-url
     Sentry__Environment: Local
     SwaggerUICredentials__username: admin 
