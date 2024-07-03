@@ -2,7 +2,23 @@ apiVersion: v1
 entries:
   alerthawk:
   - apiVersion: v2
-    created: "2024-07-03T17:34:28.618852+02:00"
+    created: "2024-07-03T17:36:39.988221+02:00"
+    description: AlertHawk Self-Hosted Monitoring Solution
+    digest: 6c50a3ba7b0f99ed5026e50b1b8f8132c6ba064d4ec0443e86818724f655ef9f
+    home: https://github.com/thiagoloureiro/AlertHawk.Chart
+    icon: https://raw.githubusercontent.com/thiagoloureiro/AlertHawk/main/logo.png
+    keywords:
+    - monitoring
+    - alerting
+    maintainers:
+    - email: thiagoguaru@me.com
+      name: Thiago Loureiro
+    name: alerthawk
+    urls:
+    - https://thiagoloureiro.com.br/AlertHawk.Chart/alerthawk-0.31.0.tgz
+    version: 0.31.0
+  - apiVersion: v2
+    created: "2024-07-03T17:36:39.987592+02:00"
     description: AlertHawk Self-Hosted Monitoring Solution
     digest: 0d5bbe50b42b88798f038298622d639a4a6feff57f3e29358c472c454e70358f
     home: https://github.com/thiagoloureiro/AlertHawk.Chart
@@ -18,7 +34,7 @@ entries:
     - https://thiagoloureiro.com.br/AlertHawk.Chart/alerthawk-0.30.0.tgz
     version: 0.30.0
   - apiVersion: v2
-    created: "2024-07-03T17:34:28.617038+02:00"
+    created: "2024-07-03T17:36:39.987305+02:00"
     description: AlertHawk Self-Hosted Monitoring Solution
     digest: fc262ba599ea121606de5f97ac4259ab093fc472c52fe3914423e627f1cfcc5b
     home: https://github.com/thiagoloureiro/AlertHawk.Chart
@@ -34,7 +50,7 @@ entries:
     - https://thiagoloureiro.com.br/AlertHawk.Chart/alerthawk-0.29.0.tgz
     version: 0.29.0
   - apiVersion: v2
-    created: "2024-07-03T17:34:28.615618+02:00"
+    created: "2024-07-03T17:36:39.987008+02:00"
     description: AlertHawk monitoring
     digest: ef3cbfdc2c6de9468278baecfb1df47e844ba1a1a188ee6c8ae9ea6a72983426
     icon: https://github.com/thiagoloureiro/AlertHawk/blob/main/logo.png
@@ -43,7 +59,7 @@ entries:
     - https://thiagoloureiro.com.br/AlertHawk.Chart/alerthawk-0.28.0.tgz
     version: 0.28.0
   - apiVersion: v2
-    created: "2024-07-03T17:34:28.614081+02:00"
+    created: "2024-07-03T17:36:39.986728+02:00"
     description: AlertHawk monitoring tool
     digest: 0a8507ada509d6a4dbf1326092afe0da87de6685cb90f951fa15450611ded5f1
     icon: https://github.com/thiagoloureiro/AlertHawk/blob/main/logo.png
@@ -52,7 +68,7 @@ entries:
     - https://thiagoloureiro.com.br/AlertHawk.Chart/alerthawk-0.27.0.tgz
     version: 0.27.0
   - apiVersion: v2
-    created: "2024-07-03T17:34:28.612541+02:00"
+    created: "2024-07-03T17:36:39.986485+02:00"
     description: A Helm chart for AlertHawk components
     digest: c3133a4022bb3d81b3d33535961346535ee4b7d23fdbc8ea0ff879e6f3b086de
     name: alerthawk
@@ -60,7 +76,7 @@ entries:
     - https://thiagoloureiro.com.br/AlertHawk.Chart/alerthawk-0.26.0.tgz
     version: 0.26.0
   - apiVersion: v2
-    created: "2024-07-03T17:34:28.61089+02:00"
+    created: "2024-07-03T17:36:39.986242+02:00"
     description: A Helm chart for AlertHawk components
     digest: b90328ee99e0def9c153f8f0e723896552a454aff89acb1134087f47f7e463e7
     name: alerthawk
@@ -68,7 +84,7 @@ entries:
     - https://thiagoloureiro.com.br/AlertHawk.Chart/alerthawk-0.25.0.tgz
     version: 0.25.0
   - apiVersion: v2
-    created: "2024-07-03T17:34:28.608415+02:00"
+    created: "2024-07-03T17:36:39.985996+02:00"
     description: A Helm chart for AlertHawk components
     digest: 6a4e068e0de6196acd781939d1e3113f65c6d6b0ff844dfc57d490468db500bd
     name: alerthawk
@@ -76,7 +92,7 @@ entries:
     - https://thiagoloureiro.com.br/AlertHawk.Chart/alerthawk-0.24.0.tgz
     version: 0.24.0
   - apiVersion: v2
-    created: "2024-07-03T17:34:28.60572+02:00"
+    created: "2024-07-03T17:36:39.985747+02:00"
     description: A Helm chart for AlertHawk components
     digest: 0ef81fe25e4d4851ca32937892df14793229dae1260a3fc482379045fe8c780c
     name: alerthawk
@@ -84,7 +100,7 @@ entries:
     - https://thiagoloureiro.com.br/AlertHawk.Chart/alerthawk-0.23.0.tgz
     version: 0.23.0
   - apiVersion: v2
-    created: "2024-07-03T17:34:28.604211+02:00"
+    created: "2024-07-03T17:36:39.985506+02:00"
     description: A Helm chart for AlertHawk components
     digest: 163eb4bc77fadc0f74cb6223685a61fb124003c3c96070094aae2ed4e4d8276d
     name: alerthawk
@@ -92,7 +108,7 @@ entries:
     - https://thiagoloureiro.com.br/AlertHawk.Chart/alerthawk-0.22.0.tgz
     version: 0.22.0
   - apiVersion: v2
-    created: "2024-07-03T17:34:28.602689+02:00"
+    created: "2024-07-03T17:36:39.985269+02:00"
     description: A Helm chart for AlertHawk components
     digest: 89a256cd322f3c3ee4c9ba1f0114683e77a7cf5571867acbf5d5c1a7183b3dea
     name: alerthawk
@@ -100,11 +116,11 @@ entries:
     - https://thiagoloureiro.com.br/AlertHawk.Chart/alerthawk-0.21.0.tgz
     version: 0.21.0
   - apiVersion: v2
-    created: "2024-07-03T17:34:28.601028+02:00"
+    created: "2024-07-03T17:36:39.984997+02:00"
     description: A Helm chart for AlertHawk components
     digest: 3984f8728a50dc3c109d6dcc6838e195f4fefe8ffcbabf5988050764656272d4
     name: alerthawk
     urls:
     - https://thiagoloureiro.com.br/AlertHawk.Chart/alerthawk-0.20.0.tgz
     version: 0.20.0
-generated: "2024-07-03T17:34:28.599315+02:00"
+generated: "2024-07-03T17:36:39.984623+02:00"
