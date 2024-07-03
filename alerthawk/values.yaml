@@ -8,6 +8,7 @@ service:
   port: 8080
 
 monitoring:
+  replicas: 1
   env:
     ASPNETCORE_ENVIRONMENT: Development
     ConnectionStrings__SqlConnectionString: your-connection-string
@@ -34,6 +35,7 @@ monitoring:
     AUTH_API_URL: specify-auth-url-address
 
 auth:
+  replicas: 1
   env:
     ASPNETCORE_ENVIRONMENT: Development
     ConnectionStrings__SqlConnectionString: your-connection-string
@@ -53,6 +55,7 @@ auth:
     Jwt__Audiences: audiences
 
 notification:
+  replicas: 1
   env:
     ASPNETCORE_ENVIRONMENT: Development
     ConnectionStrings__SqlConnectionString: your-connection-string

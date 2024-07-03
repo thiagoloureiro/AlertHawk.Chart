@@ -1,4 +1,4 @@
 apiVersion: v2
 name: alerthawk
 description: A Helm chart for AlertHawk components
-version: 0.22.0
+version: 0.23.0
