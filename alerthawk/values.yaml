@@ -9,24 +9,24 @@ service:
 
 env:
   ASPNETCORE_ENVIRONMENT: Development
-  ConnectionStrings__SqlConnectionString: "your-connection-string"
-  RabbitMq__Host: ""
-  RabbitMq__User: ""
-  RabbitMq__Pass: ""
-  Sentry__Dsn: ""
-  Sentry__Environment: ""
-  SwaggerUICredentials__username: ""
-  SwaggerUICredentials__password: ""
-  CacheSettings__CacheProvider: "Redis"
-  CacheSettings__RedisConnectionString: ""
-  enable_screenshot: "true"
-  AzureAd__ClientId: ""
-  AzureAd__TenantId: ""
-  AzureAd__ClientSecret: ""
-  AzureAd__Instance: "https://login.microsoftonline.com/"
-  AzureAd__Domain: ""
-  azure_blob_storage_connection_string: ""
-  azure_blob_storage_container_name: ""
-  Jwt__Key: ""
-  Jwt__Issuers: ""
-  Jwt__Audiences: ""
+  ConnectionStrings__SqlConnectionString: your-connection-string
+  RabbitMq__Host: 
+  RabbitMq__User: 
+  RabbitMq__Pass: 
+  Sentry__Dsn: 
+  Sentry__Environment: 
+  SwaggerUICredentials__username: 
+  SwaggerUICredentials__password: 
+  CacheSettings__CacheProvider: Redis
+  CacheSettings__RedisConnectionString: 
+  enable_screenshot: true
+  AzureAd__ClientId: 
+  AzureAd__TenantId: 
+  AzureAd__ClientSecret: 
+  AzureAd__Instance:
+  AzureAd__Domain: 
+  azure_blob_storage_connection_string: 
+  azure_blob_storage_container_name: 
+  Jwt__Key: 
+  Jwt__Issuers: 
+  Jwt__Audiences: 
