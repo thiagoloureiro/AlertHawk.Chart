@@ -10,22 +10,22 @@ service:
 env:
   ASPNETCORE_ENVIRONMENT: Development
   ConnectionStrings__SqlConnectionString: your-connection-string
-  RabbitMq__Host: 
-  RabbitMq__User: 
-  RabbitMq__Pass: 
-  Sentry__Dsn: 
-  Sentry__Environment: 
-  SwaggerUICredentials__username: 
-  SwaggerUICredentials__password: 
+  RabbitMq__Host: rabbitmq-host
+  RabbitMq__User: rabbitmq-user
+  RabbitMq__Pass: rabbitmq-pass
+  Sentry__Dsn: sentry-dsn-url
+  Sentry__Environment: Local
+  SwaggerUICredentials__username: admin 
+  SwaggerUICredentials__password: admin
   CacheSettings__CacheProvider: Redis
-  CacheSettings__RedisConnectionString: 
-  AzureAd__ClientId: 
-  AzureAd__TenantId: 
-  AzureAd__ClientSecret: 
-  AzureAd__Instance:
-  AzureAd__Domain: 
-  azure_blob_storage_connection_string: 
-  azure_blob_storage_container_name: 
-  Jwt__Key: 
-  Jwt__Issuers: 
-  Jwt__Audiences: 
+  CacheSettings__RedisConnectionString: redis-connection-string
+  AzureAd__ClientId: clientid
+  AzureAd__TenantId: tenantid
+  AzureAd__ClientSecret: secret
+  AzureAd__Instance: instance
+  AzureAd__Domain: domain
+  azure_blob_storage_connection_string: azure-blob-storage-connection-string
+  azure_blob_storage_container_name: azure-blob-storage-container-name
+  Jwt__Key: jwt-key
+  Jwt__Issuers: issuers
+  Jwt__Audiences: audiences
