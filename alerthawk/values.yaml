@@ -31,6 +31,7 @@ monitoring:
     Jwt__Key: jwt-key
     Jwt__Issuers: issuers
     Jwt__Audiences: audiences
+    AUTH_API_URL: specify-auth-url-address
 
 auth:
   env:
