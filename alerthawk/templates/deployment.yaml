@@ -7,7 +7,7 @@ metadata:
     app: {{ include "name" $ }}
     component: {{ $component }}
 spec:
-  replicas: {{ $.Values.replicas }}
+  replicas: {{ (index $.Values $component).replicas | default $.Values.defaultReplicas }}
   selector:
     matchLabels:
       app: {{ include "name" $ }}
