@@ -1,5 +1,6 @@
 apiVersion: v2
 name: alerthawk
-description: AlertHawk monitoring tool
-version: 0.27.0
+description: AlertHawk monitoring
+displayName: AlertHawk
+version: 0.28.0
 icon: https://github.com/thiagoloureiro/AlertHawk/blob/main/logo.png
