@@ -40,6 +40,12 @@ monitoring:
     AUTH_API_URL: specify-auth-url-address
     CACHE_PARALLEL_TASKS: 10
     DOTNET_SYSTEM_GLOBALIZATION_INVARIANT: null
+    ipgeo_apikey: ipgeo-api-key
+    enable_location_api: null
+    enable_screenshot: null
+    screenshot_wait_time_ms: 4000
+    enable_screenshot_storage_account: null
+    AzureAd__ValidIssuers: null
 
 auth:
   replicas: 1
@@ -57,6 +63,13 @@ auth:
     AzureAd__ClientSecret: secret
     AzureAd__Instance: instance
     AzureAd__Domain: domain
+    AzureAd__CallbackPath: /signin-oidc
+    DownstreamApi__BaseUrl: https://graph.microsoft.com/beta
+    DownstreamApi__Scopes: User.Read
+    smtpHost: smtp-host
+    smtpPort: smtp-port
+    smtpUser: smtp-user
+    smtpPassword: smtp-pass
     Jwt__Key: jwt-key
     Jwt__Issuers: issuers
     Jwt__Audiences: audiences
@@ -83,3 +96,7 @@ notification:
     Jwt__Key: jwt-key
     Jwt__Issuers: issuers
     Jwt__Audiences: audiences
+    slack-webhookurl: slack-webhook-url
+    AesKey: aes-key
+    AesIV: aes-iv
+    AUTH_API_URL: specify-auth-url-address
