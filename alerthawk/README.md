@@ -20,3 +20,4 @@ This Helm chart deploys AlertHawk components as Kubernetes deployments and servi
    ```bash
    helm repo add alerthawk https://thiagoloureiro.com.br/AlertHawk.Chart/
    helm repo update
+   ```
