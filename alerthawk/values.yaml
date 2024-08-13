@@ -13,7 +13,7 @@ ui:
   replicas: 2
 
 monitoring:
-  replicas: 2f
+  replicas: 2
   env:
     ASPNETCORE_ENVIRONMENT: Development
     ConnectionStrings__SqlConnectionString: your-connection-string
