@@ -20,7 +20,7 @@ monitoring:
     RabbitMq__Host: rabbitmq-host
     RabbitMq__User: rabbitmq-user
     RabbitMq__Pass: rabbitmq-pass
-    Sentry__Enabled: null
+    Sentry__Enabled: false
     Sentry__Dsn: sentry-dsn-url
     Sentry__Environment: Local
     SwaggerUICredentials__username: admin 
@@ -31,27 +31,26 @@ monitoring:
     AzureAd__TenantId: tenantid
     AzureAd__ClientSecret: secret
     AzureAd__Instance: instance
-    AzureAd__Domain: domain
     azure_blob_storage_connection_string: azure-blob-storage-connection-string
     azure_blob_storage_container_name: azure-blob-storage-container-name
     Jwt__Key: jwt-key
     Jwt__Issuers: issuers
     Jwt__Audiences: audiences
     AUTH_API_URL: specify-auth-url-address
-    CACHE_PARALLEL_TASKS: null
+    CACHE_PARALLEL_TASKS: 10
     ipgeo_apikey: ipgeo-api-key
-    enable_location_api: null
-    enable_screenshot: null
-    screenshot_wait_time_ms: null
-    enable_screenshot_storage_account: null
-    AzureAd__ValidIssuers: null
+    enable_location_api: false
+    enable_screenshot: false
+    screenshot_wait_time_ms: 2000
+    enable_screenshot_storage_account: false
+
 
 auth:
   replicas: 1
   env:
     ASPNETCORE_ENVIRONMENT: Development
     ConnectionStrings__SqlConnectionString: your-connection-string
-    Sentry__Enabled: null
+    Sentry__Enabled: false
     Sentry__Dsn: sentry-dsn-url
     Sentry__Environment: Local
     SwaggerUICredentials__username: admin 
@@ -81,7 +80,7 @@ notification:
     RabbitMq__Host: rabbitmq-host
     RabbitMq__User: rabbitmq-user
     RabbitMq__Pass: rabbitmq-pass
-    Sentry__Enabled: null
+    Sentry__Enabled: false
     Sentry__Dsn: sentry-dsn-url
     Sentry__Environment: Local
     SwaggerUICredentials__username: admin 

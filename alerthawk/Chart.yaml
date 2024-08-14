@@ -1,7 +1,7 @@
 apiVersion: v2
 name: alerthawk
 description: AlertHawk Self-Hosted Monitoring Solution
-version: 0.50.0
+version: 0.51.0
 icon: https://raw.githubusercontent.com/thiagoloureiro/AlertHawk/main/logo.png
 maintainers:
   - name: Thiago Loureiro
