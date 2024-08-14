@@ -11,8 +11,6 @@ service:
 
 ui:
   replicas: 2
-  service:
-    port: 8888
 
 monitoring:
   replicas: 2
