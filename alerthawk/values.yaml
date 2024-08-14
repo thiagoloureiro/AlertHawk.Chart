@@ -43,6 +43,8 @@ monitoring:
     enable_screenshot: false
     screenshot_wait_time_ms: 2000
     enable_screenshot_storage_account: false
+    Logging__LogLevel__Default: Warning
+    Logging__LogLevel__Microsoft.IdentityModel.LoggingExtensions.IdentityLoggerAdapter: Critical
 
 
 auth:
@@ -60,7 +62,6 @@ auth:
     AzureAd__TenantId: tenantid
     AzureAd__ClientSecret: secret
     AzureAd__Instance: instance
-    AzureAd__Domain: domain
     AzureAd__CallbackPath: /signin-oidc
     DownstreamApi__BaseUrl: https://graph.microsoft.com/beta
     DownstreamApi__Scopes: User.Read
@@ -71,6 +72,8 @@ auth:
     Jwt__Key: jwt-key
     Jwt__Issuers: issuers
     Jwt__Audiences: audiences
+    Logging__LogLevel__Default: Warning
+    Logging__LogLevel__Microsoft.IdentityModel.LoggingExtensions.IdentityLoggerAdapter: Critical
 
 notification:
   replicas: 1
@@ -90,7 +93,6 @@ notification:
     AzureAd__TenantId: tenantid
     AzureAd__ClientSecret: secret
     AzureAd__Instance: instance
-    AzureAd__Domain: domain
     Jwt__Key: jwt-key
     Jwt__Issuers: issuers
     Jwt__Audiences: audiences
@@ -98,3 +100,5 @@ notification:
     AesKey: aes-key
     AesIV: aes-iv
     AUTH_API_URL: specify-auth-url-address
+    Logging__LogLevel__Default: Warning
+    Logging__LogLevel__Microsoft.IdentityModel.LoggingExtensions.IdentityLoggerAdapter: Critical
