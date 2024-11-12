@@ -46,7 +46,7 @@ monitoring:
     Logging__LogLevel__Default: Warning
     Logging__LogLevel__Microsoft.IdentityModel.LoggingExtensions.IdentityLoggerAdapter: Critical
     Downsampling__Active: true
-    Downsampling__Interval: 60
+    Downsampling__IntervalInSeconds: 60
 
 
 auth:
