@@ -45,6 +45,8 @@ monitoring:
     enable_screenshot_storage_account: false
     Logging__LogLevel__Default: Warning
     Logging__LogLevel__Microsoft.IdentityModel.LoggingExtensions.IdentityLoggerAdapter: Critical
+    Downsampling__Active: true
+    Downsampling__Interval: 60
 
 
 auth:
