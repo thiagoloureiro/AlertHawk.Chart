@@ -78,6 +78,7 @@ auth:
     Logging__LogLevel__Default: Warning
     Logging__LogLevel__Microsoft.IdentityModel.LoggingExtensions.IdentityLoggerAdapter: Critical
     DOTNET_SYSTEM_GLOBALIZATION_INVARIANT: false
+    MOBILE_API_KEY: your_auth_api_key
 
 notification:
   replicas: 1
