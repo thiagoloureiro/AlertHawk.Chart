@@ -70,7 +70,7 @@ auth:
     DownstreamApi__Scopes: User.Read
     smtpHost: smtp-host
     smtpPort: smtp-port
-    smtpUser: smtp-user
+    smtpUsername: smtp-user
     smtpPassword: smtp-pass
     Jwt__Key: jwt-key
     Jwt__Issuers: issuers
