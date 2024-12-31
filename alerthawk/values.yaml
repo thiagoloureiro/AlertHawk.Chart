@@ -79,6 +79,7 @@ auth:
     Logging__LogLevel__Microsoft.IdentityModel.LoggingExtensions.IdentityLoggerAdapter: Critical
     DOTNET_SYSTEM_GLOBALIZATION_INVARIANT: false
     MOBILE_API_KEY: your_auth_api_key
+    enableSsl: true
 
 notification:
   replicas: 1
