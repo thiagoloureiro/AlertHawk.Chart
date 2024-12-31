@@ -2,7 +2,7 @@ defaultReplicas: 1
 
 image:
   monitoring: thiagoguaru/alerthawk.monitoring:2.0.4
-  auth: thiagoguaru/alerthawk.authentication:2.0.5
+  auth: thiagoguaru/alerthawk.authentication:2.0.6
   notification: thiagoguaru/alerthawk.notification:2.0.4
   ui: thiagoguaru/alerthawk.ui-demo:2.0.8
 
@@ -79,7 +79,8 @@ auth:
     Logging__LogLevel__Microsoft.IdentityModel.LoggingExtensions.IdentityLoggerAdapter: Critical
     DOTNET_SYSTEM_GLOBALIZATION_INVARIANT: false
     MOBILE_API_KEY: your_auth_api_key
-    enableSsl:
+    enableSsl: true
+    smtpFrom: smtp-from
 
 notification:
   replicas: 1
