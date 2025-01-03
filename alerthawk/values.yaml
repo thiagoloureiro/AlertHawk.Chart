@@ -110,3 +110,4 @@ notification:
     Logging__LogLevel__Default: Warning
     Logging__LogLevel__Microsoft.IdentityModel.LoggingExtensions.IdentityLoggerAdapter: Critical
     DOTNET_SYSTEM_GLOBALIZATION_INVARIANT: false
+    AUTH_API_URL: specify-auth-url-address
