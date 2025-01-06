@@ -1,2 +1,2 @@
 helm package alerthawk
-helm repo index --url  https://thiagoloureiro.com.br/AlertHawk.Chart/ .  
+helm repo index --url  https://thiagoloureiro.github.io/AlertHawk.Chart/ .  

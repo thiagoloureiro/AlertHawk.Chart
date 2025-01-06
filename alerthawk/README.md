@@ -18,6 +18,6 @@ This Helm chart deploys AlertHawk components as Kubernetes deployments and servi
 
 1. Add the Helm repository:
    ```bash
-   helm repo add alerthawk https://thiagoloureiro.com.br/AlertHawk.Chart/
+   helm repo add alerthawk https://thiagoloureiro.github.io/AlertHawk.Chart/
    helm repo update
    ```
