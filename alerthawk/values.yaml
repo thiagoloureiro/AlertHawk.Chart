@@ -4,7 +4,7 @@ image:
   monitoring: thiagoguaru/alerthawk.monitoring:2.0.9
   auth: thiagoguaru/alerthawk.authentication:2.0.18
   notification: thiagoguaru/alerthawk.notification:2.0.17
-  ui: thiagoguaru/alerthawk.ui-demo:2.0.11
+  ui: thiagoguaru/alerthawk.ui-demo:2.0.12
 
 service:
   port: 8080
