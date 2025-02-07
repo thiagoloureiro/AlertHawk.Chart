@@ -1,10 +1,10 @@
 defaultReplicas: 1
 
 image:
-  monitoring: thiagoguaru/alerthawk.monitoring:2.0.13
+  monitoring: thiagoguaru/alerthawk.monitoring:2.0.14
   auth: thiagoguaru/alerthawk.authentication:2.0.21
   notification: thiagoguaru/alerthawk.notification:2.0.18
-  ui: thiagoguaru/alerthawk.ui-demo:2.0.19
+  ui: thiagoguaru/alerthawk.ui-demo:2.0.20
 
 service:
   port: 8080
@@ -49,6 +49,9 @@ monitoring:
     Downsampling__IntervalInSeconds: 60
     DOTNET_SYSTEM_GLOBALIZATION_INVARIANT: false
     CHECK_MONITOR_AFTER_CREATION: true
+    QueueType: RABBITMQ
+    ServiceBus__ConnectionString: your-sb-connstring
+    ServiceBus__QueueName: notifications
 
 auth:
   replicas: 1
@@ -112,3 +115,6 @@ notification:
     DOTNET_SYSTEM_GLOBALIZATION_INVARIANT: false
     AUTH_API_URL: specify-auth-url-address
     PUSHY_API_KEY: pushy-api
+    QueueType: RABBITMQ
+    ServiceBus__ConnectionString: your-sb-connstring
+    ServiceBus__QueueName: notifications
