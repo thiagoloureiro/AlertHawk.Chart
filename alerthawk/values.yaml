@@ -1,7 +1,7 @@
 defaultReplicas: 1
 
 image:
-  monitoring: thiagoguaru/alerthawk.monitoring:2.0.48
+  monitoring: thiagoguaru/alerthawk.monitoring:2.0.49
   auth: thiagoguaru/alerthawk.authentication:2.0.32
   notification: thiagoguaru/alerthawk.notification:2.0.36
   ui: thiagoguaru/alerthawk.ui-demo-v2:2.0.116
