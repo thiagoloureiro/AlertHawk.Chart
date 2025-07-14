@@ -1,10 +1,10 @@
 defaultReplicas: 1
 
 image:
-  monitoring: thiagoguaru/alerthawk.monitoring:2.0.54
-  auth: thiagoguaru/alerthawk.authentication:2.0.34
-  notification: thiagoguaru/alerthawk.notification:2.0.38
-  ui: thiagoguaru/alerthawk.ui-demo-v2:2.0.142
+  monitoring: thiagoguaru/alerthawk.monitoring:2.0.55
+  auth: thiagoguaru/alerthawk.authentication:2.0.35
+  notification: thiagoguaru/alerthawk.notification:2.0.39
+  ui: thiagoguaru/alerthawk.ui-demo-v2:2.0.146
 
 service:
   port: 8080
@@ -113,5 +113,4 @@ notification:
     Logging__LogLevel__Default: Warning
     Logging__LogLevel__Microsoft.IdentityModel.LoggingExtensions.IdentityLoggerAdapter: Critical
     DOTNET_SYSTEM_GLOBALIZATION_INVARIANT: false
-    AUTH_API_URL: specify-auth-url-address
     PUSHY_API_KEY: pushy-api
