@@ -2,7 +2,23 @@ apiVersion: v1
 entries:
   alerthawk:
   - apiVersion: v2
-    created: "2025-08-25T20:23:52.048111-04:00"
+    created: "2025-08-26T08:53:03.881976-04:00"
+    description: AlertHawk Self-Hosted Monitoring Solution
+    digest: 6f38f649b0b2c7a68cf570190cca7f1f915a32d931b08bc08eacc94ce185d256
+    home: https://github.com/thiagoloureiro/AlertHawk.Chart
+    icon: https://raw.githubusercontent.com/thiagoloureiro/AlertHawk/main/logo.png
+    keywords:
+    - monitoring
+    - alerting
+    maintainers:
+    - email: thiagoguaru@me.com
+      name: Thiago Loureiro
+    name: alerthawk
+    urls:
+    - https://thiagoloureiro.github.io/AlertHawk.Chart/alerthawk-2.1.16.tgz
+    version: 2.1.16
+  - apiVersion: v2
+    created: "2025-08-26T08:53:03.881588-04:00"
     description: AlertHawk Self-Hosted Monitoring Solution
     digest: ff4124676cb884ec147423231d38e8f022641f4c1493dad8e77642358c3d23a0
     home: https://github.com/thiagoloureiro/AlertHawk.Chart
@@ -18,7 +34,7 @@ entries:
     - https://thiagoloureiro.github.io/AlertHawk.Chart/alerthawk-2.1.15.tgz
     version: 2.1.15
   - apiVersion: v2
-    created: "2025-08-25T20:23:52.047771-04:00"
+    created: "2025-08-26T08:53:03.87986-04:00"
     description: AlertHawk Self-Hosted Monitoring Solution
     digest: 3bc87a7f5666fe6e8d1f7166a4e133782192a4f657604da5b02fbff0be18afc4
     home: https://github.com/thiagoloureiro/AlertHawk.Chart
@@ -34,7 +50,7 @@ entries:
     - https://thiagoloureiro.github.io/AlertHawk.Chart/alerthawk-2.1.13.tgz
     version: 2.1.13
   - apiVersion: v2
-    created: "2025-08-25T20:23:52.046667-04:00"
+    created: "2025-08-26T08:53:03.87658-04:00"
     description: AlertHawk Self-Hosted Monitoring Solution
     digest: 093ab1d69a26ca3dbf82106ca8a77b91d1efb9702df6ed4955858b548d718ecc
     home: https://github.com/thiagoloureiro/AlertHawk.Chart
@@ -50,7 +66,7 @@ entries:
     - https://thiagoloureiro.github.io/AlertHawk.Chart/alerthawk-2.1.12.tgz
     version: 2.1.12
   - apiVersion: v2
-    created: "2025-08-25T20:23:52.045515-04:00"
+    created: "2025-08-26T08:53:03.873431-04:00"
     description: AlertHawk Self-Hosted Monitoring Solution
     digest: 957d467bc98aede9e109b9a01ed84cd370ef6851c427ca3901d52611d0973d9f
     home: https://github.com/thiagoloureiro/AlertHawk.Chart
@@ -66,7 +82,7 @@ entries:
     - https://thiagoloureiro.github.io/AlertHawk.Chart/alerthawk-2.1.11.tgz
     version: 2.1.11
   - apiVersion: v2
-    created: "2025-08-25T20:23:52.051629-04:00"
+    created: "2025-08-26T08:53:03.885787-04:00"
     description: AlertHawk Self-Hosted Monitoring Solution
     digest: c13bb5dfc6b2b728b0da46de734da87c1a6abaedd7ff51a6e11230fadc54f6d6
     home: https://github.com/thiagoloureiro/AlertHawk.Chart
@@ -82,7 +98,7 @@ entries:
     - https://thiagoloureiro.github.io/AlertHawk.Chart/alerthawk-2.1.9.tgz
     version: 2.1.9
   - apiVersion: v2
-    created: "2025-08-25T20:23:52.050424-04:00"
+    created: "2025-08-26T08:53:03.885232-04:00"
     description: AlertHawk Self-Hosted Monitoring Solution
     digest: 889e1e91e534cdea307c3f3c65694aefcd6b7dddbc4cb4597c737b1e82a11275
     home: https://github.com/thiagoloureiro/AlertHawk.Chart
@@ -98,7 +114,7 @@ entries:
     - https://thiagoloureiro.github.io/AlertHawk.Chart/alerthawk-2.1.8.tgz
     version: 2.1.8
   - apiVersion: v2
-    created: "2025-08-25T20:23:52.049266-04:00"
+    created: "2025-08-26T08:53:03.883704-04:00"
     description: AlertHawk Self-Hosted Monitoring Solution
     digest: d90425d6c0d48b40abcef3f9d511b73fdb2180c7529eab2ab9685175a3dfcc77
     home: https://github.com/thiagoloureiro/AlertHawk.Chart
@@ -114,7 +130,7 @@ entries:
     - https://thiagoloureiro.github.io/AlertHawk.Chart/alerthawk-2.1.6.tgz
     version: 2.1.6
   - apiVersion: v2
-    created: "2025-08-25T20:23:52.044346-04:00"
+    created: "2025-08-26T08:53:03.86774-04:00"
     description: AlertHawk Self-Hosted Monitoring Solution
     digest: c2a3a115bc47b58a8decdaac99682df7086069733066e6b83e6dcd3e9c8c23b9
     home: https://github.com/thiagoloureiro/AlertHawk.Chart
@@ -130,7 +146,7 @@ entries:
     - https://thiagoloureiro.github.io/AlertHawk.Chart/alerthawk-2.0.135.tgz
     version: 2.0.135
   - apiVersion: v2
-    created: "2025-08-25T20:23:52.043188-04:00"
+    created: "2025-08-26T08:53:03.859018-04:00"
     description: AlertHawk Self-Hosted Monitoring Solution
     digest: d180706d864a298e9d5efa54e6d5816f2c310fa9d6932c16c728a4994ab821f4
     home: https://github.com/thiagoloureiro/AlertHawk.Chart
@@ -146,7 +162,7 @@ entries:
     - https://thiagoloureiro.github.io/AlertHawk.Chart/alerthawk-2.0.134.tgz
     version: 2.0.134
   - apiVersion: v2
-    created: "2025-08-25T20:23:52.042-04:00"
+    created: "2025-08-26T08:53:03.855591-04:00"
     description: AlertHawk Self-Hosted Monitoring Solution
     digest: 76a29a43cee76e440c416de1e10742f838f9f6232e7afa4f36260fd68243323a
     home: https://github.com/thiagoloureiro/AlertHawk.Chart
@@ -162,7 +178,7 @@ entries:
     - https://thiagoloureiro.github.io/AlertHawk.Chart/alerthawk-2.0.133.tgz
     version: 2.0.133
   - apiVersion: v2
-    created: "2025-08-25T20:23:52.040742-04:00"
+    created: "2025-08-26T08:53:03.854918-04:00"
     description: AlertHawk Self-Hosted Monitoring Solution
     digest: ebf37914b6671de5246365a2c0990d51f7cd30f290a7e4d9aa41f2050ba50225
     home: https://github.com/thiagoloureiro/AlertHawk.Chart
@@ -178,7 +194,7 @@ entries:
     - https://thiagoloureiro.github.io/AlertHawk.Chart/alerthawk-2.0.132.tgz
     version: 2.0.132
   - apiVersion: v2
-    created: "2025-08-25T20:23:52.039272-04:00"
+    created: "2025-08-26T08:53:03.851032-04:00"
     description: AlertHawk Self-Hosted Monitoring Solution
     digest: 89ee94b9535eb6244d0ef0dd2af06ae6db02342b79df186197461c534b86a86c
     home: https://github.com/thiagoloureiro/AlertHawk.Chart
@@ -194,7 +210,7 @@ entries:
     - https://thiagoloureiro.github.io/AlertHawk.Chart/alerthawk-2.0.131.tgz
     version: 2.0.131
   - apiVersion: v2
-    created: "2025-08-25T20:23:52.037958-04:00"
+    created: "2025-08-26T08:53:03.84681-04:00"
     description: AlertHawk Self-Hosted Monitoring Solution
     digest: 1d58f0b5516121d0eb3272cd1410fb99f6b953ed3fc5e46dbcf2621bd248d19a
     home: https://github.com/thiagoloureiro/AlertHawk.Chart
@@ -210,7 +226,7 @@ entries:
     - https://thiagoloureiro.github.io/AlertHawk.Chart/alerthawk-2.0.130.tgz
     version: 2.0.130
   - apiVersion: v2
-    created: "2025-08-25T20:23:52.036534-04:00"
+    created: "2025-08-26T08:53:03.846128-04:00"
     description: AlertHawk Self-Hosted Monitoring Solution
     digest: a534705c00117bf368c6ddcc7ffcbaec011945e7c8eaa2a0858bd89d24731efc
     home: https://github.com/thiagoloureiro/AlertHawk.Chart
@@ -226,7 +242,7 @@ entries:
     - https://thiagoloureiro.github.io/AlertHawk.Chart/alerthawk-2.0.129.tgz
     version: 2.0.129
   - apiVersion: v2
-    created: "2025-08-25T20:23:52.035355-04:00"
+    created: "2025-08-26T08:53:03.767293-04:00"
     description: AlertHawk Self-Hosted Monitoring Solution
     digest: 1abf11ed81364cb7dba4dd3464bf7d5fcf68ae11a4777253ba1d68d2782a85e6
     home: https://github.com/thiagoloureiro/AlertHawk.Chart
@@ -242,7 +258,7 @@ entries:
     - https://thiagoloureiro.github.io/AlertHawk.Chart/alerthawk-2.0.128.tgz
     version: 2.0.128
   - apiVersion: v2
-    created: "2025-08-25T20:23:52.03414-04:00"
+    created: "2025-08-26T08:53:03.745591-04:00"
     description: AlertHawk Self-Hosted Monitoring Solution
     digest: 278ad4a51f07eb8c9f220692bd81f9487aa2813b22e44d3e2321e41c7636e7ba
     home: https://github.com/thiagoloureiro/AlertHawk.Chart
@@ -258,7 +274,7 @@ entries:
     - https://thiagoloureiro.github.io/AlertHawk.Chart/alerthawk-2.0.127.tgz
     version: 2.0.127
   - apiVersion: v2
-    created: "2025-08-25T20:23:52.032898-04:00"
+    created: "2025-08-26T08:53:03.732858-04:00"
     description: AlertHawk Self-Hosted Monitoring Solution
     digest: 6a26874dc26e9cec8e92cb1d5ead02666775b6265429eadbaa95d4f0c6663434
     home: https://github.com/thiagoloureiro/AlertHawk.Chart
@@ -274,7 +290,7 @@ entries:
     - https://thiagoloureiro.github.io/AlertHawk.Chart/alerthawk-2.0.126.tgz
     version: 2.0.126
   - apiVersion: v2
-    created: "2025-08-25T20:23:52.031663-04:00"
+    created: "2025-08-26T08:53:03.730734-04:00"
     description: AlertHawk Self-Hosted Monitoring Solution
     digest: 7556edf9d9d9d5784a08d0b9455cd7d5f34a7225396c671003db4856fa1d116c
     home: https://github.com/thiagoloureiro/AlertHawk.Chart
@@ -290,7 +306,7 @@ entries:
     - https://thiagoloureiro.github.io/AlertHawk.Chart/alerthawk-2.0.125.tgz
     version: 2.0.125
   - apiVersion: v2
-    created: "2025-08-25T20:23:52.030511-04:00"
+    created: "2025-08-26T08:53:03.728876-04:00"
     description: AlertHawk Self-Hosted Monitoring Solution
     digest: 16d45ce5bd1064f2163b83ce208577679a389d6a5b4245f8be6ef2d60ca8fa0d
     home: https://github.com/thiagoloureiro/AlertHawk.Chart
@@ -306,7 +322,7 @@ entries:
     - https://thiagoloureiro.github.io/AlertHawk.Chart/alerthawk-2.0.124.tgz
     version: 2.0.124
   - apiVersion: v2
-    created: "2025-08-25T20:23:52.029352-04:00"
+    created: "2025-08-26T08:53:03.72702-04:00"
     description: AlertHawk Self-Hosted Monitoring Solution
     digest: 917903a9afb4ac4f6ba02f9f8ae107292e4b921b10050b777d1d1bb5dc379b52
     home: https://github.com/thiagoloureiro/AlertHawk.Chart
@@ -322,7 +338,7 @@ entries:
     - https://thiagoloureiro.github.io/AlertHawk.Chart/alerthawk-2.0.123.tgz
     version: 2.0.123
   - apiVersion: v2
-    created: "2025-08-25T20:23:52.028225-04:00"
+    created: "2025-08-26T08:53:03.723879-04:00"
     description: AlertHawk Self-Hosted Monitoring Solution
     digest: 73c6e8ee5aa97e01977497ebfd42d943e7dae456df25f65eac6ba6860b0d768d
     home: https://github.com/thiagoloureiro/AlertHawk.Chart
@@ -338,7 +354,7 @@ entries:
     - https://thiagoloureiro.github.io/AlertHawk.Chart/alerthawk-2.0.122.tgz
     version: 2.0.122
   - apiVersion: v2
-    created: "2025-08-25T20:23:52.02705-04:00"
+    created: "2025-08-26T08:53:03.723304-04:00"
     description: AlertHawk Self-Hosted Monitoring Solution
     digest: 20b8266fe1ec774abd98c475cc13e27712ec809ab750f02a235a277e2b64977e
     home: https://github.com/thiagoloureiro/AlertHawk.Chart
@@ -354,7 +370,7 @@ entries:
     - https://thiagoloureiro.github.io/AlertHawk.Chart/alerthawk-2.0.121.tgz
     version: 2.0.121
   - apiVersion: v2
-    created: "2025-08-25T20:23:52.025917-04:00"
+    created: "2025-08-26T08:53:03.721777-04:00"
     description: AlertHawk Self-Hosted Monitoring Solution
     digest: 77c028caf85f13ca7644389b25644292ef9f38ef2de205b555fa5c836aed0635
     home: https://github.com/thiagoloureiro/AlertHawk.Chart
@@ -370,7 +386,7 @@ entries:
     - https://thiagoloureiro.github.io/AlertHawk.Chart/alerthawk-2.0.120.tgz
     version: 2.0.120
   - apiVersion: v2
-    created: "2025-08-25T20:23:52.024761-04:00"
+    created: "2025-08-26T08:53:03.719735-04:00"
     description: AlertHawk Self-Hosted Monitoring Solution
     digest: 66c348cc19ad8080cf1700bc15808fa0f104c09bf2667cf635617e4b1d5263cf
     home: https://github.com/thiagoloureiro/AlertHawk.Chart
@@ -386,7 +402,7 @@ entries:
     - https://thiagoloureiro.github.io/AlertHawk.Chart/alerthawk-2.0.119.tgz
     version: 2.0.119
   - apiVersion: v2
-    created: "2025-08-25T20:23:52.023226-04:00"
+    created: "2025-08-26T08:53:03.717119-04:00"
     description: AlertHawk Self-Hosted Monitoring Solution
     digest: 579801491a6ee733437cbdfe7f4aebbe334410564840bc45316ee7735ebd1216
     home: https://github.com/thiagoloureiro/AlertHawk.Chart
@@ -402,7 +418,7 @@ entries:
     - https://thiagoloureiro.github.io/AlertHawk.Chart/alerthawk-2.0.118.tgz
     version: 2.0.118
   - apiVersion: v2
-    created: "2025-08-25T20:23:52.02208-04:00"
+    created: "2025-08-26T08:53:03.710246-04:00"
     description: AlertHawk Self-Hosted Monitoring Solution
     digest: bc31f9d7647f50d4881705a029504e16dfa66aa9827fc3c2d9f9e4c4c0705863
     home: https://github.com/thiagoloureiro/AlertHawk.Chart
@@ -418,7 +434,7 @@ entries:
     - https://thiagoloureiro.github.io/AlertHawk.Chart/alerthawk-2.0.117.tgz
     version: 2.0.117
   - apiVersion: v2
-    created: "2025-08-25T20:23:52.020913-04:00"
+    created: "2025-08-26T08:53:03.708909-04:00"
     description: AlertHawk Self-Hosted Monitoring Solution
     digest: d32ba380d9bcb3f993a233357563aa3448c843b296c4dc1045725721c80c997c
     home: https://github.com/thiagoloureiro/AlertHawk.Chart
@@ -434,7 +450,7 @@ entries:
     - https://thiagoloureiro.github.io/AlertHawk.Chart/alerthawk-2.0.116.tgz
     version: 2.0.116
   - apiVersion: v2
-    created: "2025-08-25T20:23:52.01967-04:00"
+    created: "2025-08-26T08:53:03.705258-04:00"
     description: AlertHawk Self-Hosted Monitoring Solution
     digest: 77d2686d770697511a0c99b47230b707b9bfab85cc5d5cf0e1976b0bcb997761
     home: https://github.com/thiagoloureiro/AlertHawk.Chart
@@ -450,7 +466,7 @@ entries:
     - https://thiagoloureiro.github.io/AlertHawk.Chart/alerthawk-2.0.115.tgz
     version: 2.0.115
   - apiVersion: v2
-    created: "2025-08-25T20:23:52.018466-04:00"
+    created: "2025-08-26T08:53:03.704595-04:00"
     description: AlertHawk Self-Hosted Monitoring Solution
     digest: b882744ee88f05b45367f1675c65d91ca822fa67c1dac416aa3726a95b6188c7
     home: https://github.com/thiagoloureiro/AlertHawk.Chart
@@ -466,7 +482,7 @@ entries:
     - https://thiagoloureiro.github.io/AlertHawk.Chart/alerthawk-2.0.114.tgz
     version: 2.0.114
   - apiVersion: v2
-    created: "2025-08-25T20:23:52.017308-04:00"
+    created: "2025-08-26T08:53:03.70234-04:00"
     description: AlertHawk Self-Hosted Monitoring Solution
     digest: 256b1df6bf6fc28d0f235b100f12c0661d948ffdef85c89b85eb5b404ea73eb3
     home: https://github.com/thiagoloureiro/AlertHawk.Chart
@@ -482,7 +498,7 @@ entries:
     - https://thiagoloureiro.github.io/AlertHawk.Chart/alerthawk-2.0.113.tgz
     version: 2.0.113
   - apiVersion: v2
-    created: "2025-08-25T20:23:52.016076-04:00"
+    created: "2025-08-26T08:53:03.698116-04:00"
     description: AlertHawk Self-Hosted Monitoring Solution
     digest: 143d0312e40fe738c059454a04270f1dd2fd1fa848362c321dfadcddb6cabebc
     home: https://github.com/thiagoloureiro/AlertHawk.Chart
@@ -498,7 +514,7 @@ entries:
     - https://thiagoloureiro.github.io/AlertHawk.Chart/alerthawk-2.0.112.tgz
     version: 2.0.112
   - apiVersion: v2
-    created: "2025-08-25T20:23:52.014776-04:00"
+    created: "2025-08-26T08:53:03.695679-04:00"
     description: AlertHawk Self-Hosted Monitoring Solution
     digest: 402f8e958d40fbe681f0f6a94d254c4303ee97721717d879af8d9a32d90cd686
     home: https://github.com/thiagoloureiro/AlertHawk.Chart
@@ -514,7 +530,7 @@ entries:
     - https://thiagoloureiro.github.io/AlertHawk.Chart/alerthawk-2.0.111.tgz
     version: 2.0.111
   - apiVersion: v2
-    created: "2025-08-25T20:23:52.013621-04:00"
+    created: "2025-08-26T08:53:03.69286-04:00"
     description: AlertHawk Self-Hosted Monitoring Solution
     digest: db54e9bca66926f64317d8a98789e60e1c77b50522b81512fad5c886859cad72
     home: https://github.com/thiagoloureiro/AlertHawk.Chart
@@ -530,7 +546,7 @@ entries:
     - https://thiagoloureiro.github.io/AlertHawk.Chart/alerthawk-2.0.110.tgz
     version: 2.0.110
   - apiVersion: v2
-    created: "2025-08-25T20:23:52.012426-04:00"
+    created: "2025-08-26T08:53:03.689521-04:00"
     description: AlertHawk Self-Hosted Monitoring Solution
     digest: 5db8b36bdede161a89e672f57a8638e7e5baf214311bb212ebe11eece9a55bee
     home: https://github.com/thiagoloureiro/AlertHawk.Chart
@@ -546,7 +562,7 @@ entries:
     - https://thiagoloureiro.github.io/AlertHawk.Chart/alerthawk-2.0.109.tgz
     version: 2.0.109
   - apiVersion: v2
-    created: "2025-08-25T20:23:52.011218-04:00"
+    created: "2025-08-26T08:53:03.686683-04:00"
     description: AlertHawk Self-Hosted Monitoring Solution
     digest: 8cc333fa66c0321344617b9b7e4dabc578412c9854bcaf5a34b5760902bac49f
     home: https://github.com/thiagoloureiro/AlertHawk.Chart
@@ -562,7 +578,7 @@ entries:
     - https://thiagoloureiro.github.io/AlertHawk.Chart/alerthawk-2.0.108.tgz
     version: 2.0.108
   - apiVersion: v2
-    created: "2025-08-25T20:23:52.010011-04:00"
+    created: "2025-08-26T08:53:03.68438-04:00"
     description: AlertHawk Self-Hosted Monitoring Solution
     digest: 731f8cbd32d43f971acb38ae6c09ecb51f0c9ba79d975ce6cf91f58fe8fbc929
     home: https://github.com/thiagoloureiro/AlertHawk.Chart
@@ -578,7 +594,7 @@ entries:
     - https://thiagoloureiro.github.io/AlertHawk.Chart/alerthawk-2.0.107.tgz
     version: 2.0.107
   - apiVersion: v2
-    created: "2025-08-25T20:23:52.008343-04:00"
+    created: "2025-08-26T08:53:03.68201-04:00"
     description: AlertHawk Self-Hosted Monitoring Solution
     digest: 79c98d60acbb30ce6318792d59cd4c800e9faedb1e0721a6c9f31ea858cb203d
     home: https://github.com/thiagoloureiro/AlertHawk.Chart
@@ -594,7 +610,7 @@ entries:
     - https://thiagoloureiro.github.io/AlertHawk.Chart/alerthawk-2.0.106.tgz
     version: 2.0.106
   - apiVersion: v2
-    created: "2025-08-25T20:23:52.007129-04:00"
+    created: "2025-08-26T08:53:03.681323-04:00"
     description: AlertHawk Self-Hosted Monitoring Solution
     digest: 69a367e7e3a61c6292f8c0b5598d590cc78c44cd6609e6887b98150e019954e9
     home: https://github.com/thiagoloureiro/AlertHawk.Chart
@@ -610,7 +626,7 @@ entries:
     - https://thiagoloureiro.github.io/AlertHawk.Chart/alerthawk-2.0.105.tgz
     version: 2.0.105
   - apiVersion: v2
-    created: "2025-08-25T20:23:52.005938-04:00"
+    created: "2025-08-26T08:53:03.678102-04:00"
     description: AlertHawk Self-Hosted Monitoring Solution
     digest: 25d4c20ffa95b12da654eaabae34564c3b351a58d38415721c206a74d330b4a5
     home: https://github.com/thiagoloureiro/AlertHawk.Chart
@@ -626,7 +642,7 @@ entries:
     - https://thiagoloureiro.github.io/AlertHawk.Chart/alerthawk-2.0.104.tgz
     version: 2.0.104
   - apiVersion: v2
-    created: "2025-08-25T20:23:52.004718-04:00"
+    created: "2025-08-26T08:53:03.674411-04:00"
     description: AlertHawk Self-Hosted Monitoring Solution
     digest: cc82db8348d901bf597c1cecf653a538307e8f1100a2fa0abe373985fc0776c0
     home: https://github.com/thiagoloureiro/AlertHawk.Chart
@@ -642,7 +658,7 @@ entries:
     - https://thiagoloureiro.github.io/AlertHawk.Chart/alerthawk-2.0.103.tgz
     version: 2.0.103
   - apiVersion: v2
-    created: "2025-08-25T20:23:52.003459-04:00"
+    created: "2025-08-26T08:53:03.672322-04:00"
     description: AlertHawk Self-Hosted Monitoring Solution
     digest: c70c84803fd5329f75021dd138ef838a1cea8c0087fc2d9f12cd9dda18f3016a
     home: https://github.com/thiagoloureiro/AlertHawk.Chart
@@ -658,7 +674,7 @@ entries:
     - https://thiagoloureiro.github.io/AlertHawk.Chart/alerthawk-2.0.102.tgz
     version: 2.0.102
   - apiVersion: v2
-    created: "2025-08-25T20:23:52.002121-04:00"
+    created: "2025-08-26T08:53:03.669242-04:00"
     description: AlertHawk Self-Hosted Monitoring Solution
     digest: 61eb882092130ec25c4f525ee4f2b4e5685ea3da250a94cd2f785e8f2ce62a8b
     home: https://github.com/thiagoloureiro/AlertHawk.Chart
@@ -674,7 +690,7 @@ entries:
     - https://thiagoloureiro.github.io/AlertHawk.Chart/alerthawk-2.0.101.tgz
     version: 2.0.101
   - apiVersion: v2
-    created: "2025-08-25T20:23:52.000743-04:00"
+    created: "2025-08-26T08:53:03.667227-04:00"
     description: AlertHawk Self-Hosted Monitoring Solution
     digest: 987af070c019d05ca51d9b025e88e471110fdd45da231c507a792cc37194bd64
     home: https://github.com/thiagoloureiro/AlertHawk.Chart
@@ -689,4 +705,4 @@ entries:
     urls:
     - https://thiagoloureiro.github.io/AlertHawk.Chart/alerthawk-2.0.100.tgz
     version: 2.0.100
-generated: "2025-08-25T20:23:51.998595-04:00"
+generated: "2025-08-26T08:53:03.664637-04:00"
