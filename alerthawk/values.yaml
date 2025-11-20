@@ -4,10 +4,33 @@ image:
   monitoring: thiagoguaru/alerthawk.monitoring:2.2.22
   auth: thiagoguaru/alerthawk.authentication:2.2.13
   notification: thiagoguaru/alerthawk.notification:2.2.7
-  ui: thiagoguaru/alerthawk.ui-demo-v2:2.2.28
+  metrics: thiagoguaru/alerthawk.metrics:3.0.9
+  ui: thiagoguaru/alerthawk.ui-demo-v2:3.0.1
 
 service:
   port: 8080
+
+metrics:
+  replicas: 1
+  env:
+    ASPNETCORE_ENVIRONMENT: Development
+    CLICKHOUSE_CONNECTION_STRING: your-clickhouse-connection-string
+    Sentry__Enabled: false
+    Sentry__Dsn: sentry-dsn-url
+    Sentry__Environment: Local
+    SwaggerUICredentials__username: admin 
+    SwaggerUICredentials__password: admin
+    CacheSettings__CacheProvider: Redis
+    CacheSettings__RedisConnectionString: redis-connection-string
+    AzureAd__ClientId: clientid
+    AzureAd__TenantId: tenantid
+    AzureAd__ClientSecret: secret
+    AzureAd__Instance: instance
+    Jwt__Key: jwt-key
+    Jwt__Issuers: issuers
+    Jwt__Audiences: audiences
+    Logging__LogLevel__Default: Warning
+    Logging__LogLevel__Microsoft.IdentityModel.LoggingExtensions.IdentityLoggerAdapter: Critical
 
 ui:
   replicas: 1
