@@ -8,6 +8,7 @@ This Helm chart deploys AlertHawk components as Kubernetes deployments and servi
 - `alerthawk-auth`
 - `alerthawk-notification`
 - `alerthawk-ui`
+- `alerthawk-metrics-api`
 
 ## Prerequisites
 

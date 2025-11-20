@@ -10,7 +10,7 @@ image:
 service:
   port: 8080
 
-metrics:
+metrics-api:
   replicas: 1
   env:
     ASPNETCORE_ENVIRONMENT: Development
@@ -20,8 +20,6 @@ metrics:
     Sentry__Environment: Local
     SwaggerUICredentials__username: admin 
     SwaggerUICredentials__password: admin
-    CacheSettings__CacheProvider: Redis
-    CacheSettings__RedisConnectionString: redis-connection-string
     AzureAd__ClientId: clientid
     AzureAd__TenantId: tenantid
     AzureAd__ClientSecret: secret
