@@ -1,11 +1,11 @@
 defaultReplicas: 1
 
 image:
-  monitoring: thiagoguaru/alerthawk.monitoring:2.2.22
-  auth: thiagoguaru/alerthawk.authentication:2.2.13
-  notification: thiagoguaru/alerthawk.notification:2.2.7
+  monitoring: thiagoguaru/alerthawk.monitoring:3.0.1
+  auth: thiagoguaru/alerthawk.authentication:3.0.2
+  notification: thiagoguaru/alerthawk.notification:3.0.1
   metrics-api: thiagoguaru/alerthawk.metrics.api:3.0.17
-  ui: thiagoguaru/alerthawk.ui-demo-v2:3.0.12
+  ui: thiagoguaru/alerthawk.ui-demo-v2:3.0.14
 
 service:
   port: 8080
