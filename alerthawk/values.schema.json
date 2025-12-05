@@ -80,7 +80,10 @@
               "description": "ClickHouse database connection string"
             },
             "Sentry__Enabled": {
-              "type": "string",
+              "anyOf": [
+                {"type": "boolean"},
+                {"type": "string"}
+              ],
               "description": "Enable Sentry error tracking",
               "default": "false"
             },
@@ -193,7 +196,10 @@
               "description": "RabbitMQ password"
             },
             "Sentry__Enabled": {
-              "type": "string",
+              "anyOf": [
+                {"type": "boolean"},
+                {"type": "string"}
+              ],
               "description": "Enable Sentry error tracking",
               "default": "false"
             },
@@ -266,7 +272,10 @@
               "description": "Authentication API URL"
             },
             "CACHE_PARALLEL_TASKS": {
-              "type": "string",
+              "anyOf": [
+                {"type": "integer"},
+                {"type": "string"}
+              ],
               "description": "Number of parallel cache tasks",
               "default": "10"
             },
@@ -275,22 +284,34 @@
               "description": "IP Geolocation API key"
             },
             "enable_location_api": {
-              "type": "string",
+              "anyOf": [
+                {"type": "boolean"},
+                {"type": "string"}
+              ],
               "description": "Enable location API",
               "default": "false"
             },
             "enable_screenshot": {
-              "type": "string",
+              "anyOf": [
+                {"type": "boolean"},
+                {"type": "string"}
+              ],
               "description": "Enable screenshot functionality",
               "default": "false"
             },
             "screenshot_wait_time_ms": {
-              "type": "string",
+              "anyOf": [
+                {"type": "integer"},
+                {"type": "string"}
+              ],
               "description": "Screenshot wait time in milliseconds",
               "default": "2000"
             },
             "enable_screenshot_storage_account": {
-              "type": "string",
+              "anyOf": [
+                {"type": "boolean"},
+                {"type": "string"}
+              ],
               "description": "Enable screenshot storage account",
               "default": "false"
             },
@@ -305,22 +326,34 @@
               "default": "Critical"
             },
             "Downsampling__Active": {
-              "type": "string",
+              "anyOf": [
+                {"type": "boolean"},
+                {"type": "string"}
+              ],
               "description": "Enable downsampling",
               "default": "true"
             },
             "Downsampling__IntervalInSeconds": {
-              "type": "string",
+              "anyOf": [
+                {"type": "integer"},
+                {"type": "string"}
+              ],
               "description": "Downsampling interval in seconds",
               "default": "60"
             },
             "DOTNET_SYSTEM_GLOBALIZATION_INVARIANT": {
-              "type": "string",
+              "anyOf": [
+                {"type": "boolean"},
+                {"type": "string"}
+              ],
               "description": "Disable .NET globalization",
               "default": "false"
             },
             "CHECK_MONITOR_AFTER_CREATION": {
-              "type": "string",
+              "anyOf": [
+                {"type": "boolean"},
+                {"type": "string"}
+              ],
               "description": "Check monitor after creation",
               "default": "true"
             },
@@ -366,7 +399,10 @@
               "description": "SQL Server connection string"
             },
             "Sentry__Enabled": {
-              "type": "string",
+              "anyOf": [
+                {"type": "boolean"},
+                {"type": "string"}
+              ],
               "description": "Enable Sentry error tracking",
               "default": "false"
             },
@@ -430,7 +466,10 @@
               "description": "SMTP server host"
             },
             "smtpPort": {
-              "type": "string",
+              "anyOf": [
+                {"type": "integer"},
+                {"type": "string"}
+              ],
               "description": "SMTP server port"
             },
             "smtpUsername": {
@@ -464,7 +503,10 @@
               "default": "Critical"
             },
             "DOTNET_SYSTEM_GLOBALIZATION_INVARIANT": {
-              "type": "string",
+              "anyOf": [
+                {"type": "boolean"},
+                {"type": "string"}
+              ],
               "description": "Disable .NET globalization",
               "default": "false"
             },
@@ -473,7 +515,10 @@
               "description": "Mobile API key"
             },
             "enableSsl": {
-              "type": "string",
+              "anyOf": [
+                {"type": "boolean"},
+                {"type": "string"}
+              ],
               "description": "Enable SSL for SMTP",
               "default": "true"
             },
@@ -521,7 +566,10 @@
               "description": "RabbitMQ password"
             },
             "Sentry__Enabled": {
-              "type": "string",
+              "anyOf": [
+                {"type": "boolean"},
+                {"type": "string"}
+              ],
               "description": "Enable Sentry error tracking",
               "default": "false"
             },
@@ -604,7 +652,10 @@
               "default": "Critical"
             },
             "DOTNET_SYSTEM_GLOBALIZATION_INVARIANT": {
-              "type": "string",
+              "anyOf": [
+                {"type": "boolean"},
+                {"type": "string"}
+              ],
               "description": "Disable .NET globalization",
               "default": "false"
             },
