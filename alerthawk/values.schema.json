@@ -1,0 +1,621 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "AlertHawk Values",
+  "description": "Configuration values for AlertHawk Self-Hosted Monitoring Solution",
+  "type": "object",
+  "properties": {
+    "defaultReplicas": {
+      "type": "integer",
+      "description": "Default number of replicas for all components",
+      "default": 1,
+      "minimum": 1
+    },
+    "image": {
+      "type": "object",
+      "description": "Container images for each component",
+      "properties": {
+        "monitoring": {
+          "type": "string",
+          "description": "Monitoring service container image",
+          "default": "thiagoguaru/alerthawk.monitoring:3.0.1"
+        },
+        "auth": {
+          "type": "string",
+          "description": "Authentication service container image",
+          "default": "thiagoguaru/alerthawk.authentication:3.0.2"
+        },
+        "notification": {
+          "type": "string",
+          "description": "Notification service container image",
+          "default": "thiagoguaru/alerthawk.notification:3.0.1"
+        },
+        "metrics-api": {
+          "type": "string",
+          "description": "Metrics API service container image",
+          "default": "thiagoguaru/alerthawk.metrics.api:3.0.47"
+        },
+        "ui": {
+          "type": "string",
+          "description": "UI service container image",
+          "default": "thiagoguaru/alerthawk.ui-demo-v2:3.0.48"
+        }
+      },
+      "required": ["monitoring", "auth", "notification", "metrics-api", "ui"]
+    },
+    "service": {
+      "type": "object",
+      "description": "Service configuration",
+      "properties": {
+        "port": {
+          "type": "integer",
+          "description": "Service port number",
+          "default": 8080,
+          "minimum": 1,
+          "maximum": 65535
+        }
+      },
+      "required": ["port"]
+    },
+    "metrics-api": {
+      "type": "object",
+      "description": "Metrics API service configuration",
+      "properties": {
+        "replicas": {
+          "type": "integer",
+          "description": "Number of replicas for metrics-api service",
+          "default": 1,
+          "minimum": 1
+        },
+        "env": {
+          "type": "object",
+          "description": "Environment variables for metrics-api service",
+          "properties": {
+            "ASPNETCORE_ENVIRONMENT": {
+              "type": "string",
+              "description": "ASP.NET Core environment (Development, Production, etc.)",
+              "default": "Development"
+            },
+            "CLICKHOUSE_CONNECTION_STRING": {
+              "type": "string",
+              "description": "ClickHouse database connection string"
+            },
+            "Sentry__Enabled": {
+              "type": "string",
+              "description": "Enable Sentry error tracking",
+              "default": "false"
+            },
+            "Sentry__Dsn": {
+              "type": "string",
+              "description": "Sentry DSN URL"
+            },
+            "Sentry__Environment": {
+              "type": "string",
+              "description": "Sentry environment name",
+              "default": "Local"
+            },
+            "SwaggerUICredentials__username": {
+              "type": "string",
+              "description": "Swagger UI username",
+              "default": "admin"
+            },
+            "SwaggerUICredentials__password": {
+              "type": "string",
+              "description": "Swagger UI password",
+              "default": "admin"
+            },
+            "AzureAd__ClientId": {
+              "type": "string",
+              "description": "Azure AD client ID"
+            },
+            "AzureAd__TenantId": {
+              "type": "string",
+              "description": "Azure AD tenant ID"
+            },
+            "AzureAd__ClientSecret": {
+              "type": "string",
+              "description": "Azure AD client secret"
+            },
+            "AzureAd__Instance": {
+              "type": "string",
+              "description": "Azure AD instance URL"
+            },
+            "Jwt__Key": {
+              "type": "string",
+              "description": "JWT signing key"
+            },
+            "Jwt__Issuers": {
+              "type": "string",
+              "description": "JWT issuers (comma-separated)"
+            },
+            "Jwt__Audiences": {
+              "type": "string",
+              "description": "JWT audiences (comma-separated)"
+            },
+            "Logging__LogLevel__Default": {
+              "type": "string",
+              "description": "Default log level",
+              "default": "Warning"
+            },
+            "Logging__LogLevel__Microsoft.IdentityModel.LoggingExtensions.IdentityLoggerAdapter": {
+              "type": "string",
+              "description": "Identity logger log level",
+              "default": "Critical"
+            }
+          }
+        }
+      }
+    },
+    "ui": {
+      "type": "object",
+      "description": "UI service configuration",
+      "properties": {
+        "replicas": {
+          "type": "integer",
+          "description": "Number of replicas for UI service",
+          "default": 1,
+          "minimum": 1
+        }
+      }
+    },
+    "monitoring": {
+      "type": "object",
+      "description": "Monitoring service configuration",
+      "properties": {
+        "replicas": {
+          "type": "integer",
+          "description": "Number of replicas for monitoring service",
+          "default": 1,
+          "minimum": 1
+        },
+        "env": {
+          "type": "object",
+          "description": "Environment variables for monitoring service",
+          "properties": {
+            "ASPNETCORE_ENVIRONMENT": {
+              "type": "string",
+              "description": "ASP.NET Core environment",
+              "default": "Development"
+            },
+            "ConnectionStrings__SqlConnectionString": {
+              "type": "string",
+              "description": "SQL Server connection string"
+            },
+            "RabbitMq__Host": {
+              "type": "string",
+              "description": "RabbitMQ host address"
+            },
+            "RabbitMq__User": {
+              "type": "string",
+              "description": "RabbitMQ username"
+            },
+            "RabbitMq__Pass": {
+              "type": "string",
+              "description": "RabbitMQ password"
+            },
+            "Sentry__Enabled": {
+              "type": "string",
+              "description": "Enable Sentry error tracking",
+              "default": "false"
+            },
+            "Sentry__Dsn": {
+              "type": "string",
+              "description": "Sentry DSN URL"
+            },
+            "Sentry__Environment": {
+              "type": "string",
+              "description": "Sentry environment name",
+              "default": "Local"
+            },
+            "SwaggerUICredentials__username": {
+              "type": "string",
+              "description": "Swagger UI username",
+              "default": "admin"
+            },
+            "SwaggerUICredentials__password": {
+              "type": "string",
+              "description": "Swagger UI password",
+              "default": "admin"
+            },
+            "CacheSettings__CacheProvider": {
+              "type": "string",
+              "description": "Cache provider (Redis, MemoryCache, etc.)",
+              "default": "Redis"
+            },
+            "CacheSettings__RedisConnectionString": {
+              "type": "string",
+              "description": "Redis connection string"
+            },
+            "AzureAd__ClientId": {
+              "type": "string",
+              "description": "Azure AD client ID"
+            },
+            "AzureAd__TenantId": {
+              "type": "string",
+              "description": "Azure AD tenant ID"
+            },
+            "AzureAd__ClientSecret": {
+              "type": "string",
+              "description": "Azure AD client secret"
+            },
+            "AzureAd__Instance": {
+              "type": "string",
+              "description": "Azure AD instance URL"
+            },
+            "azure_blob_storage_connection_string": {
+              "type": "string",
+              "description": "Azure Blob Storage connection string"
+            },
+            "azure_blob_storage_container_name": {
+              "type": "string",
+              "description": "Azure Blob Storage container name"
+            },
+            "Jwt__Key": {
+              "type": "string",
+              "description": "JWT signing key"
+            },
+            "Jwt__Issuers": {
+              "type": "string",
+              "description": "JWT issuers (comma-separated)"
+            },
+            "Jwt__Audiences": {
+              "type": "string",
+              "description": "JWT audiences (comma-separated)"
+            },
+            "AUTH_API_URL": {
+              "type": "string",
+              "description": "Authentication API URL"
+            },
+            "CACHE_PARALLEL_TASKS": {
+              "type": "string",
+              "description": "Number of parallel cache tasks",
+              "default": "10"
+            },
+            "ipgeo_apikey": {
+              "type": "string",
+              "description": "IP Geolocation API key"
+            },
+            "enable_location_api": {
+              "type": "string",
+              "description": "Enable location API",
+              "default": "false"
+            },
+            "enable_screenshot": {
+              "type": "string",
+              "description": "Enable screenshot functionality",
+              "default": "false"
+            },
+            "screenshot_wait_time_ms": {
+              "type": "string",
+              "description": "Screenshot wait time in milliseconds",
+              "default": "2000"
+            },
+            "enable_screenshot_storage_account": {
+              "type": "string",
+              "description": "Enable screenshot storage account",
+              "default": "false"
+            },
+            "Logging__LogLevel__Default": {
+              "type": "string",
+              "description": "Default log level",
+              "default": "Warning"
+            },
+            "Logging__LogLevel__Microsoft.IdentityModel.LoggingExtensions.IdentityLoggerAdapter": {
+              "type": "string",
+              "description": "Identity logger log level",
+              "default": "Critical"
+            },
+            "Downsampling__Active": {
+              "type": "string",
+              "description": "Enable downsampling",
+              "default": "true"
+            },
+            "Downsampling__IntervalInSeconds": {
+              "type": "string",
+              "description": "Downsampling interval in seconds",
+              "default": "60"
+            },
+            "DOTNET_SYSTEM_GLOBALIZATION_INVARIANT": {
+              "type": "string",
+              "description": "Disable .NET globalization",
+              "default": "false"
+            },
+            "CHECK_MONITOR_AFTER_CREATION": {
+              "type": "string",
+              "description": "Check monitor after creation",
+              "default": "true"
+            },
+            "QueueType": {
+              "type": "string",
+              "description": "Queue type (RABBITMQ, etc.)",
+              "default": "RABBITMQ"
+            },
+            "ServiceBus__ConnectionString": {
+              "type": "string",
+              "description": "Azure Service Bus connection string"
+            },
+            "ServiceBus__QueueName": {
+              "type": "string",
+              "description": "Azure Service Bus queue name",
+              "default": "notifications"
+            }
+          }
+        }
+      }
+    },
+    "auth": {
+      "type": "object",
+      "description": "Authentication service configuration",
+      "properties": {
+        "replicas": {
+          "type": "integer",
+          "description": "Number of replicas for auth service",
+          "default": 1,
+          "minimum": 1
+        },
+        "env": {
+          "type": "object",
+          "description": "Environment variables for auth service",
+          "properties": {
+            "ASPNETCORE_ENVIRONMENT": {
+              "type": "string",
+              "description": "ASP.NET Core environment",
+              "default": "Development"
+            },
+            "ConnectionStrings__SqlConnectionString": {
+              "type": "string",
+              "description": "SQL Server connection string"
+            },
+            "Sentry__Enabled": {
+              "type": "string",
+              "description": "Enable Sentry error tracking",
+              "default": "false"
+            },
+            "Sentry__Dsn": {
+              "type": "string",
+              "description": "Sentry DSN URL"
+            },
+            "Sentry__Environment": {
+              "type": "string",
+              "description": "Sentry environment name",
+              "default": "Local"
+            },
+            "SwaggerUICredentials__username": {
+              "type": "string",
+              "description": "Swagger UI username",
+              "default": "admin"
+            },
+            "SwaggerUICredentials__password": {
+              "type": "string",
+              "description": "Swagger UI password",
+              "default": "admin"
+            },
+            "CacheSettings__CacheProvider": {
+              "type": "string",
+              "description": "Cache provider",
+              "default": "MemoryCache"
+            },
+            "AzureAd__ClientId": {
+              "type": "string",
+              "description": "Azure AD client ID"
+            },
+            "AzureAd__TenantId": {
+              "type": "string",
+              "description": "Azure AD tenant ID"
+            },
+            "AzureAd__ClientSecret": {
+              "type": "string",
+              "description": "Azure AD client secret"
+            },
+            "AzureAd__Instance": {
+              "type": "string",
+              "description": "Azure AD instance URL"
+            },
+            "AzureAd__CallbackPath": {
+              "type": "string",
+              "description": "Azure AD callback path",
+              "default": "/signin-oidc"
+            },
+            "DownstreamApi__BaseUrl": {
+              "type": "string",
+              "description": "Downstream API base URL",
+              "default": "https://graph.microsoft.com/beta"
+            },
+            "DownstreamApi__Scopes": {
+              "type": "string",
+              "description": "Downstream API scopes",
+              "default": "User.Read"
+            },
+            "smtpHost": {
+              "type": "string",
+              "description": "SMTP server host"
+            },
+            "smtpPort": {
+              "type": "string",
+              "description": "SMTP server port"
+            },
+            "smtpUsername": {
+              "type": "string",
+              "description": "SMTP username"
+            },
+            "smtpPassword": {
+              "type": "string",
+              "description": "SMTP password"
+            },
+            "Jwt__Key": {
+              "type": "string",
+              "description": "JWT signing key"
+            },
+            "Jwt__Issuers": {
+              "type": "string",
+              "description": "JWT issuers (comma-separated)"
+            },
+            "Jwt__Audiences": {
+              "type": "string",
+              "description": "JWT audiences (comma-separated)"
+            },
+            "Logging__LogLevel__Default": {
+              "type": "string",
+              "description": "Default log level",
+              "default": "Warning"
+            },
+            "Logging__LogLevel__Microsoft.IdentityModel.LoggingExtensions.IdentityLoggerAdapter": {
+              "type": "string",
+              "description": "Identity logger log level",
+              "default": "Critical"
+            },
+            "DOTNET_SYSTEM_GLOBALIZATION_INVARIANT": {
+              "type": "string",
+              "description": "Disable .NET globalization",
+              "default": "false"
+            },
+            "MOBILE_API_KEY": {
+              "type": "string",
+              "description": "Mobile API key"
+            },
+            "enableSsl": {
+              "type": "string",
+              "description": "Enable SSL for SMTP",
+              "default": "true"
+            },
+            "smtpFrom": {
+              "type": "string",
+              "description": "SMTP from address"
+            }
+          }
+        }
+      }
+    },
+    "notification": {
+      "type": "object",
+      "description": "Notification service configuration",
+      "properties": {
+        "replicas": {
+          "type": "integer",
+          "description": "Number of replicas for notification service",
+          "default": 1,
+          "minimum": 1
+        },
+        "env": {
+          "type": "object",
+          "description": "Environment variables for notification service",
+          "properties": {
+            "ASPNETCORE_ENVIRONMENT": {
+              "type": "string",
+              "description": "ASP.NET Core environment",
+              "default": "Development"
+            },
+            "ConnectionStrings__SqlConnectionString": {
+              "type": "string",
+              "description": "SQL Server connection string"
+            },
+            "RabbitMq__Host": {
+              "type": "string",
+              "description": "RabbitMQ host address"
+            },
+            "RabbitMq__User": {
+              "type": "string",
+              "description": "RabbitMQ username"
+            },
+            "RabbitMq__Pass": {
+              "type": "string",
+              "description": "RabbitMQ password"
+            },
+            "Sentry__Enabled": {
+              "type": "string",
+              "description": "Enable Sentry error tracking",
+              "default": "false"
+            },
+            "Sentry__Dsn": {
+              "type": "string",
+              "description": "Sentry DSN URL"
+            },
+            "Sentry__Environment": {
+              "type": "string",
+              "description": "Sentry environment name",
+              "default": "Local"
+            },
+            "SwaggerUICredentials__username": {
+              "type": "string",
+              "description": "Swagger UI username",
+              "default": "admin"
+            },
+            "SwaggerUICredentials__password": {
+              "type": "string",
+              "description": "Swagger UI password",
+              "default": "admin"
+            },
+            "CacheSettings__CacheProvider": {
+              "type": "string",
+              "description": "Cache provider",
+              "default": "MemoryCache"
+            },
+            "AzureAd__ClientId": {
+              "type": "string",
+              "description": "Azure AD client ID"
+            },
+            "AzureAd__TenantId": {
+              "type": "string",
+              "description": "Azure AD tenant ID"
+            },
+            "AzureAd__ClientSecret": {
+              "type": "string",
+              "description": "Azure AD client secret"
+            },
+            "AzureAd__Instance": {
+              "type": "string",
+              "description": "Azure AD instance URL"
+            },
+            "Jwt__Key": {
+              "type": "string",
+              "description": "JWT signing key"
+            },
+            "Jwt__Issuers": {
+              "type": "string",
+              "description": "JWT issuers (comma-separated)"
+            },
+            "Jwt__Audiences": {
+              "type": "string",
+              "description": "JWT audiences (comma-separated)"
+            },
+            "slack-webhookurl": {
+              "type": "string",
+              "description": "Slack webhook URL"
+            },
+            "AesKey": {
+              "type": "string",
+              "description": "AES encryption key"
+            },
+            "AesIV": {
+              "type": "string",
+              "description": "AES initialization vector"
+            },
+            "AUTH_API_URL": {
+              "type": "string",
+              "description": "Authentication API URL"
+            },
+            "Logging__LogLevel__Default": {
+              "type": "string",
+              "description": "Default log level",
+              "default": "Warning"
+            },
+            "Logging__LogLevel__Microsoft.IdentityModel.LoggingExtensions.IdentityLoggerAdapter": {
+              "type": "string",
+              "description": "Identity logger log level",
+              "default": "Critical"
+            },
+            "DOTNET_SYSTEM_GLOBALIZATION_INVARIANT": {
+              "type": "string",
+              "description": "Disable .NET globalization",
+              "default": "false"
+            },
+            "PUSHY_API_KEY": {
+              "type": "string",
+              "description": "Pushy API key"
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
