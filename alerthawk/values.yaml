@@ -44,6 +44,8 @@ metrics-api:
     Jwt__Audiences: audiences
     Logging__LogLevel__Default: Warning
     Logging__LogLevel__Microsoft.IdentityModel.LoggingExtensions.IdentityLoggerAdapter: Critical
+    ENABLE_LOG_CLEANUP: false
+    LOG_CLEANUP_INTERVAL_HOURS: 0 0 * * *
 
 ui:
   replicas: 1
