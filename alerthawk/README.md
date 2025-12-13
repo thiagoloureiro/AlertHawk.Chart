@@ -19,15 +19,31 @@ This Helm chart deploys AlertHawk components as Kubernetes deployments and servi
 
 #### ClickHouse (Required for metrics-api)
 
-The `alerthawk-metrics-api` component requires ClickHouse to be installed. You can install ClickHouse using the Helm chart from ArtifactHub:
+The `alerthawk-metrics-api` component requires ClickHouse to be installed. You have two options:
 
-```bash
-helm repo add clickhouse-alerthawk https://clickhouse-alerthawk.github.io/clickhouse-alerthawk/
-helm repo update
-helm install clickhouse clickhouse-alerthawk/clickhouse
+**Option 1: Install ClickHouse as part of this chart (Recommended)**
+
+Set `clickhouse.enabled: true` in your `values.yaml` file. This will automatically install ClickHouse as a subchart from the repository: `https://thiagoloureiro.github.io/clickhouse.chart/`
+
+```yaml
+clickhouse:
+  enabled: true
+  # Additional ClickHouse configuration can be added here
 ```
 
-After installation, configure the `CLICKHOUSE_CONNECTION_STRING` environment variable in the `metrics-api` section of `values.yaml`.
+After installation, configure the `CLICKHOUSE_CONNECTION_STRING` environment variable in the `metrics-api` section of `values.yaml` to point to the installed ClickHouse instance.
+
+**Option 2: Use an external ClickHouse instance**
+
+Set `clickhouse.enabled: false` in your `values.yaml` file and install ClickHouse separately:
+
+```bash
+helm repo add clickhouse https://thiagoloureiro.github.io/clickhouse.chart/
+helm repo update
+helm install my-clickhouse clickhouse/clickhouse
+```
+
+Then configure the `CLICKHOUSE_CONNECTION_STRING` environment variable in the `metrics-api` section of `values.yaml` to point to your external ClickHouse instance.
 
 **Reference:** https://artifacthub.io/packages/helm/clickhouse-alerthawk/clickhouse
 
@@ -61,6 +77,15 @@ If Single Sign-On (SSO) with Azure AD is required for any service, configure the
    ```
 
 ## Configuration
+
+### ClickHouse Configuration
+
+The chart supports optional ClickHouse installation as a subchart. Configure it in the `clickhouse` section of `values.yaml`:
+
+- `clickhouse.enabled`: Set to `true` to install ClickHouse as a subchart, or `false` to use an external instance (default: `false`)
+- Additional ClickHouse subchart values can be configured under the `clickhouse` section. See the [ClickHouse chart documentation](https://artifacthub.io/packages/helm/clickhouse-alerthawk/clickhouse) for available options.
+
+When `clickhouse.enabled` is `true`, configure the `CLICKHOUSE_CONNECTION_STRING` in the `metrics-api.env` section to point to the installed instance (typically `http://clickhouse:8123/default`).
 
 ### Environment Variables
 

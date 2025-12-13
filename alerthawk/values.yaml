@@ -1,5 +1,18 @@
 defaultReplicas: 1
 
+# ClickHouse configuration
+# Set enabled to true to install ClickHouse as a subchart
+# If false, you need to provide an external ClickHouse instance
+clickhouse:
+  enabled: false
+  # ClickHouse subchart values can be configured here
+  # See: https://artifacthub.io/packages/helm/clickhouse-alerthawk/clickhouse
+  # Example configuration:
+  # fullnameOverride: clickhouse
+  # service:
+  #   type: ClusterIP
+  #   port: 8123
+
 image:
   monitoring: thiagoguaru/alerthawk.monitoring:3.0.1
   auth: thiagoguaru/alerthawk.authentication:3.0.2
@@ -14,6 +27,8 @@ metrics-api:
   replicas: 1
   env:
     ASPNETCORE_ENVIRONMENT: Development
+    # If clickhouse.enabled is true, use: http://clickhouse:8123/default
+    # Otherwise, provide your external ClickHouse connection string
     CLICKHOUSE_CONNECTION_STRING: your-clickhouse-connection-string
     Sentry__Enabled: false
     Sentry__Dsn: sentry-dsn-url

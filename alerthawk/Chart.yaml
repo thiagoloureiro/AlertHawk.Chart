@@ -1,7 +1,7 @@
 apiVersion: v2
 name: alerthawk
 description: AlertHawk Self-Hosted Monitoring Solution
-version: 3.0.62
+version: 3.0.63
 appVersion: "3.0.62"
 icon: https://raw.githubusercontent.com/thiagoloureiro/AlertHawk/main/logo.png
 maintainers:
@@ -11,3 +11,8 @@ keywords:
   - monitoring
   - alerting
 home: https://github.com/thiagoloureiro/AlertHawk.Chart
+dependencies:
+  - name: clickhouse
+    version: "*"
+    repository: https://thiagoloureiro.github.io/clickhouse.chart/
+    condition: clickhouse.enabled
