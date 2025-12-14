@@ -2,8 +2,30 @@ apiVersion: v1
 entries:
   alerthawk:
   - apiVersion: v2
+    appVersion: 3.0.64
+    created: "2025-12-14T15:23:42.318445-05:00"
+    dependencies:
+    - condition: clickhouse.enabled
+      name: clickhouse
+      repository: https://thiagoloureiro.github.io/clickhouse.chart/
+      version: '*'
+    description: AlertHawk Self-Hosted Monitoring Solution
+    digest: 93062da452fa58ee366b84ac0a653d54744b6df55173dd18e6e3716ebcf21f10
+    home: https://github.com/thiagoloureiro/AlertHawk.Chart
+    icon: https://raw.githubusercontent.com/thiagoloureiro/AlertHawk/main/logo.png
+    keywords:
+    - monitoring
+    - alerting
+    maintainers:
+    - email: thiagoguaru@me.com
+      name: Thiago Loureiro
+    name: alerthawk
+    urls:
+    - https://thiagoloureiro.github.io/AlertHawk.Chart/alerthawk-3.0.65.tgz
+    version: 3.0.65
+  - apiVersion: v2
     appVersion: 3.0.62
-    created: "2025-12-13T11:36:40.882129-05:00"
+    created: "2025-12-14T15:23:42.316917-05:00"
     dependencies:
     - condition: clickhouse.enabled
       name: clickhouse
@@ -25,7 +47,7 @@ entries:
     version: 3.0.64
   - apiVersion: v2
     appVersion: 3.0.62
-    created: "2025-12-13T11:36:40.880565-05:00"
+    created: "2025-12-14T15:23:42.315653-05:00"
     dependencies:
     - condition: clickhouse.enabled
       name: clickhouse
@@ -45,4 +67,4 @@ entries:
     urls:
     - https://thiagoloureiro.github.io/AlertHawk.Chart/alerthawk-3.0.63.tgz
     version: 3.0.63
-generated: "2025-12-13T11:36:40.877117-05:00"
+generated: "2025-12-14T15:23:42.313729-05:00"
