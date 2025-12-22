@@ -14,11 +14,11 @@ clickhouse:
   #   port: 8123
 
 image:
-  monitoring: thiagoguaru/alerthawk.monitoring:3.0.4
-  auth: thiagoguaru/alerthawk.authentication:3.0.2
-  notification: thiagoguaru/alerthawk.notification:3.0.1
-  metrics-api: thiagoguaru/alerthawk.metrics.api:3.0.72
-  ui: thiagoguaru/alerthawk.ui-demo-v2:3.0.65
+  monitoring: thiagoguaru/alerthawk.monitoring:3.1.0
+  auth: thiagoguaru/alerthawk.authentication:3.1.0
+  notification: thiagoguaru/alerthawk.notification:3.1.0
+  metrics-api: thiagoguaru/alerthawk.metrics.api:3.1.0
+  ui: thiagoguaru/alerthawk.ui-demo-v2:3.1.0
 
 service:
   port: 8080
@@ -46,7 +46,13 @@ metrics-api:
     Logging__LogLevel__Microsoft.IdentityModel.LoggingExtensions.IdentityLoggerAdapter: Critical
     ENABLE_LOG_CLEANUP: false
     LOG_CLEANUP_INTERVAL_HOURS: 0 0 * * *
-
+    ConnectionStrings__SqlConnectionString: your-connection-string
+    RabbitMq__Host: rabbitmq-host
+    RabbitMq__User: rabbitmq-user
+    RabbitMq__Pass: rabbitmq-pass
+    QueueType: RABBITMQ
+    ServiceBus__ConnectionString: your-sb-connstring
+    ServiceBus__QueueName: notifications
 ui:
   replicas: 1
 

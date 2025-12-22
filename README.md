@@ -21,7 +21,7 @@ This Helm chart deploys AlertHawk components as Kubernetes deployments and servi
 
 #### ClickHouse (Required for metrics-api)
 
-The `alerthawk-metrics-api` component requires ClickHouse to be installed. You have two options:
+The `alerthawk-metrics-api` component requires ClickHouse to be installed. Note that `alerthawk-metrics-api` also requires a SQL Server database (see SQL Server section below). You have two options:
 
 **Option 1: Install ClickHouse as part of this chart (Recommended)**
 
@@ -49,9 +49,9 @@ Then configure the `CLICKHOUSE_CONNECTION_STRING` environment variable in the `m
 
 **Reference:** https://artifacthub.io/packages/helm/clickhouse-alerthawk/clickhouse
 
-#### SQL Server (Required for auth, notification, and monitoring)
+#### SQL Server (Required for auth, notification, monitoring, and metrics-api)
 
-The `alerthawk-auth`, `alerthawk-notification`, and `alerthawk-monitoring` components require a SQL Server database. Configure the connection string using the `ConnectionStrings__SqlConnectionString` environment variable in the respective service sections of `values.yaml`.
+The `alerthawk-auth`, `alerthawk-notification`, `alerthawk-monitoring`, and `alerthawk-metrics-api` components require a SQL Server database. Configure the connection string using the `ConnectionStrings__SqlConnectionString` environment variable in the respective service sections of `values.yaml`.
 
 #### Azure AD SSO (Optional)
 
@@ -108,6 +108,13 @@ When `clickhouse.enabled` is `true`, configure the `CLICKHOUSE_CONNECTION_STRING
 #### metrics-api
 
 - `CLICKHOUSE_CONNECTION_STRING`: **Required** - ClickHouse database connection string
+- `ConnectionStrings__SqlConnectionString`: **Required** - SQL Server database connection string
+- `RabbitMq__Host`: RabbitMQ host address
+- `RabbitMq__User`: RabbitMQ username
+- `RabbitMq__Pass`: RabbitMQ password
+- `QueueType`: Queue type (e.g., `RABBITMQ`, `SERVICEBUS`)
+- `ServiceBus__ConnectionString`: Azure Service Bus connection string
+- `ServiceBus__QueueName`: Service Bus queue name (default: `notifications`)
 
 #### monitoring
 
