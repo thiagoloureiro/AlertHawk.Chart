@@ -1,0 +1,63 @@
+# Default values for alerthawk-metrics-agent
+nameOverride: "alerthawk"
+replicas: 1
+
+# Image configuration
+image:
+  repository: thiagoguaru/alerthawk.metrics
+  tag: "3.1.7"
+  pullPolicy: Always
+
+# Deployment strategy
+strategy:
+  type: RollingUpdate
+  rollingUpdate:
+    maxSurge: 25%
+    maxUnavailable: 25%
+
+progressDeadlineSeconds: 600
+revisionHistoryLimit: 10
+terminationGracePeriodSeconds: 30
+
+# Service account
+serviceAccount:
+  name: alerthawk-sa
+
+# Image pull secrets (optional)
+# imagePullSecrets: []
+
+# Deployment annotations (optional)
+# deployment:
+#   annotations: {}
+
+# Pod annotations
+podAnnotations:
+  cattle.io/timestamp: ""
+
+# Labels (optional)
+# labels: {}
+
+# Security context
+securityContext:
+  allowPrivilegeEscalation: false
+  privileged: false
+  readOnlyRootFilesystem: false
+  runAsNonRoot: false
+
+# Resource limits and requests (optional)
+# resources:
+#   limits:
+#     cpu: 500m
+#     memory: 512Mi
+#   requests:
+#     cpu: 100m
+#     memory: 128Mi
+
+# Environment variables
+env:
+  CLICKHOUSE_CONNECTION_STRING: "Host=clickhouse.clickhouse.svc.cluster.local;Port=8123;Database=default;Username=admin;Password=admin2000"
+  METRICS_COLLECTION_INTERVAL_SECONDS: "40"
+  CLUSTER_NAME: "aks-tools-01"
+  METRICS_API_URL_OLD: "https://api.monitoring.nam-tools.abb.com/metrics"
+  NAMESPACES_TO_WATCH: "alerthawk,clickhouse,cattle-system,security-portal,graylog,ingress-nginx,velero,signoz,umami,akv2k8s,splunk,wiz,sentry"
+  METRICS_API_URL: "http://alerthawk-metrics-api.alerthawk.svc.cluster.local:8080"

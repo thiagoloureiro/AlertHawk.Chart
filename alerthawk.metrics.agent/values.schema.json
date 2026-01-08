@@ -1,0 +1,271 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "AlertHawk Metrics Agent Values",
+  "description": "Configuration values for AlertHawk Metrics Agent",
+  "type": "object",
+  "properties": {
+    "nameOverride": {
+      "type": "string",
+      "description": "Override the default deployment name",
+      "default": "alerthawk"
+    },
+    "replicas": {
+      "type": "integer",
+      "description": "Number of replicas for the metrics agent",
+      "default": 1,
+      "minimum": 1
+    },
+    "image": {
+      "type": "object",
+      "description": "Container image configuration",
+      "properties": {
+        "repository": {
+          "type": "string",
+          "description": "Container image repository",
+          "default": "thiagoguaru/alerthawk.metrics"
+        },
+        "tag": {
+          "type": "string",
+          "description": "Container image tag",
+          "default": "3.1.7"
+        },
+        "pullPolicy": {
+          "type": "string",
+          "description": "Image pull policy",
+          "enum": ["Always", "IfNotPresent", "Never"],
+          "default": "Always"
+        }
+      },
+      "required": ["repository"]
+    },
+    "strategy": {
+      "type": "object",
+      "description": "Deployment strategy configuration",
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "Deployment strategy type",
+          "enum": ["RollingUpdate", "Recreate"],
+          "default": "RollingUpdate"
+        },
+        "rollingUpdate": {
+          "type": "object",
+          "description": "Rolling update configuration",
+          "properties": {
+            "maxSurge": {
+              "type": "string",
+              "description": "Maximum number of pods that can be created over the desired number of pods",
+              "default": "25%"
+            },
+            "maxUnavailable": {
+              "type": "string",
+              "description": "Maximum number of pods that can be unavailable during the update",
+              "default": "25%"
+            }
+          }
+        }
+      }
+    },
+    "progressDeadlineSeconds": {
+      "type": "integer",
+      "description": "The maximum time in seconds for a deployment to make progress before it is considered to be failed",
+      "default": 600,
+      "minimum": 1
+    },
+    "revisionHistoryLimit": {
+      "type": "integer",
+      "description": "The number of old ReplicaSets to retain to allow rollback",
+      "default": 10,
+      "minimum": 0
+    },
+    "terminationGracePeriodSeconds": {
+      "type": "integer",
+      "description": "Grace period in seconds for pod termination",
+      "default": 30,
+      "minimum": 1
+    },
+    "serviceAccount": {
+      "type": "object",
+      "description": "Service account configuration",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Service account name",
+          "default": "alerthawk-sa"
+        }
+      }
+    },
+    "imagePullSecrets": {
+      "type": "array",
+      "description": "List of image pull secret names",
+      "items": {
+        "type": "string"
+      }
+    },
+    "deployment": {
+      "type": "object",
+      "description": "Deployment metadata annotations",
+      "properties": {
+        "annotations": {
+          "type": "object",
+          "description": "Additional annotations for the deployment",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "podAnnotations": {
+      "type": "object",
+      "description": "Pod metadata annotations",
+      "properties": {
+        "cattle.io/timestamp": {
+          "type": "string",
+          "description": "Rancher timestamp annotation"
+        }
+      },
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "labels": {
+      "type": "object",
+      "description": "Additional labels for the deployment",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "selectorLabels": {
+      "type": "object",
+      "description": "Additional selector labels",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "securityContext": {
+      "type": "object",
+      "description": "Security context for the container",
+      "properties": {
+        "allowPrivilegeEscalation": {
+          "type": "boolean",
+          "description": "Allow privilege escalation",
+          "default": false
+        },
+        "privileged": {
+          "type": "boolean",
+          "description": "Run container in privileged mode",
+          "default": false
+        },
+        "readOnlyRootFilesystem": {
+          "type": "boolean",
+          "description": "Mount root filesystem as read-only",
+          "default": false
+        },
+        "runAsNonRoot": {
+          "type": "boolean",
+          "description": "Run container as non-root user",
+          "default": false
+        },
+        "runAsUser": {
+          "type": "integer",
+          "description": "User ID to run the container as"
+        },
+        "runAsGroup": {
+          "type": "integer",
+          "description": "Group ID to run the container as"
+        },
+        "capabilities": {
+          "type": "object",
+          "description": "Linux capabilities",
+          "properties": {
+            "add": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "drop": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "resources": {
+      "type": "object",
+      "description": "Resource limits and requests",
+      "properties": {
+        "limits": {
+          "type": "object",
+          "description": "Resource limits",
+          "properties": {
+            "cpu": {
+              "type": "string",
+              "description": "CPU limit (e.g., 500m, 1)"
+            },
+            "memory": {
+              "type": "string",
+              "description": "Memory limit (e.g., 512Mi, 1Gi)"
+            }
+          }
+        },
+        "requests": {
+          "type": "object",
+          "description": "Resource requests",
+          "properties": {
+            "cpu": {
+              "type": "string",
+              "description": "CPU request (e.g., 100m, 0.5)"
+            },
+            "memory": {
+              "type": "string",
+              "description": "Memory request (e.g., 128Mi, 512Mi)"
+            }
+          }
+        }
+      }
+    },
+    "env": {
+      "type": "object",
+      "description": "Environment variables for the metrics agent",
+      "properties": {
+        "CLICKHOUSE_CONNECTION_STRING": {
+          "type": "string",
+          "description": "ClickHouse database connection string. Format: Host=hostname;Port=8123;Database=dbname;Username=user;Password=pass",
+          "default": "Host=clickhouse.clickhouse.svc.cluster.local;Port=8123;Database=default;Username=admin;Password=admin2000"
+        },
+        "METRICS_COLLECTION_INTERVAL_SECONDS": {
+          "anyOf": [
+            {"type": "integer"},
+            {"type": "string"}
+          ],
+          "description": "Interval in seconds for collecting metrics",
+          "default": "40"
+        },
+        "CLUSTER_NAME": {
+          "type": "string",
+          "description": "Name of the Kubernetes cluster",
+          "default": "aks-tools-01"
+        },
+        "METRICS_API_URL_OLD": {
+          "type": "string",
+          "description": "Legacy metrics API URL (optional, for backward compatibility)",
+          "default": "https://api.monitoring.nam-tools.abb.com/metrics"
+        },
+        "NAMESPACES_TO_WATCH": {
+          "type": "string",
+          "description": "Comma-separated list of namespaces to watch for metrics",
+          "default": "alerthawk,clickhouse,cattle-system,security-portal,graylog,ingress-nginx,velero,signoz,umami,akv2k8s,splunk,wiz,sentry"
+        },
+        "METRICS_API_URL": {
+          "type": "string",
+          "description": "Metrics API service URL where collected metrics will be sent",
+          "default": "http://alerthawk-metrics-api.alerthawk.svc.cluster.local:8080"
+        }
+      }
+    }
+  }
+}

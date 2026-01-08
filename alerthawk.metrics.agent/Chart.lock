@@ -1,0 +1,6 @@
+dependencies:
+- name: clickhouse
+  repository: https://thiagoloureiro.github.io/clickhouse.chart/
+  version: "25.11"
+digest: sha256:050c65a641a2811277effa4a95a488a9e625cf3c4aa270f97c1c452dc8d81751
+generated: "2025-12-13T11:33:07.79884-05:00"
