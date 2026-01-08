@@ -2,9 +2,9 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ include "name" . }}-metrics
-  {{- with .Values.deployment.annotations }}
+  {{- if and .Values.deployment .Values.deployment.annotations }}
   annotations:
-    {{- toYaml . | nindent 4 }}
+    {{- toYaml .Values.deployment.annotations | nindent 4 }}
   {{- end }}
   labels:
     {{- include "labels" . | nindent 4 }}
