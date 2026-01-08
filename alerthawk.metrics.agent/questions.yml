@@ -76,19 +76,43 @@ questions:
     group: "Deployment"
     show_if: "strategy.type=RollingUpdate"
 
+  - variable: serviceAccount.create
+    label: "Create Service Account"
+    description: "Create a new service account for the metrics agent"
+    type: boolean
+    default: true
+    group: "Deployment"
+
   - variable: serviceAccount.name
     label: "Service Account Name"
     description: "Kubernetes service account name"
     type: string
     default: "alerthawk-sa"
     group: "Deployment"
+    show_if: "serviceAccount.create=true"
+
+  - variable: serviceAccount.clusterRoleBinding.create
+    label: "Create ClusterRoleBinding"
+    description: "Create a ClusterRoleBinding to grant cluster-admin permissions to the service account"
+    type: boolean
+    default: true
+    group: "Deployment"
+    show_if: "serviceAccount.create=true"
+
+  - variable: serviceAccount.clusterRoleBinding.clusterRole
+    label: "Cluster Role"
+    description: "Cluster role to bind to the service account (default: cluster-admin)"
+    type: string
+    default: "cluster-admin"
+    group: "Deployment"
+    show_if: "serviceAccount.clusterRoleBinding.create=true"
 
   # Environment Variables
   - variable: env.CLICKHOUSE_CONNECTION_STRING
     label: "ClickHouse Connection String"
     description: "ClickHouse database connection string. Format: Host=hostname;Port=8123;Database=dbname;Username=user;Password=pass"
     type: multiline
-    default: "Host=clickhouse.clickhouse.svc.cluster.local;Port=8123;Database=default;Username=admin;Password=admin2000"
+    default: ""
     required: true
     group: "Environment Variables"
     multiline: true
@@ -105,7 +129,7 @@ questions:
     label: "Cluster Name"
     description: "Name of the Kubernetes cluster"
     type: string
-    default: "aks-tools-01"
+    default: "YOUR-CLUSTER-NAME"
     required: true
     group: "Environment Variables"
 
@@ -113,7 +137,7 @@ questions:
     label: "Metrics API URL"
     description: "Metrics API service URL where collected metrics will be sent"
     type: string
-    default: "http://alerthawk-metrics-api.alerthawk.svc.cluster.local:8080"
+    default: ""
     required: true
     group: "Environment Variables"
 
@@ -121,7 +145,7 @@ questions:
     label: "Namespaces to Watch"
     description: "Comma-separated list of namespaces to monitor for metrics (one per line or comma-separated)"
     type: multiline
-    default: "alerthawk,clickhouse,cattle-system,security-portal,graylog,ingress-nginx,velero,signoz,umami,akv2k8s,splunk,wiz,sentry"
+    default: "alerthawk,clickhouse,"
     group: "Environment Variables"
     multiline: true
 

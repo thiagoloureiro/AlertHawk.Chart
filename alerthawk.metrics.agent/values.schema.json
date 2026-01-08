@@ -88,10 +88,38 @@
       "type": "object",
       "description": "Service account configuration",
       "properties": {
+        "create": {
+          "type": "boolean",
+          "description": "Create a new service account",
+          "default": true
+        },
         "name": {
           "type": "string",
           "description": "Service account name",
           "default": "alerthawk-sa"
+        },
+        "annotations": {
+          "type": "object",
+          "description": "Additional annotations for the service account",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "clusterRoleBinding": {
+          "type": "object",
+          "description": "ClusterRoleBinding configuration",
+          "properties": {
+            "create": {
+              "type": "boolean",
+              "description": "Create a ClusterRoleBinding to grant permissions",
+              "default": true
+            },
+            "clusterRole": {
+              "type": "string",
+              "description": "Cluster role to bind to the service account",
+              "default": "cluster-admin"
+            }
+          }
         }
       }
     },

@@ -21,7 +21,12 @@ terminationGracePeriodSeconds: 30
 
 # Service account
 serviceAccount:
+  create: true
   name: alerthawk-sa
+  annotations: {}
+  clusterRoleBinding:
+    create: true
+    clusterRole: cluster-admin
 
 # Image pull secrets (optional)
 # imagePullSecrets: []

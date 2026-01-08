@@ -56,7 +56,13 @@ This Helm chart deploys the AlertHawk Metrics Agent, which collects Kubernetes m
 
 ### Service Account
 
+- `serviceAccount.create`: Create a new service account (default: `true`)
 - `serviceAccount.name`: Kubernetes service account name (default: `alerthawk-sa`)
+- `serviceAccount.annotations`: Additional annotations for the service account (optional)
+- `serviceAccount.clusterRoleBinding.create`: Create a ClusterRoleBinding to grant permissions (default: `true`)
+- `serviceAccount.clusterRoleBinding.clusterRole`: Cluster role to bind to the service account (default: `cluster-admin`)
+
+**Note:** By default, the chart will create a ServiceAccount and bind it to the `cluster-admin` ClusterRole. If you set `serviceAccount.create: false`, you must create the service account and ClusterRoleBinding manually before installing the chart.
 
 ### Security Context
 
