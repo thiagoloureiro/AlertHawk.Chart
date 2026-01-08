@@ -104,7 +104,7 @@ The following environment variables are required for the metrics agent to functi
   - Type: Integer
   - Example: `40`
 
-- `NAMESPACES_TO_WATCH`: Comma-separated list of namespaces to monitor for metrics (default: `alerthawk,clickhouse`)
+- `NAMESPACES_TO_WATCH`: Comma-separated list of namespaces to monitor for metrics
   - Example: `alerthawk,clickhouse,production,staging`
 
 - `COLLECT_LOGS`: Enable log collection (default: `false`)
