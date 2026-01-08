@@ -260,11 +260,6 @@
       "type": "object",
       "description": "Environment variables for the metrics agent",
       "properties": {
-        "CLICKHOUSE_CONNECTION_STRING": {
-          "type": "string",
-          "description": "ClickHouse database connection string. Format: Host=hostname;Port=8123;Database=dbname;Username=user;Password=pass",
-          "default": ""
-        },
         "METRICS_COLLECTION_INTERVAL_SECONDS": {
           "anyOf": [
             {"type": "integer"},
@@ -286,7 +281,36 @@
         "METRICS_API_URL": {
           "type": "string",
           "description": "Metrics API service URL where collected metrics will be sent",
-          "default": "http://alerthawk-metrics-api.alerthawk.svc.cluster.local:8080"
+          "default": ""
+        },
+        "COLLECT_LOGS": {
+          "anyOf": [
+            {"type": "boolean"},
+            {"type": "string"}
+          ],
+          "description": "Enable log collection (set to 'true' to enable)",
+          "default": "false"
+        },
+        "CLUSTER_ENVIRONMENT": {
+          "type": "string",
+          "description": "Environment name for the cluster (e.g., PROD, DEV, STAGING)",
+          "default": "PROD"
+        },
+        "LOG_LEVEL": {
+          "type": "string",
+          "description": "Logging level (Verbose, Debug, Information, Warning, Error, Fatal)",
+          "enum": ["Verbose", "Debug", "Information", "Warning", "Error", "Fatal"],
+          "default": "Information"
+        },
+        "SENTRY_DSN": {
+          "type": "string",
+          "description": "Sentry Data Source Name for error tracking (leave empty to use default or disable)",
+          "default": ""
+        },
+        "ENVIRONMENT": {
+          "type": "string",
+          "description": "Environment name for Sentry error tracking",
+          "default": "Production"
         }
       }
     }

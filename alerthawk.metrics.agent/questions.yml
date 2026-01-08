@@ -108,15 +108,6 @@ questions:
     show_if: "serviceAccount.clusterRoleBinding.create=true"
 
   # Environment Variables
-  - variable: env.CLICKHOUSE_CONNECTION_STRING
-    label: "ClickHouse Connection String"
-    description: "ClickHouse database connection string. Format: Host=hostname;Port=8123;Database=dbname;Username=user;Password=pass"
-    type: multiline
-    default: ""
-    required: true
-    group: "Environment Variables"
-    multiline: true
-
   - variable: env.METRICS_COLLECTION_INTERVAL_SECONDS
     label: "Metrics Collection Interval (seconds)"
     description: "Interval in seconds for collecting metrics from Kubernetes"
@@ -145,9 +136,54 @@ questions:
     label: "Namespaces to Watch"
     description: "Comma-separated list of namespaces to monitor for metrics (one per line or comma-separated)"
     type: multiline
-    default: "alerthawk,clickhouse,"
+    default: "alerthawk,clickhouse"
     group: "Environment Variables"
     multiline: true
+
+  - variable: env.COLLECT_LOGS
+    label: "Collect Logs"
+    description: "Enable log collection (set to 'true' to enable, 'false' or empty to disable)"
+    type: enum
+    default: "false"
+    options:
+      - "true"
+      - "false"
+    group: "Environment Variables"
+
+  - variable: env.CLUSTER_ENVIRONMENT
+    label: "Cluster Environment"
+    description: "Environment name for the cluster (e.g., PROD, DEV, STAGING)"
+    type: string
+    default: "PROD"
+    group: "Environment Variables"
+
+  - variable: env.LOG_LEVEL
+    label: "Log Level"
+    description: "Logging level (Verbose, Debug, Information, Warning, Error, Fatal)"
+    type: enum
+    default: "Information"
+    options:
+      - "Verbose"
+      - "Debug"
+      - "Information"
+      - "Warning"
+      - "Error"
+      - "Fatal"
+    group: "Environment Variables"
+
+  - variable: env.SENTRY_DSN
+    label: "Sentry DSN (Optional)"
+    description: "Sentry Data Source Name for error tracking (leave empty to use default or disable)"
+    type: string
+    default: ""
+    group: "Environment Variables"
+
+  - variable: env.ENVIRONMENT
+    label: "Sentry Environment"
+    description: "Environment name for Sentry error tracking"
+    type: string
+    default: "Production"
+    group: "Environment Variables"
 
   # Security Configuration
   - variable: securityContext.allowPrivilegeEscalation

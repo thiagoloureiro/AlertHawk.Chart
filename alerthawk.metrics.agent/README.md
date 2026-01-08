@@ -13,7 +13,7 @@ This Helm chart deploys the AlertHawk Metrics Agent, which collects Kubernetes m
 - Kubernetes cluster (1.19+)
 - Helm 3.x installed
 - AlertHawk Metrics API service running (for receiving collected metrics)
-- ClickHouse database (for the Metrics API to store metrics)
+- ClickHouse database (external, for the Metrics API to store metrics - not installed by this chart)
 
 ## Installation
 
@@ -91,10 +91,6 @@ The following environment variables are required for the metrics agent to functi
 
 #### Required Environment Variables
 
-- `CLICKHOUSE_CONNECTION_STRING`: **Required** - ClickHouse database connection string
-  - Format: `Host=hostname;Port=8123;Database=dbname;Username=user;Password=pass`
-  - Example: `Host=clickhouse.clickhouse.svc.cluster.local;Port=8123;Database=default;Username=admin;Password=admin2000`
-
 - `CLUSTER_NAME`: **Required** - Name of the Kubernetes cluster being monitored
   - Example: `aks-tools-01`
 
@@ -108,8 +104,25 @@ The following environment variables are required for the metrics agent to functi
   - Type: Integer
   - Example: `40`
 
-- `NAMESPACES_TO_WATCH`: Comma-separated list of namespaces to monitor for metrics
+- `NAMESPACES_TO_WATCH`: Comma-separated list of namespaces to monitor for metrics (default: `alerthawk,clickhouse`)
   - Example: `alerthawk,clickhouse,production,staging`
+
+- `COLLECT_LOGS`: Enable log collection (default: `false`)
+  - Set to `true` to enable log collection
+  - Type: String (`"true"` or `"false"`)
+
+- `CLUSTER_ENVIRONMENT`: Environment name for the cluster (default: `PROD`)
+  - Example: `PROD`, `DEV`, `STAGING`
+
+- `LOG_LEVEL`: Logging level for Serilog (default: `Information`)
+  - Options: `Verbose`, `Debug`, `Information`, `Warning`, `Error`, `Fatal`
+
+- `SENTRY_DSN`: Sentry Data Source Name for error tracking (optional)
+  - Leave empty to use default or disable Sentry
+  - Example: `https://your-sentry-dsn@sentry.io/project-id`
+
+- `ENVIRONMENT`: Environment name for Sentry error tracking (default: `Production`)
+  - Example: `Production`, `Development`, `Staging`
 
 ## Example values.yaml
 
@@ -129,7 +142,11 @@ strategy:
     maxUnavailable: 25%
 
 serviceAccount:
+  create: true
   name: alerthawk-sa
+  clusterRoleBinding:
+    create: true
+    clusterRole: cluster-admin
 
 securityContext:
   allowPrivilegeEscalation: false
@@ -138,11 +155,24 @@ securityContext:
   runAsNonRoot: false
 
 env:
-  CLICKHOUSE_CONNECTION_STRING: "Host=clickhouse.clickhouse.svc.cluster.local;Port=8123;Database=default;Username=admin;Password=admin2000"
-  METRICS_COLLECTION_INTERVAL_SECONDS: "40"
+  # Required
   CLUSTER_NAME: "aks-tools-01"
   METRICS_API_URL: "http://alerthawk-metrics-api.alerthawk.svc.cluster.local:8080"
-  NAMESPACES_TO_WATCH: "alerthawk,clickhouse,cattle-system,security-portal,graylog,ingress-nginx,velero,signoz,umami,akv2k8s,splunk,wiz,sentry"
+  
+  # Optional - Collection settings
+  METRICS_COLLECTION_INTERVAL_SECONDS: "40"
+  NAMESPACES_TO_WATCH: "alerthawk,clickhouse"
+  COLLECT_LOGS: "false"
+  
+  # Optional - Cluster information
+  CLUSTER_ENVIRONMENT: "PROD"
+  
+  # Optional - Logging
+  LOG_LEVEL: "Information"
+  
+  # Optional - Sentry error tracking
+  SENTRY_DSN: ""
+  ENVIRONMENT: "Production"
 ```
 
 ## Rancher UI Configuration
@@ -175,8 +205,8 @@ The AlertHawk Metrics Agent:
 
 ### Connection issues
 
-- Verify the `CLICKHOUSE_CONNECTION_STRING` format is correct
-- Check network connectivity between the metrics agent and ClickHouse
+- Verify the `METRICS_API_URL` is correct and accessible
+- Check network connectivity between the metrics agent and the Metrics API service
 - Ensure the Metrics API service is running and accessible
 
 ### Pod not starting

@@ -60,8 +60,21 @@ securityContext:
 
 # Environment variables
 env:
-  CLICKHOUSE_CONNECTION_STRING: ""
+  # Required
+  CLUSTER_NAME: "YOUR-CLUSTER-NAME"
+  METRICS_API_URL: ""
+  
+  # Optional - Collection settings
   METRICS_COLLECTION_INTERVAL_SECONDS: "40"
-  CLUSTER_NAME: "aks-tools-01"
   NAMESPACES_TO_WATCH: "alerthawk,clickhouse"
-  METRICS_API_URL: "http://alerthawk-metrics-api.alerthawk.svc.cluster.local:8080"
+  COLLECT_LOGS: "false"
+  
+  # Optional - Cluster information
+  CLUSTER_ENVIRONMENT: "PROD"
+  
+  # Optional - Logging
+  LOG_LEVEL: "Information"
+  
+  # Optional - Sentry error tracking
+  SENTRY_DSN: ""
+  ENVIRONMENT: "Production"

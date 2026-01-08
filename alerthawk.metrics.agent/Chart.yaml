@@ -1,7 +1,7 @@
 apiVersion: v2
 name: alerthawk-metrics-agent
 description: AlertHawk Metrics Agent - Collects and sends Kubernetes metrics
-version: 3.1.13
+version: 3.1.14
 appVersion: "3.1.7"
 icon: https://raw.githubusercontent.com/thiagoloureiro/AlertHawk/main/logo.png
 maintainers:
@@ -11,8 +11,3 @@ keywords:
   - monitoring
   - alerting
 home: https://github.com/thiagoloureiro/AlertHawk.Chart
-dependencies:
-  - name: clickhouse
-    version: "*"
-    repository: https://thiagoloureiro.github.io/clickhouse.chart/
-    condition: clickhouse.enabled
