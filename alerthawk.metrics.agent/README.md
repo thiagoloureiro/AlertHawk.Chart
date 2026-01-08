@@ -106,9 +106,6 @@ The following environment variables are required for the metrics agent to functi
   - Default: `alerthawk,clickhouse,cattle-system,security-portal,graylog,ingress-nginx,velero,signoz,umami,akv2k8s,splunk,wiz,sentry`
   - Example: `alerthawk,clickhouse,production,staging`
 
-- `METRICS_API_URL_OLD`: Legacy metrics API URL for backward compatibility (optional)
-  - Example: `https://api.monitoring.nam-tools.abb.com/metrics`
-
 ## Example values.yaml
 
 ```yaml

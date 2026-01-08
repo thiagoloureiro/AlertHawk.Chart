@@ -250,11 +250,6 @@
           "description": "Name of the Kubernetes cluster",
           "default": "aks-tools-01"
         },
-        "METRICS_API_URL_OLD": {
-          "type": "string",
-          "description": "Legacy metrics API URL (optional, for backward compatibility)",
-          "default": "https://api.monitoring.nam-tools.abb.com/metrics"
-        },
         "NAMESPACES_TO_WATCH": {
           "type": "string",
           "description": "Comma-separated list of namespaces to watch for metrics",

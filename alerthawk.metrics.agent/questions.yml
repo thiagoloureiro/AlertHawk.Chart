@@ -91,6 +91,7 @@ questions:
     default: "Host=clickhouse.clickhouse.svc.cluster.local;Port=8123;Database=default;Username=admin;Password=admin2000"
     required: true
     group: "Environment Variables"
+    multiline: true
 
   - variable: env.METRICS_COLLECTION_INTERVAL_SECONDS
     label: "Metrics Collection Interval (seconds)"
@@ -116,19 +117,13 @@ questions:
     required: true
     group: "Environment Variables"
 
-  - variable: env.METRICS_API_URL_OLD
-    label: "Legacy Metrics API URL (Optional)"
-    description: "Legacy metrics API URL for backward compatibility (optional)"
-    type: string
-    default: "https://api.monitoring.nam-tools.abb.com/metrics"
-    group: "Environment Variables"
-
   - variable: env.NAMESPACES_TO_WATCH
     label: "Namespaces to Watch"
-    description: "Comma-separated list of namespaces to monitor for metrics"
-    type: string
+    description: "Comma-separated list of namespaces to monitor for metrics (one per line or comma-separated)"
+    type: multiline
     default: "alerthawk,clickhouse,cattle-system,security-portal,graylog,ingress-nginx,velero,signoz,umami,akv2k8s,splunk,wiz,sentry"
     group: "Environment Variables"
+    multiline: true
 
   # Security Configuration
   - variable: securityContext.allowPrivilegeEscalation
