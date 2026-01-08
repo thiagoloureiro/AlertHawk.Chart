@@ -1,67 +1,19 @@
-# Helm Chart for AlertHawk Components
+# Helm Chart for AlertHawk Metrics Agent
 
 [![Artifact Hub](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/alerthawk)](https://artifacthub.io/packages/search?repo=alerthawk)
 
-This Helm chart deploys AlertHawk components as Kubernetes deployments and services.
+This Helm chart deploys the AlertHawk Metrics Agent, which collects Kubernetes metrics and sends them to the AlertHawk Metrics API.
 
-## Components Deployed
+## Component Deployed
 
-- `alerthawk-monitoring`
-- `alerthawk-auth`
-- `alerthawk-notification`
-- `alerthawk-ui`
-- `alerthawk-metrics-api`
+- `alerthawk-metrics` - Metrics collection agent that monitors Kubernetes clusters and sends metrics to the AlertHawk Metrics API
 
 ## Prerequisites
 
-- Kubernetes cluster
+- Kubernetes cluster (1.19+)
 - Helm 3.x installed
-
-### External Dependencies
-
-#### ClickHouse (Required for metrics-api)
-
-The `alerthawk-metrics-api` component requires ClickHouse to be installed. Note that `alerthawk-metrics-api` also requires a SQL Server database (see SQL Server section below). You have two options:
-
-**Option 1: Install ClickHouse as part of this chart (Recommended)**
-
-Set `clickhouse.enabled: true` in your `values.yaml` file. This will automatically install ClickHouse as a subchart from the repository: `https://thiagoloureiro.github.io/clickhouse.chart/`
-
-```yaml
-clickhouse:
-  enabled: true
-  # Additional ClickHouse configuration can be added here
-```
-
-After installation, configure the `CLICKHOUSE_CONNECTION_STRING` environment variable in the `metrics-api` section of `values.yaml` to point to the installed ClickHouse instance.
-
-**Option 2: Use an external ClickHouse instance**
-
-Set `clickhouse.enabled: false` in your `values.yaml` file and install ClickHouse separately:
-
-```bash
-helm repo add clickhouse https://thiagoloureiro.github.io/clickhouse.chart/
-helm repo update
-helm install my-clickhouse clickhouse/clickhouse
-```
-
-Then configure the `CLICKHOUSE_CONNECTION_STRING` environment variable in the `metrics-api` section of `values.yaml` to point to your external ClickHouse instance.
-
-**Reference:** https://artifacthub.io/packages/helm/clickhouse-alerthawk/clickhouse
-
-#### SQL Server (Required for auth, notification, monitoring, and metrics-api)
-
-The `alerthawk-auth`, `alerthawk-notification`, `alerthawk-monitoring`, and `alerthawk-metrics-api` components require a SQL Server database. Configure the connection string using the `ConnectionStrings__SqlConnectionString` environment variable in the respective service sections of `values.yaml`.
-
-#### Azure AD SSO (Optional)
-
-If Single Sign-On (SSO) with Azure AD is required for any service, configure the following environment variables in the respective service sections:
-
-- `AzureAd__ClientId`: Your Azure AD application (client) ID
-- `AzureAd__TenantId`: Your Azure AD tenant ID
-- `AzureAd__ClientSecret`: Your Azure AD application client secret
-- `AzureAd__Instance`: Azure AD instance URL (e.g., `https://login.microsoftonline.com/`)
-- `AzureAd__CallbackPath`: Callback path for OIDC authentication (default: `/signin-oidc`)
+- AlertHawk Metrics API service running (for receiving collected metrics)
+- ClickHouse database (for the Metrics API to store metrics)
 
 ## Installation
 
@@ -75,97 +27,172 @@ If Single Sign-On (SSO) with Azure AD is required for any service, configure the
 
 3. Install the chart:
    ```bash
-   helm install alerthawk . -f values.yaml
+   helm install alerthawk-metrics-agent alerthawk/alerthawk-metrics-agent -f values.yaml
+   ```
+
+   Or install from local chart:
+   ```bash
+   helm install alerthawk-metrics-agent . -f values.yaml
    ```
 
 ## Configuration
 
-### ClickHouse Configuration
+### Basic Configuration
 
-The chart supports optional ClickHouse installation as a subchart. Configure it in the `clickhouse` section of `values.yaml`:
+- `nameOverride`: Override the default deployment name (default: `alerthawk`)
+- `replicas`: Number of pod replicas to run (default: `1`)
 
-- `clickhouse.enabled`: Set to `true` to install ClickHouse as a subchart, or `false` to use an external instance (default: `false`)
-- Additional ClickHouse subchart values can be configured under the `clickhouse` section. See the [ClickHouse chart documentation](https://artifacthub.io/packages/helm/clickhouse-alerthawk/clickhouse) for available options.
+### Image Configuration
 
-When `clickhouse.enabled` is `true`, configure the `CLICKHOUSE_CONNECTION_STRING` in the `metrics-api.env` section to point to the installed instance (typically `http://clickhouse:8123/default`).
+- `image.repository`: Container image repository (default: `thiagoguaru/alerthawk.metrics`)
+- `image.tag`: Container image tag/version (default: `3.1.7`)
+- `image.pullPolicy`: Image pull policy - `Always`, `IfNotPresent`, or `Never` (default: `Always`)
+
+### Deployment Strategy
+
+- `strategy.type`: Deployment strategy - `RollingUpdate` or `Recreate` (default: `RollingUpdate`)
+- `strategy.rollingUpdate.maxSurge`: Maximum number of pods that can be created over desired (default: `25%`)
+- `strategy.rollingUpdate.maxUnavailable`: Maximum number of pods unavailable during update (default: `25%`)
+
+### Service Account
+
+- `serviceAccount.name`: Kubernetes service account name (default: `alerthawk-sa`)
+
+### Security Context
+
+- `securityContext.allowPrivilegeEscalation`: Allow privilege escalation (default: `false`)
+- `securityContext.privileged`: Run in privileged mode (default: `false`)
+- `securityContext.readOnlyRootFilesystem`: Mount root filesystem as read-only (default: `false`)
+- `securityContext.runAsNonRoot`: Run as non-root user (default: `false`)
+
+### Resource Limits
+
+Optional resource limits and requests can be configured:
+
+```yaml
+resources:
+  limits:
+    cpu: 500m
+    memory: 512Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi
+```
 
 ### Environment Variables
 
-#### Common Variables
+The following environment variables are required for the metrics agent to function:
 
-- `ASPNETCORE_ENVIRONMENT`: ASP.NET Core environment (e.g., `Development`, `Production`)
-- `Sentry__Enabled`: Enable/disable Sentry error tracking (boolean)
-- `Sentry__Dsn`: Sentry DSN URL for error reporting
-- `Sentry__Environment`: Sentry environment name
-- `SwaggerUICredentials__username`: Username for Swagger UI access
-- `SwaggerUICredentials__password`: Password for Swagger UI access
-- `Jwt__Key`: JWT signing key
-- `Jwt__Issuers`: JWT issuer(s), comma-separated
-- `Jwt__Audiences`: JWT audience(s), comma-separated
-- `Logging__LogLevel__Default`: Default log level (e.g., `Warning`, `Information`)
-- `Logging__LogLevel__Microsoft.IdentityModel.LoggingExtensions.IdentityLoggerAdapter`: Log level for Identity Model logging
-
-#### metrics-api
+#### Required Environment Variables
 
 - `CLICKHOUSE_CONNECTION_STRING`: **Required** - ClickHouse database connection string
-- `ConnectionStrings__SqlConnectionString`: **Required** - SQL Server database connection string
-- `RabbitMq__Host`: RabbitMQ host address
-- `RabbitMq__User`: RabbitMQ username
-- `RabbitMq__Pass`: RabbitMQ password
-- `QueueType`: Queue type (e.g., `RABBITMQ`, `SERVICEBUS`)
-- `ServiceBus__ConnectionString`: Azure Service Bus connection string
-- `ServiceBus__QueueName`: Service Bus queue name (default: `notifications`)
+  - Format: `Host=hostname;Port=8123;Database=dbname;Username=user;Password=pass`
+  - Example: `Host=clickhouse.clickhouse.svc.cluster.local;Port=8123;Database=default;Username=admin;Password=admin2000`
 
-#### monitoring
+- `CLUSTER_NAME`: **Required** - Name of the Kubernetes cluster being monitored
+  - Example: `aks-tools-01`
 
-- `ConnectionStrings__SqlConnectionString`: **Required** - SQL Server connection string
-- `RabbitMq__Host`: RabbitMQ host address
-- `RabbitMq__User`: RabbitMQ username
-- `RabbitMq__Pass`: RabbitMQ password
-- `CacheSettings__CacheProvider`: Cache provider type (e.g., `Redis`, `MemoryCache`)
-- `CacheSettings__RedisConnectionString`: Redis connection string (if using Redis cache)
-- `azure_blob_storage_connection_string`: Azure Blob Storage connection string
-- `azure_blob_storage_container_name`: Azure Blob Storage container name
-- `AUTH_API_URL`: URL address of the authentication API
-- `CACHE_PARALLEL_TASKS`: Number of parallel cache tasks (default: 10)
-- `ipgeo_apikey`: API key for IP geolocation service
-- `enable_location_api`: Enable/disable location API (boolean)
-- `enable_screenshot`: Enable/disable screenshot functionality (boolean)
-- `screenshot_wait_time_ms`: Screenshot wait time in milliseconds (default: 2000)
-- `enable_screenshot_storage_account`: Enable/disable screenshot storage account (boolean)
-- `Downsampling__Active`: Enable/disable downsampling (boolean)
-- `Downsampling__IntervalInSeconds`: Downsampling interval in seconds (default: 60)
-- `DOTNET_SYSTEM_GLOBALIZATION_INVARIANT`: Disable globalization invariant mode (boolean)
-- `CHECK_MONITOR_AFTER_CREATION`: Check monitor after creation (boolean)
-- `QueueType`: Queue type (e.g., `RABBITMQ`, `SERVICEBUS`)
-- `ServiceBus__ConnectionString`: Azure Service Bus connection string
-- `ServiceBus__QueueName`: Service Bus queue name (default: `notifications`)
+- `METRICS_API_URL`: **Required** - Metrics API service URL where collected metrics will be sent
+  - Format: `http://service-name.namespace.svc.cluster.local:port`
+  - Example: `http://alerthawk-metrics-api.alerthawk.svc.cluster.local:8080`
 
-#### auth
+#### Optional Environment Variables
 
-- `ConnectionStrings__SqlConnectionString`: **Required** - SQL Server connection string
-- `CacheSettings__CacheProvider`: Cache provider type (e.g., `MemoryCache`, `Redis`)
-- `DownstreamApi__BaseUrl`: Downstream API base URL (default: `https://graph.microsoft.com/beta`)
-- `DownstreamApi__Scopes`: Downstream API scopes (e.g., `User.Read`)
-- `smtpHost`: SMTP server host
-- `smtpPort`: SMTP server port
-- `smtpUsername`: SMTP username
-- `smtpPassword`: SMTP password
-- `smtpFrom`: SMTP sender email address
-- `enableSsl`: Enable SSL for SMTP (boolean)
-- `MOBILE_API_KEY`: API key for mobile authentication
-- `DOTNET_SYSTEM_GLOBALIZATION_INVARIANT`: Disable globalization invariant mode (boolean)
+- `METRICS_COLLECTION_INTERVAL_SECONDS`: Interval in seconds for collecting metrics from Kubernetes (default: `40`)
+  - Type: Integer
+  - Example: `40`
 
-#### notification
+- `NAMESPACES_TO_WATCH`: Comma-separated list of namespaces to monitor for metrics
+  - Default: `alerthawk,clickhouse,cattle-system,security-portal,graylog,ingress-nginx,velero,signoz,umami,akv2k8s,splunk,wiz,sentry`
+  - Example: `alerthawk,clickhouse,production,staging`
 
-- `ConnectionStrings__SqlConnectionString`: **Required** - SQL Server connection string
-- `RabbitMq__Host`: RabbitMQ host address
-- `RabbitMq__User`: RabbitMQ username
-- `RabbitMq__Pass`: RabbitMQ password
-- `CacheSettings__CacheProvider`: Cache provider type (e.g., `MemoryCache`, `Redis`)
-- `slack-webhookurl`: Slack webhook URL for notifications
-- `AesKey`: AES encryption key
-- `AesIV`: AES initialization vector
-- `AUTH_API_URL`: URL address of the authentication API
-- `PUSHY_API_KEY`: Pushy API key for push notifications
-- `DOTNET_SYSTEM_GLOBALIZATION_INVARIANT`: Disable globalization invariant mode (boolean)
+- `METRICS_API_URL_OLD`: Legacy metrics API URL for backward compatibility (optional)
+  - Example: `https://api.monitoring.nam-tools.abb.com/metrics`
+
+## Example values.yaml
+
+```yaml
+nameOverride: "alerthawk"
+replicas: 1
+
+image:
+  repository: thiagoguaru/alerthawk.metrics
+  tag: "3.1.7"
+  pullPolicy: Always
+
+strategy:
+  type: RollingUpdate
+  rollingUpdate:
+    maxSurge: 25%
+    maxUnavailable: 25%
+
+serviceAccount:
+  name: alerthawk-sa
+
+securityContext:
+  allowPrivilegeEscalation: false
+  privileged: false
+  readOnlyRootFilesystem: false
+  runAsNonRoot: false
+
+env:
+  CLICKHOUSE_CONNECTION_STRING: "Host=clickhouse.clickhouse.svc.cluster.local;Port=8123;Database=default;Username=admin;Password=admin2000"
+  METRICS_COLLECTION_INTERVAL_SECONDS: "40"
+  CLUSTER_NAME: "aks-tools-01"
+  METRICS_API_URL: "http://alerthawk-metrics-api.alerthawk.svc.cluster.local:8080"
+  NAMESPACES_TO_WATCH: "alerthawk,clickhouse,cattle-system,security-portal,graylog,ingress-nginx,velero,signoz,umami,akv2k8s,splunk,wiz,sentry"
+```
+
+## Rancher UI Configuration
+
+This chart includes `questions.yml` and `values.schema.json` files that enable a user-friendly form interface in Rancher. When deploying through Rancher, you'll see organized form fields for:
+
+- Basic configuration (replicas, name override)
+- Image settings (repository, tag, pull policy)
+- Deployment strategy
+- Environment variables (all configurable with descriptions)
+- Security context settings
+- Resource limits and requests
+
+## What the Metrics Agent Does
+
+The AlertHawk Metrics Agent:
+
+1. **Monitors Kubernetes Resources**: Collects metrics from pods, deployments, services, and other resources in specified namespaces
+2. **Sends to Metrics API**: Forwards collected metrics to the AlertHawk Metrics API service
+3. **Configurable Collection**: Allows you to specify which namespaces to monitor and how frequently to collect metrics
+4. **Cluster Identification**: Tags metrics with the cluster name for multi-cluster environments
+
+## Troubleshooting
+
+### Metrics not being collected
+
+- Verify the `METRICS_API_URL` is correct and accessible from the pod
+- Check that the service account has proper permissions to read Kubernetes resources
+- Ensure the specified namespaces exist and are accessible
+
+### Connection issues
+
+- Verify the `CLICKHOUSE_CONNECTION_STRING` format is correct
+- Check network connectivity between the metrics agent and ClickHouse
+- Ensure the Metrics API service is running and accessible
+
+### Pod not starting
+
+- Check pod logs: `kubectl logs -n <namespace> <pod-name>`
+- Verify all required environment variables are set
+- Check service account exists: `kubectl get serviceaccount alerthawk-sa -n <namespace>`
+
+## Uninstallation
+
+To uninstall the chart:
+
+```bash
+helm uninstall alerthawk-metrics-agent
+```
+
+## Support
+
+For issues and questions, please visit:
+- GitHub: https://github.com/thiagoloureiro/AlertHawk.Chart
+- Artifact Hub: https://artifacthub.io/packages/search?repo=alerthawk

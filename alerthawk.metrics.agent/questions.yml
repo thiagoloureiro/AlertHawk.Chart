@@ -1,0 +1,186 @@
+categories:
+  - Basic
+  - Image
+  - Deployment
+  - Environment Variables
+  - Security
+  - Resources
+
+questions:
+  # Basic Configuration
+  - variable: nameOverride
+    label: "Deployment Name Override"
+    description: "Override the default deployment name (default: alerthawk)"
+    type: string
+    default: "alerthawk"
+    group: "Basic"
+
+  - variable: replicas
+    label: "Number of Replicas"
+    description: "Number of pod replicas to run"
+    type: int
+    default: 1
+    min: 1
+    group: "Basic"
+
+  # Image Configuration
+  - variable: image.repository
+    label: "Image Repository"
+    description: "Container image repository"
+    type: string
+    default: "thiagoguaru/alerthawk.metrics"
+    group: "Image"
+
+  - variable: image.tag
+    label: "Image Tag"
+    description: "Container image tag/version"
+    type: string
+    default: "3.1.7"
+    group: "Image"
+
+  - variable: image.pullPolicy
+    label: "Image Pull Policy"
+    description: "Image pull policy (Always, IfNotPresent, Never)"
+    type: enum
+    default: "Always"
+    options:
+      - "Always"
+      - "IfNotPresent"
+      - "Never"
+    group: "Image"
+
+  # Deployment Configuration
+  - variable: strategy.type
+    label: "Deployment Strategy"
+    description: "Deployment strategy type"
+    type: enum
+    default: "RollingUpdate"
+    options:
+      - "RollingUpdate"
+      - "Recreate"
+    group: "Deployment"
+
+  - variable: strategy.rollingUpdate.maxSurge
+    label: "Max Surge"
+    description: "Maximum number of pods that can be created over the desired number (e.g., 25%, 1)"
+    type: string
+    default: "25%"
+    group: "Deployment"
+    show_if: "strategy.type=RollingUpdate"
+
+  - variable: strategy.rollingUpdate.maxUnavailable
+    label: "Max Unavailable"
+    description: "Maximum number of pods that can be unavailable during update (e.g., 25%, 1)"
+    type: string
+    default: "25%"
+    group: "Deployment"
+    show_if: "strategy.type=RollingUpdate"
+
+  - variable: serviceAccount.name
+    label: "Service Account Name"
+    description: "Kubernetes service account name"
+    type: string
+    default: "alerthawk-sa"
+    group: "Deployment"
+
+  # Environment Variables
+  - variable: env.CLICKHOUSE_CONNECTION_STRING
+    label: "ClickHouse Connection String"
+    description: "ClickHouse database connection string. Format: Host=hostname;Port=8123;Database=dbname;Username=user;Password=pass"
+    type: multiline
+    default: "Host=clickhouse.clickhouse.svc.cluster.local;Port=8123;Database=default;Username=admin;Password=admin2000"
+    required: true
+    group: "Environment Variables"
+
+  - variable: env.METRICS_COLLECTION_INTERVAL_SECONDS
+    label: "Metrics Collection Interval (seconds)"
+    description: "Interval in seconds for collecting metrics from Kubernetes"
+    type: int
+    default: 40
+    min: 1
+    group: "Environment Variables"
+
+  - variable: env.CLUSTER_NAME
+    label: "Cluster Name"
+    description: "Name of the Kubernetes cluster"
+    type: string
+    default: "aks-tools-01"
+    required: true
+    group: "Environment Variables"
+
+  - variable: env.METRICS_API_URL
+    label: "Metrics API URL"
+    description: "Metrics API service URL where collected metrics will be sent"
+    type: string
+    default: "http://alerthawk-metrics-api.alerthawk.svc.cluster.local:8080"
+    required: true
+    group: "Environment Variables"
+
+  - variable: env.METRICS_API_URL_OLD
+    label: "Legacy Metrics API URL (Optional)"
+    description: "Legacy metrics API URL for backward compatibility (optional)"
+    type: string
+    default: "https://api.monitoring.nam-tools.abb.com/metrics"
+    group: "Environment Variables"
+
+  - variable: env.NAMESPACES_TO_WATCH
+    label: "Namespaces to Watch"
+    description: "Comma-separated list of namespaces to monitor for metrics"
+    type: string
+    default: "alerthawk,clickhouse,cattle-system,security-portal,graylog,ingress-nginx,velero,signoz,umami,akv2k8s,splunk,wiz,sentry"
+    group: "Environment Variables"
+
+  # Security Configuration
+  - variable: securityContext.allowPrivilegeEscalation
+    label: "Allow Privilege Escalation"
+    description: "Allow the container to gain additional privileges"
+    type: boolean
+    default: false
+    group: "Security"
+
+  - variable: securityContext.privileged
+    label: "Privileged Mode"
+    description: "Run container in privileged mode"
+    type: boolean
+    default: false
+    group: "Security"
+
+  - variable: securityContext.readOnlyRootFilesystem
+    label: "Read-Only Root Filesystem"
+    description: "Mount root filesystem as read-only"
+    type: boolean
+    default: false
+    group: "Security"
+
+  - variable: securityContext.runAsNonRoot
+    label: "Run as Non-Root"
+    description: "Run container as non-root user"
+    type: boolean
+    default: false
+    group: "Security"
+
+  # Resources Configuration
+  - variable: resources.limits.cpu
+    label: "CPU Limit"
+    description: "CPU limit (e.g., 500m, 1)"
+    type: string
+    group: "Resources"
+
+  - variable: resources.limits.memory
+    label: "Memory Limit"
+    description: "Memory limit (e.g., 512Mi, 1Gi)"
+    type: string
+    group: "Resources"
+
+  - variable: resources.requests.cpu
+    label: "CPU Request"
+    description: "CPU request (e.g., 100m, 0.5)"
+    type: string
+    group: "Resources"
+
+  - variable: resources.requests.memory
+    label: "Memory Request"
+    description: "Memory request (e.g., 128Mi, 512Mi)"
+    type: string
+    group: "Resources"
+
