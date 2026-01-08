@@ -275,8 +275,7 @@
         },
         "NAMESPACES_TO_WATCH": {
           "type": "string",
-          "description": "Comma-separated list of namespaces to watch for metrics",
-          "default": "alerthawk,clickhouse"
+          "description": "Comma-separated list of namespaces to watch for metrics"
         },
         "METRICS_API_URL": {
           "type": "string",

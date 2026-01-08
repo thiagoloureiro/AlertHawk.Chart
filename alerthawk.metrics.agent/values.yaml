@@ -66,7 +66,7 @@ env:
   
   # Optional - Collection settings
   METRICS_COLLECTION_INTERVAL_SECONDS: "40"
-  NAMESPACES_TO_WATCH: "alerthawk,clickhouse"
+  NAMESPACES_TO_WATCH: ""
   COLLECT_LOGS: "false"
   
   # Optional - Cluster information

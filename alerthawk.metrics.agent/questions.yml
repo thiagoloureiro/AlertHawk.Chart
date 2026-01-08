@@ -136,7 +136,7 @@ questions:
     label: "Namespaces to Watch"
     description: "Comma-separated list of namespaces to monitor for metrics (one per line or comma-separated)"
     type: multiline
-    default: "alerthawk,clickhouse"
+    default: ""
     group: "Environment Variables"
     multiline: true
 
