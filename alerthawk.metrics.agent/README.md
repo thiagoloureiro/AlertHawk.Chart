@@ -109,7 +109,6 @@ The following environment variables are required for the metrics agent to functi
   - Example: `40`
 
 - `NAMESPACES_TO_WATCH`: Comma-separated list of namespaces to monitor for metrics
-  - Default: `alerthawk,clickhouse,cattle-system,security-portal,graylog,ingress-nginx,velero,signoz,umami,akv2k8s,splunk,wiz,sentry`
   - Example: `alerthawk,clickhouse,production,staging`
 
 ## Example values.yaml

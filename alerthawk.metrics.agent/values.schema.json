@@ -263,7 +263,7 @@
         "CLICKHOUSE_CONNECTION_STRING": {
           "type": "string",
           "description": "ClickHouse database connection string. Format: Host=hostname;Port=8123;Database=dbname;Username=user;Password=pass",
-          "default": "Host=clickhouse.clickhouse.svc.cluster.local;Port=8123;Database=default;Username=admin;Password=admin2000"
+          "default": ""
         },
         "METRICS_COLLECTION_INTERVAL_SECONDS": {
           "anyOf": [
@@ -281,7 +281,7 @@
         "NAMESPACES_TO_WATCH": {
           "type": "string",
           "description": "Comma-separated list of namespaces to watch for metrics",
-          "default": "alerthawk,clickhouse,cattle-system,security-portal,graylog,ingress-nginx,velero,signoz,umami,akv2k8s,splunk,wiz,sentry"
+          "default": "alerthawk,clickhouse"
         },
         "METRICS_API_URL": {
           "type": "string",

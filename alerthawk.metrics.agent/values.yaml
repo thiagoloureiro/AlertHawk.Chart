@@ -60,8 +60,8 @@ securityContext:
 
 # Environment variables
 env:
-  CLICKHOUSE_CONNECTION_STRING: "Host=clickhouse.clickhouse.svc.cluster.local;Port=8123;Database=default;Username=admin;Password=admin2000"
+  CLICKHOUSE_CONNECTION_STRING: ""
   METRICS_COLLECTION_INTERVAL_SECONDS: "40"
   CLUSTER_NAME: "aks-tools-01"
-  NAMESPACES_TO_WATCH: "alerthawk,clickhouse,cattle-system,security-portal,graylog,ingress-nginx,velero,signoz,umami,akv2k8s,splunk,wiz,sentry"
+  NAMESPACES_TO_WATCH: "alerthawk,clickhouse"
   METRICS_API_URL: "http://alerthawk-metrics-api.alerthawk.svc.cluster.local:8080"
