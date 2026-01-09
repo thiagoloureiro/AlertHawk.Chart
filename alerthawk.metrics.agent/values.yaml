@@ -5,7 +5,7 @@ replicas: 1
 # Image configuration
 image:
   repository: thiagoguaru/alerthawk.metrics
-  tag: "3.1.11"
+  tag: "3.1.12"
   pullPolicy: Always
 
 # Deployment strategy
