@@ -16,9 +16,9 @@ clickhouse:
 image:
   monitoring: thiagoguaru/alerthawk.monitoring:3.1.7
   auth: thiagoguaru/alerthawk.authentication:3.1.3
-  notification: thiagoguaru/alerthawk.notification:3.1.3
-  metrics-api: thiagoguaru/alerthawk.metrics.api:3.1.15
-  ui: thiagoguaru/alerthawk.ui-demo-v2:3.1.27
+  notification: thiagoguaru/alerthawk.notification:3.1.5
+  metrics-api: thiagoguaru/alerthawk.metrics.api:3.1.18
+  ui: thiagoguaru/alerthawk.ui-demo-v2:3.1.28
 
 service:
   port: 8080
