@@ -92,20 +92,12 @@ questions:
     show_if: "serviceAccount.create=true"
 
   - variable: serviceAccount.clusterRoleBinding.create
-    label: "Create ClusterRoleBinding"
-    description: "Create a ClusterRoleBinding to grant cluster-admin permissions to the service account"
+    label: "Create RBAC (ClusterRole + ClusterRoleBinding)"
+    description: "Create least-privilege ClusterRole (alerthawk-metrics-collector) and bind it to the service account (events, nodes, pods, metrics.k8s.io, /version)"
     type: boolean
     default: true
     group: "Deployment"
     show_if: "serviceAccount.create=true"
-
-  - variable: serviceAccount.clusterRoleBinding.clusterRole
-    label: "Cluster Role"
-    description: "Cluster role to bind to the service account (default: cluster-admin)"
-    type: string
-    default: "cluster-admin"
-    group: "Deployment"
-    show_if: "serviceAccount.clusterRoleBinding.create=true"
 
   # Environment Variables
   - variable: env.METRICS_COLLECTION_INTERVAL_SECONDS
