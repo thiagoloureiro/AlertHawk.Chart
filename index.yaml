@@ -2,8 +2,30 @@ apiVersion: v1
 entries:
   alerthawk:
   - apiVersion: v2
+    appVersion: 3.1.30
+    created: "2026-02-03T06:55:46.564239-05:00"
+    dependencies:
+    - condition: clickhouse.enabled
+      name: clickhouse
+      repository: https://thiagoloureiro.github.io/clickhouse.chart/
+      version: '*'
+    description: AlertHawk Self-Hosted Monitoring Solution
+    digest: 9d51777b47473f9b86e0c16e896862548f7777d116b44875f0008edaf694e8c7
+    home: https://github.com/thiagoloureiro/AlertHawk.Chart
+    icon: https://raw.githubusercontent.com/thiagoloureiro/AlertHawk/main/logo.png
+    keywords:
+    - monitoring
+    - alerting
+    maintainers:
+    - email: thiagoguaru@me.com
+      name: Thiago Loureiro
+    name: alerthawk
+    urls:
+    - https://thiagoloureiro.github.io/AlertHawk.Chart/alerthawk-3.1.33.tgz
+    version: 3.1.33
+  - apiVersion: v2
     appVersion: 3.1.28
-    created: "2026-02-01T10:08:47.6143754-05:00"
+    created: "2026-02-03T06:55:46.563347-05:00"
     dependencies:
     - condition: clickhouse.enabled
       name: clickhouse
@@ -25,7 +47,7 @@ entries:
     version: 3.1.32
   - apiVersion: v2
     appVersion: 3.1.27
-    created: "2026-02-01T10:08:47.6115925-05:00"
+    created: "2026-02-03T06:55:46.562481-05:00"
     dependencies:
     - condition: clickhouse.enabled
       name: clickhouse
@@ -47,7 +69,7 @@ entries:
     version: 3.1.31
   - apiVersion: v2
     appVersion: 3.1.25
-    created: "2026-02-01T10:08:47.6080834-05:00"
+    created: "2026-02-03T06:55:46.56143-05:00"
     dependencies:
     - condition: clickhouse.enabled
       name: clickhouse
@@ -69,7 +91,7 @@ entries:
     version: 3.1.30
   - apiVersion: v2
     appVersion: 3.1.22
-    created: "2026-02-01T10:08:47.5977638-05:00"
+    created: "2026-02-03T06:55:46.560398-05:00"
     dependencies:
     - condition: clickhouse.enabled
       name: clickhouse
@@ -91,7 +113,7 @@ entries:
     version: 3.1.29
   - apiVersion: v2
     appVersion: 3.1.22
-    created: "2026-02-01T10:08:47.5977638-05:00"
+    created: "2026-02-03T06:55:46.559494-05:00"
     dependencies:
     - condition: clickhouse.enabled
       name: clickhouse
@@ -113,7 +135,7 @@ entries:
     version: 3.1.28
   - apiVersion: v2
     appVersion: 3.1.21
-    created: "2026-02-01T10:08:47.589669-05:00"
+    created: "2026-02-03T06:55:46.558551-05:00"
     dependencies:
     - condition: clickhouse.enabled
       name: clickhouse
@@ -135,7 +157,7 @@ entries:
     version: 3.1.27
   - apiVersion: v2
     appVersion: 3.1.20
-    created: "2026-02-01T10:08:47.5865129-05:00"
+    created: "2026-02-03T06:55:46.557204-05:00"
     dependencies:
     - condition: clickhouse.enabled
       name: clickhouse
@@ -157,7 +179,7 @@ entries:
     version: 3.1.26
   - apiVersion: v2
     appVersion: 3.1.19
-    created: "2026-02-01T10:08:47.5838759-05:00"
+    created: "2026-02-03T06:55:46.556341-05:00"
     dependencies:
     - condition: clickhouse.enabled
       name: clickhouse
@@ -179,7 +201,7 @@ entries:
     version: 3.1.25
   - apiVersion: v2
     appVersion: 3.1.18
-    created: "2026-02-01T10:08:47.5817175-05:00"
+    created: "2026-02-03T06:55:46.555456-05:00"
     dependencies:
     - condition: clickhouse.enabled
       name: clickhouse
@@ -201,7 +223,7 @@ entries:
     version: 3.1.24
   - apiVersion: v2
     appVersion: 3.1.17
-    created: "2026-02-01T10:08:47.5784398-05:00"
+    created: "2026-02-03T06:55:46.554418-05:00"
     dependencies:
     - condition: clickhouse.enabled
       name: clickhouse
@@ -223,7 +245,7 @@ entries:
     version: 3.1.23
   - apiVersion: v2
     appVersion: 3.1.17
-    created: "2026-02-01T10:08:47.5736051-05:00"
+    created: "2026-02-03T06:55:46.553454-05:00"
     dependencies:
     - condition: clickhouse.enabled
       name: clickhouse
@@ -245,7 +267,7 @@ entries:
     version: 3.1.22
   - apiVersion: v2
     appVersion: 3.1.16
-    created: "2026-02-01T10:08:47.5692085-05:00"
+    created: "2026-02-03T06:55:46.552486-05:00"
     dependencies:
     - condition: clickhouse.enabled
       name: clickhouse
@@ -267,7 +289,7 @@ entries:
     version: 3.1.21
   - apiVersion: v2
     appVersion: 3.1.15
-    created: "2026-02-01T10:08:47.5665595-05:00"
+    created: "2026-02-03T06:55:46.55122-05:00"
     dependencies:
     - condition: clickhouse.enabled
       name: clickhouse
@@ -289,7 +311,7 @@ entries:
     version: 3.1.20
   - apiVersion: v2
     appVersion: 3.1.15
-    created: "2026-02-01T10:08:47.557201-05:00"
+    created: "2026-02-03T06:55:46.549877-05:00"
     dependencies:
     - condition: clickhouse.enabled
       name: clickhouse
@@ -311,7 +333,7 @@ entries:
     version: 3.1.19
   - apiVersion: v2
     appVersion: 3.1.14
-    created: "2026-02-01T10:08:47.5511733-05:00"
+    created: "2026-02-03T06:55:46.54877-05:00"
     dependencies:
     - condition: clickhouse.enabled
       name: clickhouse
@@ -333,7 +355,7 @@ entries:
     version: 3.1.18
   - apiVersion: v2
     appVersion: 3.1.14
-    created: "2026-02-01T10:08:47.5355662-05:00"
+    created: "2026-02-03T06:55:46.5476-05:00"
     dependencies:
     - condition: clickhouse.enabled
       name: clickhouse
@@ -355,7 +377,7 @@ entries:
     version: 3.1.17
   - apiVersion: v2
     appVersion: 3.1.13
-    created: "2026-02-01T10:08:47.532297-05:00"
+    created: "2026-02-03T06:55:46.546165-05:00"
     dependencies:
     - condition: clickhouse.enabled
       name: clickhouse
@@ -377,7 +399,7 @@ entries:
     version: 3.1.16
   - apiVersion: v2
     appVersion: 3.1.12
-    created: "2026-02-01T10:08:47.5284967-05:00"
+    created: "2026-02-03T06:55:46.544982-05:00"
     dependencies:
     - condition: clickhouse.enabled
       name: clickhouse
@@ -399,7 +421,7 @@ entries:
     version: 3.1.15
   - apiVersion: v2
     appVersion: 3.1.11
-    created: "2026-02-01T10:08:47.5249209-05:00"
+    created: "2026-02-03T06:55:46.543808-05:00"
     dependencies:
     - condition: clickhouse.enabled
       name: clickhouse
@@ -421,7 +443,7 @@ entries:
     version: 3.1.14
   - apiVersion: v2
     appVersion: 3.1.11
-    created: "2026-02-01T10:08:47.5205796-05:00"
+    created: "2026-02-03T06:55:46.542592-05:00"
     dependencies:
     - condition: clickhouse.enabled
       name: clickhouse
@@ -443,7 +465,7 @@ entries:
     version: 3.1.13
   - apiVersion: v2
     appVersion: 3.1.9
-    created: "2026-02-01T10:08:47.5108985-05:00"
+    created: "2026-02-03T06:55:46.541046-05:00"
     dependencies:
     - condition: clickhouse.enabled
       name: clickhouse
@@ -465,7 +487,7 @@ entries:
     version: 3.1.12
   - apiVersion: v2
     appVersion: 3.1.9
-    created: "2026-02-01T10:08:47.5108985-05:00"
+    created: "2026-02-03T06:55:46.540093-05:00"
     dependencies:
     - condition: clickhouse.enabled
       name: clickhouse
@@ -487,7 +509,7 @@ entries:
     version: 3.1.11
   - apiVersion: v2
     appVersion: 3.1.8
-    created: "2026-02-01T10:08:47.5064813-05:00"
+    created: "2026-02-03T06:55:46.538872-05:00"
     dependencies:
     - condition: clickhouse.enabled
       name: clickhouse
@@ -509,7 +531,7 @@ entries:
     version: 3.1.10
   - apiVersion: v2
     appVersion: 3.1.8
-    created: "2026-02-01T10:08:47.6448335-05:00"
+    created: "2026-02-03T06:55:46.572024-05:00"
     dependencies:
     - condition: clickhouse.enabled
       name: clickhouse
@@ -531,7 +553,7 @@ entries:
     version: 3.1.9
   - apiVersion: v2
     appVersion: 3.1.7
-    created: "2026-02-01T10:08:47.6411389-05:00"
+    created: "2026-02-03T06:55:46.570848-05:00"
     dependencies:
     - condition: clickhouse.enabled
       name: clickhouse
@@ -553,7 +575,7 @@ entries:
     version: 3.1.8
   - apiVersion: v2
     appVersion: 3.1.6
-    created: "2026-02-01T10:08:47.6376841-05:00"
+    created: "2026-02-03T06:55:46.569006-05:00"
     dependencies:
     - condition: clickhouse.enabled
       name: clickhouse
@@ -575,7 +597,7 @@ entries:
     version: 3.1.7
   - apiVersion: v2
     appVersion: 3.1.5
-    created: "2026-02-01T10:08:47.6338473-05:00"
+    created: "2026-02-03T06:55:46.568078-05:00"
     dependencies:
     - condition: clickhouse.enabled
       name: clickhouse
@@ -597,7 +619,7 @@ entries:
     version: 3.1.6
   - apiVersion: v2
     appVersion: 3.1.4
-    created: "2026-02-01T10:08:47.6300946-05:00"
+    created: "2026-02-03T06:55:46.566901-05:00"
     dependencies:
     - condition: clickhouse.enabled
       name: clickhouse
@@ -619,7 +641,7 @@ entries:
     version: 3.1.5
   - apiVersion: v2
     appVersion: 3.1.4
-    created: "2026-02-01T10:08:47.6246523-05:00"
+    created: "2026-02-03T06:55:46.5658-05:00"
     dependencies:
     - condition: clickhouse.enabled
       name: clickhouse
@@ -641,7 +663,7 @@ entries:
     version: 3.1.4
   - apiVersion: v2
     appVersion: 3.1.0
-    created: "2026-02-01T10:08:47.4977914-05:00"
+    created: "2026-02-03T06:55:46.53736-05:00"
     dependencies:
     - condition: clickhouse.enabled
       name: clickhouse
@@ -663,7 +685,7 @@ entries:
     version: 3.1.0
   - apiVersion: v2
     appVersion: 3.0.65
-    created: "2026-02-01T10:08:47.4977914-05:00"
+    created: "2026-02-03T06:55:46.535956-05:00"
     dependencies:
     - condition: clickhouse.enabled
       name: clickhouse
@@ -685,7 +707,7 @@ entries:
     version: 3.0.67
   - apiVersion: v2
     appVersion: 3.0.65
-    created: "2026-02-01T10:08:47.4942367-05:00"
+    created: "2026-02-03T06:55:46.5347-05:00"
     dependencies:
     - condition: clickhouse.enabled
       name: clickhouse
@@ -707,7 +729,7 @@ entries:
     version: 3.0.66
   - apiVersion: v2
     appVersion: 3.0.64
-    created: "2026-02-01T10:08:47.4905081-05:00"
+    created: "2026-02-03T06:55:46.533436-05:00"
     dependencies:
     - condition: clickhouse.enabled
       name: clickhouse
@@ -729,7 +751,7 @@ entries:
     version: 3.0.65
   - apiVersion: v2
     appVersion: 3.0.62
-    created: "2026-02-01T10:08:47.4873921-05:00"
+    created: "2026-02-03T06:55:46.531712-05:00"
     dependencies:
     - condition: clickhouse.enabled
       name: clickhouse
@@ -751,7 +773,7 @@ entries:
     version: 3.0.64
   - apiVersion: v2
     appVersion: 3.0.62
-    created: "2026-02-01T10:08:47.4848216-05:00"
+    created: "2026-02-03T06:55:46.530417-05:00"
     dependencies:
     - condition: clickhouse.enabled
       name: clickhouse
@@ -773,8 +795,25 @@ entries:
     version: 3.0.63
   alerthawk-metrics-agent:
   - apiVersion: v2
+    appVersion: 3.1.28
+    created: "2026-02-03T06:55:46.579473-05:00"
+    description: AlertHawk Metrics Agent - Collects and sends Kubernetes metrics
+    digest: 62915bf48cf97847441c9dc1498ea02f807572f61212d83fae928f1757a10f38
+    home: https://github.com/thiagoloureiro/AlertHawk.Chart
+    icon: https://raw.githubusercontent.com/thiagoloureiro/AlertHawk/main/logo.png
+    keywords:
+    - monitoring
+    - alerting
+    maintainers:
+    - email: thiagoguaru@me.com
+      name: Thiago Loureiro
+    name: alerthawk-metrics-agent
+    urls:
+    - https://thiagoloureiro.github.io/AlertHawk.Chart/alerthawk-metrics-agent-3.1.28.tgz
+    version: 3.1.28
+  - apiVersion: v2
     appVersion: 3.1.12
-    created: "2026-02-01T10:08:47.6970254-05:00"
+    created: "2026-02-03T06:55:46.579279-05:00"
     description: AlertHawk Metrics Agent - Collects and sends Kubernetes metrics
     digest: 133d5576802f4eb353f89963f414e31fa22c01df18014d52d541c120306f6e72
     home: https://github.com/thiagoloureiro/AlertHawk.Chart
@@ -791,7 +830,7 @@ entries:
     version: 3.1.19
   - apiVersion: v2
     appVersion: 3.1.11
-    created: "2026-02-01T10:08:47.6933158-05:00"
+    created: "2026-02-03T06:55:46.578927-05:00"
     description: AlertHawk Metrics Agent - Collects and sends Kubernetes metrics
     digest: 44e7faf167d8815f0445191ace2138b0c18fe67280c3545203b0756e4a3287b9
     home: https://github.com/thiagoloureiro/AlertHawk.Chart
@@ -808,7 +847,7 @@ entries:
     version: 3.1.18
   - apiVersion: v2
     appVersion: 3.1.7
-    created: "2026-02-01T10:08:47.6880198-05:00"
+    created: "2026-02-03T06:55:46.578585-05:00"
     description: AlertHawk Metrics Agent - Collects and sends Kubernetes metrics
     digest: fe1cd6175604ad3d44bd91d46fecaecb3293004551241988fa9bab432e2a50e3
     home: https://github.com/thiagoloureiro/AlertHawk.Chart
@@ -825,7 +864,7 @@ entries:
     version: 3.1.17
   - apiVersion: v2
     appVersion: 3.1.7
-    created: "2026-02-01T10:08:47.6669776-05:00"
+    created: "2026-02-03T06:55:46.578221-05:00"
     description: AlertHawk Metrics Agent - Collects and sends Kubernetes metrics
     digest: a472e3536acb11da803d912e12ece565723913a244e1cd7b1815bb3c8b2273b7
     home: https://github.com/thiagoloureiro/AlertHawk.Chart
@@ -842,7 +881,7 @@ entries:
     version: 3.1.16
   - apiVersion: v2
     appVersion: 3.1.7
-    created: "2026-02-01T10:08:47.6669776-05:00"
+    created: "2026-02-03T06:55:46.57773-05:00"
     description: AlertHawk Metrics Agent - Collects and sends Kubernetes metrics
     digest: 438a2193f378e8c65ca93c69058e4cbcce8878c8f5f9f641adc6205f551eee69
     home: https://github.com/thiagoloureiro/AlertHawk.Chart
@@ -859,7 +898,7 @@ entries:
     version: 3.1.15
   - apiVersion: v2
     appVersion: 3.1.7
-    created: "2026-02-01T10:08:47.6613612-05:00"
+    created: "2026-02-03T06:55:46.576828-05:00"
     description: AlertHawk Metrics Agent - Collects and sends Kubernetes metrics
     digest: abb6c639672b7685def6569fbfce6f2145107c7a8cfc2247451b792355ce1f2a
     home: https://github.com/thiagoloureiro/AlertHawk.Chart
@@ -876,7 +915,7 @@ entries:
     version: 3.1.14
   - apiVersion: v2
     appVersion: 3.1.7
-    created: "2026-02-01T10:08:47.6613612-05:00"
+    created: "2026-02-03T06:55:46.576008-05:00"
     dependencies:
     - condition: clickhouse.enabled
       name: clickhouse
@@ -898,7 +937,7 @@ entries:
     version: 3.1.13
   - apiVersion: v2
     appVersion: 3.1.7
-    created: "2026-02-01T10:08:47.6583826-05:00"
+    created: "2026-02-03T06:55:46.575172-05:00"
     dependencies:
     - condition: clickhouse.enabled
       name: clickhouse
@@ -920,7 +959,7 @@ entries:
     version: 3.1.12
   - apiVersion: v2
     appVersion: 3.1.7
-    created: "2026-02-01T10:08:47.6540876-05:00"
+    created: "2026-02-03T06:55:46.574234-05:00"
     dependencies:
     - condition: clickhouse.enabled
       name: clickhouse
@@ -942,7 +981,7 @@ entries:
     version: 3.1.11
   - apiVersion: v2
     appVersion: 3.1.7
-    created: "2026-02-01T10:08:47.6493976-05:00"
+    created: "2026-02-03T06:55:46.57318-05:00"
     dependencies:
     - condition: clickhouse.enabled
       name: clickhouse
@@ -964,7 +1003,7 @@ entries:
     version: 3.1.10
   - apiVersion: v2
     appVersion: 3.1.7
-    created: "2026-02-01T10:08:47.7136524-05:00"
+    created: "2026-02-03T06:55:46.582391-05:00"
     dependencies:
     - condition: clickhouse.enabled
       name: clickhouse
@@ -986,7 +1025,7 @@ entries:
     version: 3.1.9
   - apiVersion: v2
     appVersion: 3.1.7
-    created: "2026-02-01T10:08:47.7095441-05:00"
+    created: "2026-02-03T06:55:46.581096-05:00"
     dependencies:
     - condition: clickhouse.enabled
       name: clickhouse
@@ -1008,7 +1047,7 @@ entries:
     version: 3.1.8
   - apiVersion: v2
     appVersion: 3.1.8
-    created: "2026-02-01T10:08:47.6999319-05:00"
+    created: "2026-02-03T06:55:46.580279-05:00"
     dependencies:
     - condition: clickhouse.enabled
       name: clickhouse
@@ -1028,4 +1067,4 @@ entries:
     urls:
     - https://thiagoloureiro.github.io/AlertHawk.Chart/alerthawk-metrics-agent-3.1.7.tgz
     version: 3.1.7
-generated: "2026-02-01T10:08:47.4798451-05:00"
+generated: "2026-02-03T06:55:46.528696-05:00"
