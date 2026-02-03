@@ -2,13 +2,13 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-  name: {{ .Values.serviceAccount.name }}-{{ .Values.serviceAccount.clusterRoleBinding.clusterRole | default "cluster-admin" | replace ":" "-" | replace "." "-" }}
+  name: {{ .Values.serviceAccount.clusterRoleBinding.clusterRoleName | default "alerthawk-metrics-collector" }}
   labels:
     {{- include "labels" . | nindent 4 }}
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: {{ .Values.serviceAccount.clusterRoleBinding.clusterRole | default "cluster-admin" }}
+  name: {{ .Values.serviceAccount.clusterRoleBinding.clusterRoleName | default "alerthawk-metrics-collector" }}
 subjects:
   - kind: ServiceAccount
     name: {{ .Values.serviceAccount.name }}

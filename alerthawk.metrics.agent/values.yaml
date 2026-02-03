@@ -26,7 +26,8 @@ serviceAccount:
   annotations: {}
   clusterRoleBinding:
     create: true
-    clusterRole: cluster-admin
+    # Least-privilege ClusterRole created by the chart (events, nodes, pods, metrics, etc.)
+    clusterRoleName: alerthawk-metrics-collector
 
 # Image pull secrets (optional)
 # imagePullSecrets: []

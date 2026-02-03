@@ -107,17 +107,17 @@
         },
         "clusterRoleBinding": {
           "type": "object",
-          "description": "ClusterRoleBinding configuration",
+          "description": "ClusterRoleBinding and least-privilege ClusterRole (alerthawk-metrics-collector) configuration",
           "properties": {
             "create": {
               "type": "boolean",
-              "description": "Create a ClusterRoleBinding to grant permissions",
+              "description": "Create ClusterRole and ClusterRoleBinding with least-privilege permissions for metrics collection",
               "default": true
             },
-            "clusterRole": {
+            "clusterRoleName": {
               "type": "string",
-              "description": "Cluster role to bind to the service account",
-              "default": "cluster-admin"
+              "description": "Name of the ClusterRole and ClusterRoleBinding (least-privilege: events, nodes, pods, metrics.k8s.io, /version)",
+              "default": "alerthawk-metrics-collector"
             }
           }
         }
