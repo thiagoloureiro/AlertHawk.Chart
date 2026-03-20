@@ -18,6 +18,7 @@ image:
   auth: thiagoguaru/alerthawk.authentication:3.1.9
   notification: thiagoguaru/alerthawk.notification:3.1.12
   metrics-api: thiagoguaru/alerthawk.metrics.api:3.1.33
+  finops-api: thiagoguaru/alerthawk.finops.api:3.1.3
   ui: thiagoguaru/alerthawk.ui-demo-v2:3.1.49
 
 service:
@@ -158,3 +159,31 @@ notification:
     Logging__LogLevel__Microsoft.IdentityModel.LoggingExtensions.IdentityLoggerAdapter: Critical
     DOTNET_SYSTEM_GLOBALIZATION_INVARIANT: false
     PUSHY_API_KEY: pushy-api
+
+finops-api:
+  replicas: 1
+  env:
+    ConnectionStrings__SqlConnectionString: your-connection-string
+    ASPNETCORE_ENVIRONMENT: Development
+    Sentry__Enabled: false
+    Sentry__Dsn: sentry-dsn-url
+    Sentry__Environment: Local
+    SwaggerUICredentials__username: admin 
+    SwaggerUICredentials__password: admin
+    AzureAd__ClientId: clientid
+    AzureAd__TenantId: tenantid
+    AzureAd__ClientSecret: secret
+    AzureAd__Instance: instance
+    # for collection of Azure cost data, use: https://management.azure.com with appropriate permissions
+    Azure__TenantId: tenantid
+    Azure__ClientId: clientid
+    Azure__ClientSecret: secret
+    Jwt__Key: jwt-key
+    Jwt__Issuers: issuers
+    Jwt__Audiences: audiences
+    Logging__LogLevel__Default: Warning
+    Logging__LogLevel__Microsoft.IdentityModel.LoggingExtensions.IdentityLoggerAdapter: Critical
+    ENABLE_LOG_CLEANUP: false
+    AI__ApiURl: ai-integration-url
+    AI__ApiKey: ai-integration-api-key
+    AI__ApiKeyHeaderName: ai-integration-api-key-header-name
