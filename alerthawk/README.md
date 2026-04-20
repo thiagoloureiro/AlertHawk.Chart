@@ -11,6 +11,7 @@ This Helm chart deploys AlertHawk components as Kubernetes deployments and servi
 - `alerthawk-notification`
 - `alerthawk-ui`
 - `alerthawk-metrics-api`
+- `alerthawk-finops-api`
 
 ## Prerequisites
 
@@ -49,9 +50,23 @@ Then configure the `CLICKHOUSE_CONNECTION_STRING` environment variable in the `m
 
 **Reference:** https://artifacthub.io/packages/helm/clickhouse-alerthawk/clickhouse
 
-#### SQL Server (Required for auth, notification, monitoring, and metrics-api)
+#### SQL Server (Required for auth, notification, monitoring, metrics-api, and finops-api)
 
-The `alerthawk-auth`, `alerthawk-notification`, `alerthawk-monitoring`, and `alerthawk-metrics-api` components require a SQL Server database. Configure the connection string using the `ConnectionStrings__SqlConnectionString` environment variable in the respective service sections of `values.yaml`.
+The `alerthawk-auth`, `alerthawk-notification`, `alerthawk-monitoring`, `alerthawk-metrics-api`, and `alerthawk-finops-api` components require a SQL Server database. Configure the connection string using the `ConnectionStrings__SqlConnectionString` environment variable in the respective service sections of `values.yaml`.
+
+#### Azure Cost Management (Required for finops-api)
+
+The `alerthawk-finops-api` component reads Azure cost and usage data through the Azure Resource Manager API. Configure a dedicated app registration (or service principal) with a client secret and map it under the `Azure__*` settings in `finops-api.env`.
+
+- Use the Azure management endpoint `https://management.azure.com` unless your deployment targets another cloud or sovereign region (then use that region’s management URL).
+- Grant the principal permission to query cost data for the subscriptions or management groups you want to analyze. A common choice is the built-in **Cost Management Reader** role at subscription or management-group scope; your organization may require a custom role that includes Cost Management read actions.
+
+Also configure **Azure AD** variables under `finops-api.env` (`AzureAd__*`) if users sign in through Azure AD, and **JWT** settings (`Jwt__*`) so other AlertHawk services can call the FinOps API securely.
+
+#### Optional: AI and scheduled analysis (finops-api)
+
+- **AI integration:** Set `AI__ApiURl`, `AI__ApiKey`, and `AI__ApiKeyHeaderName` when you want the FinOps API to call an external AI endpoint (URL, credential, and header name for the API key).
+- **Weekly analysis:** Use `WeeklyAnalysis__Enabled`, `WeeklyAnalysis__DayOfWeekUtc`, `WeeklyAnalysis__HourUtc`, and `WeeklyAnalysis__MinuteUtc` to schedule recurring analysis in UTC.
 
 #### Azure AD SSO (Optional)
 
@@ -169,3 +184,33 @@ When `clickhouse.enabled` is `true`, configure the `CLICKHOUSE_CONNECTION_STRING
 - `AUTH_API_URL`: URL address of the authentication API
 - `PUSHY_API_KEY`: Pushy API key for push notifications
 - `DOTNET_SYSTEM_GLOBALIZATION_INVARIANT`: Disable globalization invariant mode (boolean)
+
+#### finops-api
+
+- `ConnectionStrings__SqlConnectionString`: **Required** - SQL Server connection string
+- `ASPNETCORE_ENVIRONMENT`: ASP.NET Core environment (e.g., `Development`, `Production`)
+- `Sentry__Enabled`: Enable/disable Sentry error tracking (boolean)
+- `Sentry__Dsn`: Sentry DSN URL for error reporting
+- `Sentry__Environment`: Sentry environment name
+- `SwaggerUICredentials__username`: Username for Swagger UI access
+- `SwaggerUICredentials__password`: Password for Swagger UI access
+- `AzureAd__ClientId`: Azure AD application (client) ID (SSO)
+- `AzureAd__TenantId`: Azure AD tenant ID (SSO)
+- `AzureAd__ClientSecret`: Azure AD application client secret (SSO)
+- `AzureAd__Instance`: Azure AD instance URL (e.g., `https://login.microsoftonline.com/`)
+- `Azure__TenantId`: **Required for Azure cost ingestion** - Azure AD tenant ID for the service principal used against the management API
+- `Azure__ClientId`: **Required for Azure cost ingestion** - Application (client) ID for that principal
+- `Azure__ClientSecret`: **Required for Azure cost ingestion** - Client secret for that principal
+- `Jwt__Key`: JWT signing key
+- `Jwt__Issuers`: JWT issuer(s), comma-separated
+- `Jwt__Audiences`: JWT audience(s), comma-separated
+- `Logging__LogLevel__Default`: Default log level (e.g., `Warning`, `Information`)
+- `Logging__LogLevel__Microsoft.IdentityModel.LoggingExtensions.IdentityLoggerAdapter`: Log level for Identity Model logging
+- `ENABLE_LOG_CLEANUP`: Enable/disable log cleanup (boolean)
+- `AI__ApiURl`: Base URL for optional AI integration
+- `AI__ApiKey`: API key for optional AI integration
+- `AI__ApiKeyHeaderName`: HTTP header name used to send the AI API key
+- `WeeklyAnalysis__Enabled`: Enable/disable scheduled weekly analysis (boolean)
+- `WeeklyAnalysis__DayOfWeekUtc`: Day of week in UTC (e.g., `Sunday`)
+- `WeeklyAnalysis__HourUtc`: Hour in UTC (integer)
+- `WeeklyAnalysis__MinuteUtc`: Minute in UTC (integer)
