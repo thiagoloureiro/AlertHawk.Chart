@@ -3,9 +3,6 @@ nameOverride: ""
 image:
   monitoring: thiagoguaru/alerthawk.monitoring:3.1.23
 
-service:
-  port: 8080
-
 monitoring:
   replicas: 1
   env:
