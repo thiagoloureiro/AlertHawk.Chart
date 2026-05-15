@@ -1,8 +1,8 @@
 apiVersion: v2
 name: alerthawk.agent
 description: AlertHawk Monitoring Agent (monitoring service only)
-version: 3.1.26
-appVersion: "3.1.26"
+version: 3.1.27
+appVersion: "3.1.27"
 icon: https://raw.githubusercontent.com/thiagoloureiro/AlertHawk/main/logo.png
 maintainers:
   - name: Thiago Loureiro
