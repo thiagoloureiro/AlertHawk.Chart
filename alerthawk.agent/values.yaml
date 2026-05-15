@@ -1,7 +1,7 @@
 nameOverride: ""
 
 image:
-  monitoring: thiagoguaru/alerthawk.monitoring:3.1.23
+  monitoring: thiagoguaru/alerthawk.monitoring:3.1.26
 
 monitoring:
   replicas: 1
