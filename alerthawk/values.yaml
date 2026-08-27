@@ -18,7 +18,7 @@ image:
   auth: thiagoguaru/alerthawk.authentication:3.3.2
   notification: thiagoguaru/alerthawk.notification:3.3.2
   metrics-api: thiagoguaru/alerthawk.metrics.api:3.3.3
-  finops-api: thiagoguaru/alerthawk.finops.api:3.3.2
+  finops-api: thiagoguaru/alerthawk.finops.api:3.3.3
   ui: thiagoguaru/alerthawk.ui-demo-v2:3.3.15
 
 service:
