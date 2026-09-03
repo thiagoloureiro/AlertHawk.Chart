@@ -19,7 +19,7 @@ image:
   notification: thiagoguaru/alerthawk.notification:3.3.2
   metrics-api: thiagoguaru/alerthawk.metrics.api:3.3.4
   finops-api: thiagoguaru/alerthawk.finops.api:3.3.10
-  ui: thiagoguaru/alerthawk.ui-demo-v2:3.3.17
+  ui: thiagoguaru/alerthawk.ui-demo-v2:3.3.20
 
 service:
   port: 8080
