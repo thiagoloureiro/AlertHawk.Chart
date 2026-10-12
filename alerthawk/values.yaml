@@ -54,6 +54,7 @@ metrics-api:
     QueueType: RABBITMQ
     ServiceBus__ConnectionString: your-sb-connstring
     ServiceBus__QueueName: notifications
+    ApiKey: your-api-key
 ui:
   replicas: 1
 
