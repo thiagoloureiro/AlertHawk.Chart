@@ -14,11 +14,11 @@ clickhouse:
   #   port: 8123
 
 image:
-  monitoring: thiagoguaru/alerthawk.monitoring:3.3.11
-  auth: thiagoguaru/alerthawk.authentication:3.3.12
-  notification: thiagoguaru/alerthawk.notification:3.3.11
-  metrics-api: thiagoguaru/alerthawk.metrics.api:3.3.16
-  finops-api: thiagoguaru/alerthawk.finops.api:3.3.19
+  monitoring: thiagoguaru/alerthawk.monitoring:3.3.12
+  auth: thiagoguaru/alerthawk.authentication:3.3.13
+  notification: thiagoguaru/alerthawk.notification:3.3.12
+  metrics-api: thiagoguaru/alerthawk.metrics.api:3.3.17
+  finops-api: thiagoguaru/alerthawk.finops.api:3.3.20
   ui: thiagoguaru/alerthawk.ui-demo-v2:3.3.29
 
 service:
