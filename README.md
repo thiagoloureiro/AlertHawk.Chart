@@ -1,32 +1,128 @@
-# Helm Chart for AlertHawk Components
+# AlertHawk Helm Charts
 
-[![Artifact Hub](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/alerthawk)](https://artifacthub.io/packages/search?repo=alerthawk)
+<p align="center">
+  <img src="https://raw.githubusercontent.com/thiagoloureiro/AlertHawk/main/logo.png" alt="AlertHawk" width="120" />
+</p>
 
-This Helm chart deploys AlertHawk components as Kubernetes deployments and services.
+<p align="center">
+  <strong>Self-hosted monitoring, alerting, metrics, and FinOps for Kubernetes</strong>
+</p>
 
-## Components Deployed
+<p align="center">
+  <a href="https://artifacthub.io/packages/search?repo=alerthawk"><img src="https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/alerthawk" alt="Artifact Hub" /></a>
+  <a href="https://artifacthub.io/packages/helm/alerthawk/alerthawk"><img src="https://img.shields.io/badge/chart-alerthawk-0F1689?logo=helm&logoColor=white" alt="alerthawk chart" /></a>
+  <img src="https://img.shields.io/badge/Helm-3-0F1689?logo=helm&logoColor=white" alt="Helm 3" />
+  <img src="https://img.shields.io/badge/Kubernetes-1.24+-326CE5?logo=kubernetes&logoColor=white" alt="Kubernetes" />
+  <a href="https://github.com/thiagoloureiro/AlertHawk.Chart/releases"><img src="https://img.shields.io/github/v/release/thiagoloureiro/AlertHawk.Chart?include_prereleases&sort=semver&label=latest%20release" alt="Latest release" /></a>
+  <a href="https://github.com/thiagoloureiro/AlertHawk.Chart/stargazers"><img src="https://img.shields.io/github/stars/thiagoloureiro/AlertHawk.Chart?style=flat" alt="GitHub stars" /></a>
+  <a href="https://github.com/thiagoloureiro/AlertHawk.Chart/commits"><img src="https://img.shields.io/github/last-commit/thiagoloureiro/AlertHawk.Chart" alt="Last commit" /></a>
+  <a href="https://github.com/thiagoloureiro/AlertHawk.Chart/issues"><img src="https://img.shields.io/github/issues/thiagoloureiro/AlertHawk.Chart" alt="Issues" /></a>
+</p>
 
-- `alerthawk-monitoring`
-- `alerthawk-auth`
-- `alerthawk-notification`
-- `alerthawk-ui`
-- `alerthawk-metrics-api`
-- `alerthawk-finops-api`
+---
+
+## Overview
+
+This repository publishes Helm charts for [AlertHawk](https://github.com/thiagoloureiro/AlertHawk) — a self-hosted monitoring platform. Charts are available on [Artifact Hub](https://artifacthub.io/packages/search?repo=alerthawk) and via the Helm repository below.
+
+| Chart | Description | Latest |
+| --- | --- | --- |
+| [`alerthawk`](./alerthawk) | Full stack: monitoring, auth, notification, UI, metrics API, FinOps API | [![Version](https://img.shields.io/badge/version-3.3.34-blue)](https://artifacthub.io/packages/helm/alerthawk/alerthawk) |
+| [`alerthawk.agent`](./alerthawk.agent) | Monitoring agent only | [![Version](https://img.shields.io/badge/version-3.3.12-blue)](https://artifacthub.io/packages/helm/alerthawk/alerthawk.agent) |
+| [`alerthawk-metrics-agent`](./alerthawk.metrics.agent) | Kubernetes metrics collector | [![Version](https://img.shields.io/badge/version-3.3.17-blue)](https://artifacthub.io/packages/helm/alerthawk/alerthawk-metrics-agent) |
+
+## Table of Contents
+
+- [Charts](#charts)
+- [Prerequisites](#prerequisites)
+- [Quick Start](#quick-start)
+- [External Dependencies](#external-dependencies)
+- [Configuration](#configuration)
+- [Uninstall](#uninstall)
+- [Useful Links](#useful-links)
+
+## Charts
+
+### `alerthawk` (full stack)
+
+Deploys the complete AlertHawk platform as Kubernetes Deployments and Services:
+
+| Component | Role |
+| --- | --- |
+| `alerthawk-monitoring` | Uptime checks and monitor orchestration |
+| `alerthawk-auth` | Authentication and user management |
+| `alerthawk-notification` | Alert delivery (Slack, push, etc.) |
+| `alerthawk-ui` | Web UI |
+| `alerthawk-metrics-api` | Metrics ingestion and query API |
+| `alerthawk-finops-api` | Azure cost / FinOps analysis |
+
+Optional ClickHouse can be installed as a subchart when `clickhouse.enabled` is `true`.
+
+### `alerthawk.agent`
+
+Lightweight chart that runs only the monitoring agent service — useful when scaling check workers independently of the full stack.
+
+### `alerthawk-metrics-agent`
+
+Collects Kubernetes cluster metrics and sends them to AlertHawk Metrics API.
 
 ## Prerequisites
 
-- Kubernetes cluster
-- Helm 3.x installed
+- A Kubernetes cluster (1.24+ recommended)
+- [Helm 3.x](https://helm.sh/docs/intro/install/)
+- SQL Server (required by most backend services)
+- ClickHouse (required by `metrics-api`)
+- Optional: Redis, RabbitMQ or Azure Service Bus, Azure AD
 
-### External Dependencies
+## Quick Start
 
-#### ClickHouse (Required for metrics-api)
+### 1. Add the Helm repository
 
-The `alerthawk-metrics-api` component requires ClickHouse to be installed. Note that `alerthawk-metrics-api` also requires a SQL Server database (see SQL Server section below). You have two options:
+```bash
+helm repo add alerthawk https://thiagoloureiro.github.io/AlertHawk.Chart/
+helm repo update
+```
 
-**Option 1: Install ClickHouse as part of this chart (Recommended)**
+### 2. Configure values
 
-Set `clickhouse.enabled: true` in your `values.yaml` file. This will automatically install ClickHouse as a subchart from the repository: `https://thiagoloureiro.github.io/clickhouse.chart/`
+Copy and edit the chart values (connection strings, JWT, Azure AD, etc.). See [Configuration](#configuration) and the chart’s `values.yaml`.
+
+```bash
+helm show values alerthawk/alerthawk > my-values.yaml
+# edit my-values.yaml
+```
+
+### 3. Install
+
+**From the Helm repo:**
+
+```bash
+helm install alerthawk alerthawk/alerthawk -f my-values.yaml
+```
+
+**From a local clone:**
+
+```bash
+helm dependency update ./alerthawk
+helm install alerthawk ./alerthawk -f my-values.yaml
+```
+
+**Agent charts:**
+
+```bash
+helm install alerthawk-agent alerthawk/alerthawk.agent -f my-values.yaml
+helm install alerthawk-metrics-agent alerthawk/alerthawk-metrics-agent -f my-values.yaml
+```
+
+## External Dependencies
+
+### ClickHouse (required for metrics-api)
+
+`alerthawk-metrics-api` needs ClickHouse. It also needs SQL Server (see below).
+
+#### Option 1: Install ClickHouse with this chart (recommended)
+
+Set `clickhouse.enabled: true` in `values.yaml`. ClickHouse is pulled from `https://thiagoloureiro.github.io/clickhouse.chart/`.
 
 ```yaml
 clickhouse:
@@ -34,11 +130,11 @@ clickhouse:
   # Additional ClickHouse configuration can be added here
 ```
 
-After installation, configure the `CLICKHOUSE_CONNECTION_STRING` environment variable in the `metrics-api` section of `values.yaml` to point to the installed ClickHouse instance.
+Then set `CLICKHOUSE_CONNECTION_STRING` under `metrics-api` (typically `http://clickhouse:8123/default` when using the subchart).
 
-**Option 2: Use an external ClickHouse instance**
+#### Option 2: External ClickHouse
 
-Set `clickhouse.enabled: false` in your `values.yaml` file and install ClickHouse separately:
+Set `clickhouse.enabled: false` and install ClickHouse separately:
 
 ```bash
 helm repo add clickhouse https://thiagoloureiro.github.io/clickhouse.chart/
@@ -46,171 +142,160 @@ helm repo update
 helm install my-clickhouse clickhouse/clickhouse
 ```
 
-Then configure the `CLICKHOUSE_CONNECTION_STRING` environment variable in the `metrics-api` section of `values.yaml` to point to your external ClickHouse instance.
+Point `CLICKHOUSE_CONNECTION_STRING` at that instance.
 
-**Reference:** https://artifacthub.io/packages/helm/clickhouse-alerthawk/clickhouse
+**Reference:** [ClickHouse chart on Artifact Hub](https://artifacthub.io/packages/helm/clickhouse-alerthawk/clickhouse)
 
-#### SQL Server (Required for auth, notification, monitoring, metrics-api, and finops-api)
+### SQL Server (required for auth, notification, monitoring, metrics-api, and finops-api)
 
-The `alerthawk-auth`, `alerthawk-notification`, `alerthawk-monitoring`, `alerthawk-metrics-api`, and `alerthawk-finops-api` components require a SQL Server database. Configure the connection string using the `ConnectionStrings__SqlConnectionString` environment variable in the respective service sections of `values.yaml`.
+Configure `ConnectionStrings__SqlConnectionString` in each service’s `env` section in `values.yaml`.
 
-#### Azure Cost Management (Required for finops-api)
+### Azure Cost Management (required for finops-api)
 
-The `alerthawk-finops-api` component reads Azure cost and usage data through the Azure Resource Manager API. Configure a dedicated app registration (or service principal) with a client secret and map it under the `Azure__*` settings in `finops-api.env`.
+`alerthawk-finops-api` reads Azure cost and usage via the Azure Resource Manager API. Configure a dedicated app registration (or service principal) with a client secret under `Azure__*` in `finops-api.env`.
 
-- Use the Azure management endpoint `https://management.azure.com` unless your deployment targets another cloud or sovereign region (then use that region’s management URL).
-- Grant the principal permission to query cost data for the subscriptions or management groups you want to analyze. A common choice is the built-in **Cost Management Reader** role at subscription or management-group scope; your organization may require a custom role that includes Cost Management read actions.
+- Use `https://management.azure.com` unless you target another cloud / sovereign region.
+- Grant the principal permission to query cost data (commonly **Cost Management Reader** at subscription or management-group scope).
 
-Also configure **Azure AD** variables under `finops-api.env` (`AzureAd__*`) if users sign in through Azure AD, and **JWT** settings (`Jwt__*`) so other AlertHawk services can call the FinOps API securely.
+Also configure Azure AD (`AzureAd__*`) if users sign in with SSO, and JWT (`Jwt__*`) so other AlertHawk services can call the FinOps API securely.
 
 #### Optional: AI and scheduled analysis (finops-api)
 
-- **AI integration:** Set `AI__ApiURl`, `AI__ApiKey`, and `AI__ApiKeyHeaderName` when you want the FinOps API to call an external AI endpoint (URL, credential, and header name for the API key).
-- **Weekly analysis:** Use `WeeklyAnalysis__Enabled`, `WeeklyAnalysis__DayOfWeekUtc`, `WeeklyAnalysis__HourUtc`, and `WeeklyAnalysis__MinuteUtc` to schedule recurring analysis in UTC.
+- **AI integration:** `AI__ApiURl`, `AI__ApiKey`, `AI__ApiKeyHeaderName`
+- **Weekly analysis:** `WeeklyAnalysis__Enabled`, `WeeklyAnalysis__DayOfWeekUtc`, `WeeklyAnalysis__HourUtc`, `WeeklyAnalysis__MinuteUtc` (UTC)
 
-#### Azure AD SSO (Optional)
+### Azure AD SSO (optional)
 
-If Single Sign-On (SSO) with Azure AD is required for any service, configure the following environment variables in the respective service sections:
+For SSO on any service, set:
 
-- `AzureAd__ClientId`: Your Azure AD application (client) ID
-- `AzureAd__TenantId`: Your Azure AD tenant ID
-- `AzureAd__ClientSecret`: Your Azure AD application client secret
-- `AzureAd__Instance`: Azure AD instance URL (e.g., `https://login.microsoftonline.com/`)
-- `AzureAd__CallbackPath`: Callback path for OIDC authentication (default: `/signin-oidc`)
-
-## Installation
-
-1. Add the Helm repository:
-   ```bash
-   helm repo add alerthawk https://thiagoloureiro.github.io/AlertHawk.Chart/
-   helm repo update
-   ```
-
-2. Configure your `values.yaml` file with the required environment variables (see Configuration section below).
-
-3. Install the chart:
-   ```bash
-   helm install alerthawk . -f values.yaml
-   ```
+| Variable | Description |
+| --- | --- |
+| `AzureAd__ClientId` | Application (client) ID |
+| `AzureAd__TenantId` | Tenant ID |
+| `AzureAd__ClientSecret` | Client secret |
+| `AzureAd__Instance` | e.g. `https://login.microsoftonline.com/` |
+| `AzureAd__CallbackPath` | OIDC callback path (default: `/signin-oidc`) |
 
 ## Configuration
 
-### ClickHouse Configuration
+### ClickHouse
 
-The chart supports optional ClickHouse installation as a subchart. Configure it in the `clickhouse` section of `values.yaml`:
+- `clickhouse.enabled`: `true` to install the subchart; `false` for an external instance (default: `false`)
+- Extra subchart values go under `clickhouse`. See the [ClickHouse chart docs](https://artifacthub.io/packages/helm/clickhouse-alerthawk/clickhouse).
 
-- `clickhouse.enabled`: Set to `true` to install ClickHouse as a subchart, or `false` to use an external instance (default: `false`)
-- Additional ClickHouse subchart values can be configured under the `clickhouse` section. See the [ClickHouse chart documentation](https://artifacthub.io/packages/helm/clickhouse-alerthawk/clickhouse) for available options.
+When enabled, set `CLICKHOUSE_CONNECTION_STRING` in `metrics-api.env` (typically `http://clickhouse:8123/default`).
 
-When `clickhouse.enabled` is `true`, configure the `CLICKHOUSE_CONNECTION_STRING` in the `metrics-api.env` section to point to the installed instance (typically `http://clickhouse:8123/default`).
+### Environment variables
 
-### Environment Variables
+#### Common
 
-#### Common Variables
-
-- `ASPNETCORE_ENVIRONMENT`: ASP.NET Core environment (e.g., `Development`, `Production`)
-- `Sentry__Enabled`: Enable/disable Sentry error tracking (boolean)
-- `Sentry__Dsn`: Sentry DSN URL for error reporting
-- `Sentry__Environment`: Sentry environment name
-- `SwaggerUICredentials__username`: Username for Swagger UI access
-- `SwaggerUICredentials__password`: Password for Swagger UI access
-- `Jwt__Key`: JWT signing key
-- `Jwt__Issuers`: JWT issuer(s), comma-separated
-- `Jwt__Audiences`: JWT audience(s), comma-separated
-- `Logging__LogLevel__Default`: Default log level (e.g., `Warning`, `Information`)
-- `Logging__LogLevel__Microsoft.IdentityModel.LoggingExtensions.IdentityLoggerAdapter`: Log level for Identity Model logging
+| Variable | Description |
+| --- | --- |
+| `ASPNETCORE_ENVIRONMENT` | e.g. `Development`, `Production` |
+| `Sentry__Enabled` | Enable Sentry (boolean) |
+| `Sentry__Dsn` | Sentry DSN |
+| `Sentry__Environment` | Sentry environment name |
+| `SwaggerUICredentials__username` | Swagger UI username |
+| `SwaggerUICredentials__password` | Swagger UI password |
+| `Jwt__Key` | JWT signing key |
+| `Jwt__Issuers` | JWT issuer(s), comma-separated |
+| `Jwt__Audiences` | JWT audience(s), comma-separated |
+| `Logging__LogLevel__Default` | Default log level |
+| `Logging__LogLevel__Microsoft.IdentityModel.LoggingExtensions.IdentityLoggerAdapter` | Identity Model log level |
 
 #### metrics-api
 
-- `CLICKHOUSE_CONNECTION_STRING`: **Required** - ClickHouse database connection string
-- `ConnectionStrings__SqlConnectionString`: **Required** - SQL Server database connection string
-- `RabbitMq__Host`: RabbitMQ host address
-- `RabbitMq__User`: RabbitMQ username
-- `RabbitMq__Pass`: RabbitMQ password
-- `QueueType`: Queue type (e.g., `RABBITMQ`, `SERVICEBUS`)
-- `ServiceBus__ConnectionString`: Azure Service Bus connection string
-- `ServiceBus__QueueName`: Service Bus queue name (default: `notifications`)
+| Variable | Description |
+| --- | --- |
+| `CLICKHOUSE_CONNECTION_STRING` | **Required** — ClickHouse connection string |
+| `ConnectionStrings__SqlConnectionString` | **Required** — SQL Server connection string |
+| `RabbitMq__Host` / `User` / `Pass` | RabbitMQ credentials |
+| `QueueType` | e.g. `RABBITMQ`, `SERVICEBUS` |
+| `ServiceBus__ConnectionString` | Azure Service Bus connection string |
+| `ServiceBus__QueueName` | Queue name (default: `notifications`) |
 
 #### monitoring
 
-- `ConnectionStrings__SqlConnectionString`: **Required** - SQL Server connection string
-- `RabbitMq__Host`: RabbitMQ host address
-- `RabbitMq__User`: RabbitMQ username
-- `RabbitMq__Pass`: RabbitMQ password
-- `CacheSettings__CacheProvider`: Cache provider type (e.g., `Redis`, `MemoryCache`)
-- `CacheSettings__RedisConnectionString`: Redis connection string (if using Redis cache)
-- `azure_blob_storage_connection_string`: Azure Blob Storage connection string
-- `azure_blob_storage_container_name`: Azure Blob Storage container name
-- `AUTH_API_URL`: URL address of the authentication API
-- `CACHE_PARALLEL_TASKS`: Number of parallel cache tasks (default: 10)
-- `ipgeo_apikey`: API key for IP geolocation service
-- `enable_location_api`: Enable/disable location API (boolean)
-- `enable_screenshot`: Enable/disable screenshot functionality (boolean)
-- `screenshot_wait_time_ms`: Screenshot wait time in milliseconds (default: 2000)
-- `enable_screenshot_storage_account`: Enable/disable screenshot storage account (boolean)
-- `Downsampling__Active`: Enable/disable downsampling (boolean)
-- `Downsampling__IntervalInSeconds`: Downsampling interval in seconds (default: 60)
-- `DOTNET_SYSTEM_GLOBALIZATION_INVARIANT`: Disable globalization invariant mode (boolean)
-- `CHECK_MONITOR_AFTER_CREATION`: Check monitor after creation (boolean)
-- `QueueType`: Queue type (e.g., `RABBITMQ`, `SERVICEBUS`)
-- `ServiceBus__ConnectionString`: Azure Service Bus connection string
-- `ServiceBus__QueueName`: Service Bus queue name (default: `notifications`)
+| Variable | Description |
+| --- | --- |
+| `ConnectionStrings__SqlConnectionString` | **Required** — SQL Server connection string |
+| `RabbitMq__Host` / `User` / `Pass` | RabbitMQ credentials |
+| `CacheSettings__CacheProvider` | e.g. `Redis`, `MemoryCache` |
+| `CacheSettings__RedisConnectionString` | Redis connection string |
+| `azure_blob_storage_connection_string` | Azure Blob Storage connection string |
+| `azure_blob_storage_container_name` | Blob container name |
+| `AUTH_API_URL` | Auth API base URL |
+| `CACHE_PARALLEL_TASKS` | Parallel cache tasks (default: `10`) |
+| `ipgeo_apikey` | IP geolocation API key |
+| `enable_location_api` | Enable location API (boolean) |
+| `enable_screenshot` | Enable screenshots (boolean) |
+| `screenshot_wait_time_ms` | Screenshot wait (default: `2000`) |
+| `enable_screenshot_storage_account` | Store screenshots in blob storage (boolean) |
+| `Downsampling__Active` | Enable downsampling (boolean) |
+| `Downsampling__IntervalInSeconds` | Downsampling interval (default: `60`) |
+| `DOTNET_SYSTEM_GLOBALIZATION_INVARIANT` | Globalization invariant mode (boolean) |
+| `CHECK_MONITOR_AFTER_CREATION` | Check monitor after creation (boolean) |
+| `QueueType` | e.g. `RABBITMQ`, `SERVICEBUS` |
+| `ServiceBus__ConnectionString` | Azure Service Bus connection string |
+| `ServiceBus__QueueName` | Queue name (default: `notifications`) |
 
 #### auth
 
-- `ConnectionStrings__SqlConnectionString`: **Required** - SQL Server connection string
-- `CacheSettings__CacheProvider`: Cache provider type (e.g., `MemoryCache`, `Redis`)
-- `DownstreamApi__BaseUrl`: Downstream API base URL (default: `https://graph.microsoft.com/beta`)
-- `DownstreamApi__Scopes`: Downstream API scopes (e.g., `User.Read`)
-- `smtpHost`: SMTP server host
-- `smtpPort`: SMTP server port
-- `smtpUsername`: SMTP username
-- `smtpPassword`: SMTP password
-- `smtpFrom`: SMTP sender email address
-- `enableSsl`: Enable SSL for SMTP (boolean)
-- `MOBILE_API_KEY`: API key for mobile authentication
-- `DOTNET_SYSTEM_GLOBALIZATION_INVARIANT`: Disable globalization invariant mode (boolean)
+| Variable | Description |
+| --- | --- |
+| `ConnectionStrings__SqlConnectionString` | **Required** — SQL Server connection string |
+| `CacheSettings__CacheProvider` | e.g. `MemoryCache`, `Redis` |
+| `DownstreamApi__BaseUrl` | Default: `https://graph.microsoft.com/beta` |
+| `DownstreamApi__Scopes` | e.g. `User.Read` |
+| `smtpHost` / `smtpPort` / `smtpUsername` / `smtpPassword` / `smtpFrom` | SMTP settings |
+| `enableSsl` | SMTP SSL (boolean) |
+| `MOBILE_API_KEY` | Mobile auth API key |
+| `DOTNET_SYSTEM_GLOBALIZATION_INVARIANT` | Globalization invariant mode (boolean) |
 
 #### notification
 
-- `ConnectionStrings__SqlConnectionString`: **Required** - SQL Server connection string
-- `RabbitMq__Host`: RabbitMQ host address
-- `RabbitMq__User`: RabbitMQ username
-- `RabbitMq__Pass`: RabbitMQ password
-- `CacheSettings__CacheProvider`: Cache provider type (e.g., `MemoryCache`, `Redis`)
-- `slack-webhookurl`: Slack webhook URL for notifications
-- `AesKey`: AES encryption key
-- `AesIV`: AES initialization vector
-- `AUTH_API_URL`: URL address of the authentication API
-- `PUSHY_API_KEY`: Pushy API key for push notifications
-- `DOTNET_SYSTEM_GLOBALIZATION_INVARIANT`: Disable globalization invariant mode (boolean)
+| Variable | Description |
+| --- | --- |
+| `ConnectionStrings__SqlConnectionString` | **Required** — SQL Server connection string |
+| `RabbitMq__Host` / `User` / `Pass` | RabbitMQ credentials |
+| `CacheSettings__CacheProvider` | e.g. `MemoryCache`, `Redis` |
+| `slack-webhookurl` | Slack webhook URL |
+| `AesKey` / `AesIV` | AES encryption key and IV |
+| `AUTH_API_URL` | Auth API base URL |
+| `PUSHY_API_KEY` | Pushy API key |
+| `DOTNET_SYSTEM_GLOBALIZATION_INVARIANT` | Globalization invariant mode (boolean) |
 
 #### finops-api
 
-- `ConnectionStrings__SqlConnectionString`: **Required** - SQL Server connection string
-- `ASPNETCORE_ENVIRONMENT`: ASP.NET Core environment (e.g., `Development`, `Production`)
-- `Sentry__Enabled`: Enable/disable Sentry error tracking (boolean)
-- `Sentry__Dsn`: Sentry DSN URL for error reporting
-- `Sentry__Environment`: Sentry environment name
-- `SwaggerUICredentials__username`: Username for Swagger UI access
-- `SwaggerUICredentials__password`: Password for Swagger UI access
-- `AzureAd__ClientId`: Azure AD application (client) ID (SSO)
-- `AzureAd__TenantId`: Azure AD tenant ID (SSO)
-- `AzureAd__ClientSecret`: Azure AD application client secret (SSO)
-- `AzureAd__Instance`: Azure AD instance URL (e.g., `https://login.microsoftonline.com/`)
-- `Azure__TenantId`: **Required for Azure cost ingestion** - Azure AD tenant ID for the service principal used against the management API
-- `Azure__ClientId`: **Required for Azure cost ingestion** - Application (client) ID for that principal
-- `Azure__ClientSecret`: **Required for Azure cost ingestion** - Client secret for that principal
-- `Jwt__Key`: JWT signing key
-- `Jwt__Issuers`: JWT issuer(s), comma-separated
-- `Jwt__Audiences`: JWT audience(s), comma-separated
-- `Logging__LogLevel__Default`: Default log level (e.g., `Warning`, `Information`)
-- `Logging__LogLevel__Microsoft.IdentityModel.LoggingExtensions.IdentityLoggerAdapter`: Log level for Identity Model logging
-- `ENABLE_LOG_CLEANUP`: Enable/disable log cleanup (boolean)
-- `AI__ApiURl`: Base URL for optional AI integration
-- `AI__ApiKey`: API key for optional AI integration
-- `AI__ApiKeyHeaderName`: HTTP header name used to send the AI API key
-- `WeeklyAnalysis__Enabled`: Enable/disable scheduled weekly analysis (boolean)
-- `WeeklyAnalysis__DayOfWeekUtc`: Day of week in UTC (e.g., `Sunday`)
-- `WeeklyAnalysis__HourUtc`: Hour in UTC (integer)
-- `WeeklyAnalysis__MinuteUtc`: Minute in UTC (integer)
+| Variable | Description |
+| --- | --- |
+| `ConnectionStrings__SqlConnectionString` | **Required** — SQL Server connection string |
+| `ASPNETCORE_ENVIRONMENT` | e.g. `Development`, `Production` |
+| `Sentry__Enabled` / `Sentry__Dsn` / `Sentry__Environment` | Sentry settings |
+| `SwaggerUICredentials__username` / `password` | Swagger UI credentials |
+| `AzureAd__ClientId` / `TenantId` / `ClientSecret` / `Instance` | Azure AD SSO |
+| `Azure__TenantId` | **Required for cost ingestion** — service principal tenant |
+| `Azure__ClientId` | **Required for cost ingestion** — application (client) ID |
+| `Azure__ClientSecret` | **Required for cost ingestion** — client secret |
+| `Jwt__Key` / `Jwt__Issuers` / `Jwt__Audiences` | JWT settings |
+| `Logging__LogLevel__Default` | Default log level |
+| `Logging__LogLevel__Microsoft.IdentityModel.LoggingExtensions.IdentityLoggerAdapter` | Identity Model log level |
+| `ENABLE_LOG_CLEANUP` | Enable log cleanup (boolean) |
+| `AI__ApiURl` / `AI__ApiKey` / `AI__ApiKeyHeaderName` | Optional AI integration |
+| `WeeklyAnalysis__Enabled` | Enable weekly analysis (boolean) |
+| `WeeklyAnalysis__DayOfWeekUtc` | Day of week in UTC (e.g. `Sunday`) |
+| `WeeklyAnalysis__HourUtc` / `WeeklyAnalysis__MinuteUtc` | Schedule time in UTC |
+
+## Uninstall
+
+```bash
+helm uninstall alerthawk
+```
+
+## Useful Links
+
+- [Artifact Hub — AlertHawk charts](https://artifacthub.io/packages/search?repo=alerthawk)
+- [alerthawk chart](https://artifacthub.io/packages/helm/alerthawk/alerthawk)
+- [ClickHouse subchart](https://artifacthub.io/packages/helm/clickhouse-alerthawk/clickhouse)
+- [AlertHawk main repository](https://github.com/thiagoloureiro/AlertHawk)
+- Helm repo: `https://thiagoloureiro.github.io/AlertHawk.Chart/`
