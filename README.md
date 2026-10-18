@@ -27,9 +27,9 @@ This repository publishes Helm charts for [AlertHawk](https://github.com/thiagol
 
 | Chart | Description | Latest |
 | --- | --- | --- |
-| [`alerthawk`](./alerthawk) | Full stack: monitoring, auth, notification, UI, metrics API, FinOps API | [![Version](https://img.shields.io/badge/version-3.3.34-blue)](https://artifacthub.io/packages/helm/alerthawk/alerthawk) |
-| [`alerthawk.agent`](./alerthawk.agent) | Monitoring agent only | [![Version](https://img.shields.io/badge/version-3.3.12-blue)](https://artifacthub.io/packages/helm/alerthawk/alerthawk.agent) |
-| [`alerthawk-metrics-agent`](./alerthawk.metrics.agent) | Kubernetes metrics collector | [![Version](https://img.shields.io/badge/version-3.3.17-blue)](https://artifacthub.io/packages/helm/alerthawk/alerthawk-metrics-agent) |
+| [`alerthawk`](./alerthawk) | Full stack: monitoring, auth, notification, UI, metrics API, FinOps API | [![Version](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fartifacthub.io%2Fapi%2Fv1%2Fpackages%2Fhelm%2Falerthawk%2Falerthawk&query=%24.version&label=version&color=0F1689)](https://artifacthub.io/packages/helm/alerthawk/alerthawk) |
+| [`alerthawk.agent`](./alerthawk.agent) | Monitoring agent only | [![Version](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fartifacthub.io%2Fapi%2Fv1%2Fpackages%2Fhelm%2Falerthawk%2Falerthawk.agent&query=%24.version&label=version&color=0F1689)](https://artifacthub.io/packages/helm/alerthawk/alerthawk.agent) |
+| [`alerthawk-metrics-agent`](./alerthawk.metrics.agent) | Kubernetes metrics collector | [![Version](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fartifacthub.io%2Fapi%2Fv1%2Fpackages%2Fhelm%2Falerthawk%2Falerthawk-metrics-agent&query=%24.version&label=version&color=0F1689)](https://artifacthub.io/packages/helm/alerthawk/alerthawk-metrics-agent) |
 
 ## Table of Contents
 
