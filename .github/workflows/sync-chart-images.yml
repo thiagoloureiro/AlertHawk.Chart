@@ -1,0 +1,72 @@
+name: Sync chart images
+
+on:
+  schedule:
+    # 15:00 UTC every day. The job publishes only when Docker Hub has a newer semver tag.
+    - cron: "0 15 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-chart-images
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Helm
+        uses: azure/setup-helm@v4
+        with:
+          version: v3.19.1
+
+      - name: Sync image tags and package charts
+        id: sync
+        run: python3 scripts/sync-chart-images.py
+
+      - name: Commit, push, and publish releases
+        if: steps.sync.outputs.changed == 'true'
+        env:
+          COMMIT_MESSAGE: ${{ steps.sync.outputs.message }}
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -u -- index.yaml alerthawk alerthawk.agent alerthawk.metrics.agent '*.tgz'
+          git add -- alerthawk-*.tgz alerthawk.agent-*.tgz
+          if git diff --cached --quiet; then
+            echo "No staged changes to publish."
+            exit 0
+          fi
+          git commit -m "$COMMIT_MESSAGE"
+          git push
+
+          if [ ! -s chart-releases.jsonl ]; then
+            echo "No chart releases to publish."
+            exit 0
+          fi
+
+          sha=$(git rev-parse HEAD)
+          while IFS= read -r line; do
+            tag=$(jq -r '.tag' <<<"$line")
+            title=$(jq -r '.title' <<<"$line")
+            asset=$(jq -r '.asset' <<<"$line")
+            latest=$(jq -r '.latest' <<<"$line")
+            jq -r '.notes' <<<"$line" > "$RUNNER_TEMP/release-notes.md"
+            if gh release view "$tag" >/dev/null 2>&1; then
+              echo "Release $tag already exists"
+              continue
+            fi
+            args=(release create "$tag" "$asset" --title "$title" --notes-file "$RUNNER_TEMP/release-notes.md" --target "$sha")
+            if [ "$latest" != "true" ]; then
+              args+=(--latest=false)
+            fi
+            gh "${args[@]}"
+          done < chart-releases.jsonl
