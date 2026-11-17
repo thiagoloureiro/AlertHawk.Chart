@@ -2,8 +2,30 @@ apiVersion: v1
 entries:
   alerthawk:
   - apiVersion: v2
+    appVersion: 3.3.52
+    created: "2026-11-17T16:16:25.435355437Z"
+    dependencies:
+    - condition: clickhouse.enabled
+      name: clickhouse
+      repository: https://thiagoloureiro.github.io/clickhouse.chart/
+      version: '*'
+    description: AlertHawk Self-Hosted Monitoring Solution
+    digest: c07f6708b1f44550373a8ce513bcac4c644da6d8626bb4cbca85883e541daaed
+    home: https://github.com/thiagoloureiro/AlertHawk.Chart
+    icon: https://raw.githubusercontent.com/thiagoloureiro/AlertHawk/main/logo.png
+    keywords:
+    - monitoring
+    - alerting
+    maintainers:
+    - email: thiagoguaru@me.com
+      name: Thiago Loureiro
+    name: alerthawk
+    urls:
+    - https://thiagoloureiro.github.io/AlertHawk.Chart/alerthawk-3.3.52.tgz
+    version: 3.3.52
+  - apiVersion: v2
     appVersion: 3.3.51
-    created: "2026-11-16T23:39:05.652167944Z"
+    created: "2026-11-17T16:16:25.43418724Z"
     dependencies:
     - condition: clickhouse.enabled
       name: clickhouse
@@ -23,16 +45,12 @@ entries:
     urls:
     - https://thiagoloureiro.github.io/AlertHawk.Chart/alerthawk-3.3.51.tgz
     version: 3.3.51
+  alerthawk-metrics-agent:
   - apiVersion: v2
-    appVersion: 3.3.50
-    created: "2026-11-16T23:39:05.650728642Z"
-    dependencies:
-    - condition: clickhouse.enabled
-      name: clickhouse
-      repository: https://thiagoloureiro.github.io/clickhouse.chart/
-      version: '*'
-    description: AlertHawk Self-Hosted Monitoring Solution
-    digest: 8f70dfbe114e088fcc692a5ae803c451ebef2fef05367a3e170c57540781e7a8
+    appVersion: 3.3.30
+    created: "2026-11-17T16:16:25.436438451Z"
+    description: AlertHawk Metrics Agent - Collects and sends Kubernetes metrics
+    digest: 574f443287e6a23a56f00ebc84087bd34e6a0c199b788d065ef62588cf9c9f88
     home: https://github.com/thiagoloureiro/AlertHawk.Chart
     icon: https://raw.githubusercontent.com/thiagoloureiro/AlertHawk/main/logo.png
     keywords:
@@ -41,14 +59,13 @@ entries:
     maintainers:
     - email: thiagoguaru@me.com
       name: Thiago Loureiro
-    name: alerthawk
+    name: alerthawk-metrics-agent
     urls:
-    - https://thiagoloureiro.github.io/AlertHawk.Chart/alerthawk-3.3.50.tgz
-    version: 3.3.50
-  alerthawk-metrics-agent:
+    - https://thiagoloureiro.github.io/AlertHawk.Chart/alerthawk-metrics-agent-3.3.30.tgz
+    version: 3.3.30
   - apiVersion: v2
     appVersion: 3.3.29
-    created: "2026-11-16T23:39:05.65276169Z"
+    created: "2026-11-17T16:16:25.43565952Z"
     description: AlertHawk Metrics Agent - Collects and sends Kubernetes metrics
     digest: 0b92c0426985ba133576c961e481ce5ed2f63d260272138adb964ea9237825b2
     home: https://github.com/thiagoloureiro/AlertHawk.Chart
@@ -63,11 +80,12 @@ entries:
     urls:
     - https://thiagoloureiro.github.io/AlertHawk.Chart/alerthawk-metrics-agent-3.3.29.tgz
     version: 3.3.29
+  alerthawk.agent:
   - apiVersion: v2
-    appVersion: 3.3.28
-    created: "2026-11-16T23:39:05.652476661Z"
-    description: AlertHawk Metrics Agent - Collects and sends Kubernetes metrics
-    digest: be7a75e8dee8baa6f531bdeda30cf15fb466e6d8cc9713a2c35304b644b679f1
+    appVersion: 3.3.26
+    created: "2026-11-17T16:16:25.436867048Z"
+    description: AlertHawk Monitoring Agent (monitoring service only)
+    digest: 9e76377642860b29fc1c52af4b4bb8e6170f2545ea865922e5117ac1f5e27013
     home: https://github.com/thiagoloureiro/AlertHawk.Chart
     icon: https://raw.githubusercontent.com/thiagoloureiro/AlertHawk/main/logo.png
     keywords:
@@ -76,14 +94,13 @@ entries:
     maintainers:
     - email: thiagoguaru@me.com
       name: Thiago Loureiro
-    name: alerthawk-metrics-agent
+    name: alerthawk.agent
     urls:
-    - https://thiagoloureiro.github.io/AlertHawk.Chart/alerthawk-metrics-agent-3.3.28.tgz
-    version: 3.3.28
-  alerthawk.agent:
+    - https://thiagoloureiro.github.io/AlertHawk.Chart/alerthawk.agent-3.3.26.tgz
+    version: 3.3.26
   - apiVersion: v2
     appVersion: 3.3.25
-    created: "2026-11-16T23:39:05.653217248Z"
+    created: "2026-11-17T16:16:25.436697837Z"
     description: AlertHawk Monitoring Agent (monitoring service only)
     digest: 5d5342cfc585bae723ce7126d72e1f00246d5f44949e0168f2e0428223c0c703
     home: https://github.com/thiagoloureiro/AlertHawk.Chart
@@ -98,21 +115,4 @@ entries:
     urls:
     - https://thiagoloureiro.github.io/AlertHawk.Chart/alerthawk.agent-3.3.25.tgz
     version: 3.3.25
-  - apiVersion: v2
-    appVersion: 3.3.24
-    created: "2026-11-16T23:39:05.652970225Z"
-    description: AlertHawk Monitoring Agent (monitoring service only)
-    digest: c1091ce959bbb372ee6877fce3c7229f91eae55f9c2f3af0edfaf556d18ecd81
-    home: https://github.com/thiagoloureiro/AlertHawk.Chart
-    icon: https://raw.githubusercontent.com/thiagoloureiro/AlertHawk/main/logo.png
-    keywords:
-    - monitoring
-    - alerting
-    maintainers:
-    - email: thiagoguaru@me.com
-      name: Thiago Loureiro
-    name: alerthawk.agent
-    urls:
-    - https://thiagoloureiro.github.io/AlertHawk.Chart/alerthawk.agent-3.3.24.tgz
-    version: 3.3.24
-generated: "2026-11-16T23:39:05.648541862Z"
+generated: "2026-11-17T16:16:25.432790614Z"
